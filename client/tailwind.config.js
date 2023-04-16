@@ -24,6 +24,9 @@ module.exports = {
     minWidth: {
       14: "3.5rem",
     },
+    minHeight: {
+      36: "9rem",
+    },
     extend: {
       transitionProperty: {
         transform: "transform",

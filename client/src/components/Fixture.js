@@ -24,10 +24,10 @@ export const Fixture = ({ fixture }) => {
   }, [fixture]);
 
   return (
-    <div className="container p-2 hover:shadow-xl">
+    <div className="container p-2 min-h-36 hover:shadow-xl">
       <div className="flex items-center justify-between">
         <div className="flex flex-col items-center border-r p-3 w-1/4">
-          <p className="text-sm text-center mb-1">
+          <p className="text-center mb-1">
             {convertDate(fixture.date)}
           </p>
           <IoFootball />
@@ -36,19 +36,16 @@ export const Fixture = ({ fixture }) => {
           <div className="h-14 min-w-14 flex justify-center">
             <img
               className=""
-              src={`/assets/images/${fixture.home
-                .split(" ")
-                .join("-")
-                .toLowerCase()}.png`}
+              src={`/assets/images/${fixture.home.split(" ").join("-").toLowerCase()}.png`}
               alt="Logo"
             />
           </div>
 
-          <div className="w-1/2">
+          <div className="text-xl w-1/2">
             <p>{fixture.home}</p>
           </div>
           <p className="px-3 ">V</p>
-          <div className="w-1/2">
+          <div className="text-xl w-1/2">
             <p>{fixture.away}</p>
           </div>
           <img

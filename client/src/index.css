@@ -3,7 +3,7 @@
 
 @layer components {
   .btn {
-    @apply flex items-center justify-between px-4 py-1 text-sm rounded border-black w-full border-2 whitespace-nowrap;
+    @apply flex items-center justify-between px-4 py-1 text-lg rounded border-black w-full border-2 whitespace-nowrap;
   }
 
   .btn:hover {
@@ -39,7 +39,7 @@
   }
 
   .nav {
-    @apply text-white text-xs;
+    @apply text-white text-xl;
   }
 
   .nav ul {
@@ -77,6 +77,38 @@
   .mid-sussex:hover .mid-sussex-container {
     @apply w-full;
   }
+    
+    .player-card {
+        @apply w-64 cursor-pointer;
+    }
+    
+    .player-card .header {
+        @apply h-32 flex justify-start relative bg-red-600 rounded-t-lg overflow-hidden transition-colors duration-500;
+    }
+    
+    .player-card .number {
+        @apply font-cursive text-white absolute top-1 left-1 z-30;
+    }
+    
+    .player-card .logo {
+        @apply absolute opacity-0 -left-14 transition-opacity duration-500;
+    }
+    
+    .player-card .name {
+        @apply flex flex-col justify-center text-white w-3/5 text-4xl font-bold text-end z-30 font-cursive transition-opacity duration-200;
+    }
+    
+    .player-card .position {
+        @apply relative bg-red-900 text-white px-6 py-1 rounded-b-lg text-center z-20 transition-colors duration-500;
+    }
+    
+    .player-card .placeholder {
+        @apply absolute bottom-0 right-0 h-64 w-auto mx-auto z-10;
+    }
+    
+    .player-card-logo-test:hover .logo {
+        @apply opacity-20;
+    }
 }
 
 @tailwind utilities;

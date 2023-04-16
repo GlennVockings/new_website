@@ -15,7 +15,7 @@ function App() {
           })}
         </div>
 
-        <div className="container mx-auto py-16 bg-gray-300">
+        <div className="container mx-auto py-16">
           <PlayerList />
         </div>
       </div>
