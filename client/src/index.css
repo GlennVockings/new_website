@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+
+@layer components {
+  .btn {
+    @apply flex items-center justify-between px-4 py-1 text-sm rounded border-black w-full border-2 whitespace-nowrap;
+  }
+
+  .btn:hover {
+    @apply bg-red-500 text-white;
+  }
+
+  .btn svg {
+    @apply ml-2 transition-transform duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-red-600 text-white border-red-600;
+  }
+
+  .btn-primary:hover {
+    @apply bg-white text-red-600;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-red-600 border-red-600;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-red-600 text-white border-red-600;
+  }
+
+  .open svg {
+    @apply -rotate-90;
+  }
+
+  .goals {
+    @apply max-h-0 transition-max-height overflow-hidden duration-300;
+  }
+
+  .nav {
+    @apply text-white text-xs;
+  }
+
+  .nav ul {
+    @apply flex justify-center;
+  }
+
+  .nav ul li a {
+    @apply py-1 px-3 block cursor-pointer;
+  }
+
+  .nav a:hover {
+    @apply underline;
+  }
+
+  .mid-sussex {
+    @apply absolute top-3 right-8;
+  }
+
+  .mid-sussex-container {
+    @apply flex items-center bg-gray-700 rounded-full h-12 w-12 transition-width duration-700;
+  }
+
+  .mid-sussex .image {
+    @apply p-1 bg-white rounded-full overflow-hidden w-12;
+  }
+
+  .mid-sussex .text {
+    @apply text-white w-0 overflow-hidden px-0 whitespace-nowrap transition-spacing duration-500 delay-200 text-sm;
+  }
+
+  .mid-sussex:hover .text {
+    @apply px-3 w-full;
+  }
+
+  .mid-sussex:hover .mid-sussex-container {
+    @apply w-full;
+  }
+}
+
+@tailwind utilities;
