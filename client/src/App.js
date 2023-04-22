@@ -1,24 +1,22 @@
-import { Fixture } from "./components/Fixture";
+import { Home } from "./pages/Home";
 import { Header } from "./components/Header";
-import { PlayerList } from "./components/PlayerList";
-import { dummyData } from "./dummyData";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Players } from "./pages/Players";
+import { Table } from "./pages/Table";
 
 function App() {
   return (
     <>
       <Header />
-
-      <div className="">
-        <div className="container mx-auto py-3 flex flex-col divide-y">
-          {dummyData.map((fixture) => {
-            return <Fixture fixture={fixture} />;
-          })}
+      <Router>
+        <div className="">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/team" element={<Players />} />
+            <Route path="/table" element={<Table />} />
+          </Routes>
         </div>
-
-        <div className="container mx-auto py-16">
-          <PlayerList />
-        </div>
-      </div>
+      </Router>
     </>
   );
 }

@@ -1,5 +1,4 @@
 import placeholderFull from "../images/player-placeholder-full.png";
-import placeholder from "../images/player-placeholder.png";
 
 export const PlayerList = () => {
   return (
