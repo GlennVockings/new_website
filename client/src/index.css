@@ -58,7 +58,7 @@
   }
 
   .nav {
-    @apply text-white text-xl;
+    @apply text-white text-2xl font-bold;
   }
 
   .nav ul {
@@ -78,11 +78,11 @@
   }
 
   .mid-sussex-container {
-    @apply flex items-center bg-tertiary rounded-full h-12 w-12 transition-width duration-700;
+    @apply flex items-center bg-tertiary rounded-full h-16 w-16 transition-width duration-700;
   }
 
   .mid-sussex .image {
-    @apply p-1 bg-white rounded-full overflow-hidden w-12;
+    @apply p-1 bg-white rounded-full overflow-hidden w-16;
   }
 
   .mid-sussex .text {
@@ -130,14 +130,22 @@
   }
 
   .league-table {
-    @apply table-auto border-separate border-spacing-2;
+    @apply table-auto border-separate border-spacing-2 mx-auto overflow-auto;
   }
 
   .league-table th {
-    @apply border;
+    @apply border py-2 px-3 rounded bg-tertiary text-white border-tertiary text-xl font-sans uppercase;
   }
 
   .league-table td {
-    @apply border;
+    @apply border py-2 px-3 text-center text-lg whitespace-nowrap;
+  }
+
+  .league-table .name {
+    @apply text-left pr-44;
+  }
+
+  .league-table .home td {
+    @apply bg-primary/5 py-4 font-cursive tracking-wide;
   }
 }

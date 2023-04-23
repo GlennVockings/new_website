@@ -1,4 +1,11 @@
+import { TableRow } from "../components/TableRow";
+import { table } from "../dummyData";
+import { calculatesTableData } from "../helpers/helper-funcs";
+
 export const Table = () => {
+  const leagueTable = calculatesTableData(table);
+  leagueTable.sort((a, b) => b.points - a.points);
+
   return (
     <div className="container mx-auto">
       <table className="league-table">
@@ -10,115 +17,23 @@ export const Table = () => {
             <th>Wins</th>
             <th>Draws</th>
             <th>Loses</th>
+            <th>For</th>
+            <th>Against</th>
+            <th>Diff.</th>
             <th>Points</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <p className="ordinal">1st</p>
-            </td>
-            <td>
-              <p>Oxted FC</p>
-            </td>
-            <td>
-              <p>18</p>
-            </td>
-            <td>
-              <p>16</p>
-            </td>
-            <td>
-              <p>2</p>
-            </td>
-            <td>
-              <p>0</p>
-            </td>
-            <td>
-              <p>50</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p className="ordinal">2nd</p>
-            </td>
-            <td>
-              <p>Crawley Devils</p>
-            </td>
-            <td>
-              <p>18</p>
-            </td>
-            <td>
-              <p>11</p>
-            </td>
-            <td>
-              <p>2</p>
-            </td>
-            <td>
-              <p>5</p>
-            </td>
-            <td>
-              <p>35</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p className="ordinal">3rd</p>
-            </td>
-            <td>
-              <p>Ditchling</p>
-            </td>
-            <td>
-              <p>17</p>
-            </td>
-            <td>
-              <p>10</p>
-            </td>
-            <td>
-              <p>1</p>
-            </td>
-            <td>
-              <p>6</p>
-            </td>
-            <td>
-              <p>31</p>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          {leagueTable &&
+            leagueTable.map((entry, index) => {
+              return (
+                <TableRow
+                  position={index + 1}
+                  entry={entry}
+                  cssClass={entry.name === "Oxted FC" ? "home" : ""}
+                />
+              );
+            })}
         </tbody>
       </table>
     </div>

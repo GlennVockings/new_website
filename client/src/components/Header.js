@@ -2,9 +2,9 @@ import { Navigation } from "./Navigation";
 
 export const Header = () => {
   return (
-    <div className="bg-gradient-to-r relative pt-20 overflow-hidden from-secondary to-primary">
+    <div className="bg-gradient-to-r relative pt-28 overflow-hidden from-secondary to-primary">
       <img
-        className="absolute h-48 top-0 -left-4 opacity-70"
+        className="absolute h-60 top-0 -left-4 opacity-70"
         src="/assets/images/oxted-fc.png"
         alt="Oxted FC Logo"
       />

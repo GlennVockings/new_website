@@ -1,29 +1,43 @@
-const DATEOPTIONS = { 
-  dateStyle: 'medium' 
+const DATEOPTIONS = {
+  dateStyle: "medium",
 };
 const TIMEOPTIONS = {
-  timeStyle: 'short'
+  timeStyle: "short",
 };
 
 export const convertDate = (date) => {
   const d = new Date(date);
 
-  return `${ d.toLocaleDateString( "en-GB", DATEOPTIONS ) } ${ d.toLocaleTimeString( "en-GB", TIMEOPTIONS ) }`
-}
+  return `${d.toLocaleDateString("en-GB", DATEOPTIONS)} ${d.toLocaleTimeString(
+    "en-GB",
+    TIMEOPTIONS
+  )}`;
+};
 
-export const getStatus = ( fixture ) => {
+export const getStatus = (fixture) => {
   const date = new Date();
-  const matchTime = new Date( fixture.date );
+  const matchTime = new Date(fixture.date);
 
-  console.log( date.toLocaleDateString("en-GB", DATEOPTIONS) )
-  console.log( matchTime.toLocaleDateString("en-GB", DATEOPTIONS) )
+  console.log(date.toLocaleDateString("en-GB", DATEOPTIONS));
+  console.log(matchTime.toLocaleDateString("en-GB", DATEOPTIONS));
 
-  if ( date.toLocaleDateString("en-GB", DATEOPTIONS) === matchTime.toDateString("en-GB", DATEOPTIONS) ) {
-    console.log( "test" )
+  if (
+    date.toLocaleDateString("en-GB", DATEOPTIONS) ===
+    matchTime.toDateString("en-GB", DATEOPTIONS)
+  ) {
+    console.log("test");
   }
-  
 
-  if ( fixture.hightlights !== null ) {
-    return 'Completed'
+  if (fixture.hightlights !== null) {
+    return "Completed";
   }
-}
+};
+
+export const calculatesTableData = (table) => {
+  table.forEach((entry) => {
+    entry.points = entry.wins * 3 + entry.draws;
+    entry.difference = entry.for - entry.against;
+    entry.played = entry.wins + entry.loses + entry.draws;
+  });
+  return table;
+};
