@@ -118,7 +118,7 @@
   }
 
   .player-card .position {
-    @apply relative bg-secondary text-white px-6 py-1 rounded-b-lg text-center z-20 transition-colors duration-500;
+    @apply relative bg-secondary text-white px-6 py-1 rounded-b-lg text-center z-20 transition-colors duration-500 capitalize;
   }
 
   .player-card .placeholder {
@@ -147,5 +147,25 @@
 
   .league-table .home td {
     @apply bg-primary/5 py-4 font-cursive tracking-wide;
+  }
+    
+  .stats {
+    @apply hidden;
+  }
+    
+  .show-stats .stats {
+    @apply block;
+  }
+    
+  .btn-view-mode-switch > label.btn-view-mode-switch-inner{
+    @apply block transition-all relative hidden rounded bg-secondary h-5 w-20 m-0;
+  }
+    
+  .btn-view-mode-switch > label.btn-view-mode-switch-inner:before {
+    @apply right-5 content-[attr(data-on)] top-1 absolute;
+  }
+    
+  .btn-view-mode-switch > label.btn-view-mode-switch-inner:after{
+    @apply py-1 px-0 transition-all text-center top-1 left-1 absolute rounded bg-white h-3 w-10 content-[attr(data-off)]
   }
 }

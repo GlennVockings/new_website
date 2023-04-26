@@ -1,108 +1,29 @@
 import placeholderFull from "../images/player-placeholder-full.png";
+import { useState } from 'react';
+
+import { players } from "../dummyData.js";
+import { Player } from "./Player";
 
 export const PlayerList = () => {
+    // States
+    const [ statsView, setStatsView ] = useState(false);
+    
+    
   return (
-    <div className="flex flex-wrap justify-center items-end space-x-4 space-y-24">
-      {/* player container */}
-      <div className="player-card player-card-logo-test">
-        <div className="relative">
-          <div className="header">
-            <p className="number">#12</p>
-            <img
-              className="logo"
-              src="/assets/images/oxted-fc.png"
-              alt="Oxted logo"
-            />
-            <div className="name">
-              <p>JOHN</p>
-              <p>WICK</p>
-            </div>
-          </div>
-          <div className="position">
-            <p>Goalkeeper</p>
-          </div>
-          <img
-            className="placeholder"
-            src={placeholderFull}
-            alt="placeholder"
-          />
-        </div>
+    <>
+      <div className="container mx-auto">
+        <label className="switch btn-view-mode-switch">
+            <input type="checkbox" name="view_mode" id="color_mode" value="1" />
+            <label htmlFor="view_mode" data-on="Stats" data-off="Player" className="btn-view-mode-switch-inner"></label>
+        </label>
       </div>
-      {/* player container 2 */}
-      <div className="player-card player-card-logo-test">
-        <div className="relative">
-          <div className="header">
-            <p className="number">#12</p>
-            <img
-              className="logo"
-              src="/assets/images/oxted-fc.png"
-              alt="Oxted logo"
-            />
-            <div className="name">
-              <p>JOHN</p>
-              <p>WICK</p>
-            </div>
-          </div>
-          <div className="position">
-            <p>Goalkeeper</p>
-          </div>
-          <img
-            className="placeholder"
-            src={placeholderFull}
-            alt="placeholder"
-          />
+        <div className="flex flex-wrap justify-center items-end space-x-4 space-y-24">
+          { 
+            players.map( player => {
+              return <Player name={ player.name } position={ player.position } number={ player.number } statsView={ statsView } />
+            })
+          }
         </div>
-      </div>
-      {/* player container hover test */}
-      <div className="player-card player-card-logo-test">
-        <div className="relative">
-          <div className="header">
-            <p className="number">#12</p>
-            <img
-              className="logo"
-              src="/assets/images/oxted-fc.png"
-              alt="Oxted logo"
-            />
-            <div className="name">
-              <p>JOHN</p>
-              <p>WICK</p>
-            </div>
-          </div>
-          <div className="position">
-            <p>Goalkeeper</p>
-          </div>
-          <img
-            className="placeholder"
-            src={placeholderFull}
-            alt="placeholder"
-          />
-        </div>
-      </div>
-      {/* player container 2 hover test */}
-      <div className="player-card player-card-logo-test">
-        <div className="relative">
-          <div className="header">
-            <p className="number">#12</p>
-            <img
-              className="logo"
-              src="/assets/images/oxted-fc.png"
-              alt="Oxted logo"
-            />
-            <div className="name">
-              <p>JOHN</p>
-              <p>WICK</p>
-            </div>
-          </div>
-          <div className="position">
-            <p>Goalkeeper</p>
-          </div>
-          <img
-            className="placeholder"
-            src={placeholderFull}
-            alt="placeholder"
-          />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };

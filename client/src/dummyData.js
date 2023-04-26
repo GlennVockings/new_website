@@ -184,3 +184,66 @@ export const table = [
     against: 63,
   },
 ];
+
+export const players = [
+    {
+        name: "John Wick",
+        number: 1,
+        position: "goalkeeper"
+    },
+    {
+        name: "Ben Roy",
+        number: 8,
+        position: "centre back"
+    },
+    {
+        name: "Emmanuel Blevins",
+        number: 4,
+        position: "centre midfielder"
+    },
+    {
+        name: "Ben Connolly",
+        number: 3,
+        position: "striker"
+    },
+    {
+        name: "Jake Dodgson",
+        number: 7,
+        position: "left midfielder"
+    },
+    {
+        name: "Spencer Clements",
+        number: 10,
+        position: "left back"
+    },
+    {
+        name: "James Heyburn",
+        number: 46,
+        position: "right back"
+    },
+    {
+        name: "Stephen Hodge",
+        number: 32,
+        position: "striker"
+    },
+    {
+        name: "Joseph Johnson",
+        number: 5,
+        position: "right midfielder"
+    },
+    {
+        name: "Luke McClean",
+        number: 21,
+        position: "centre back"
+    },
+    {
+        name: "Rhys Flitton",
+        number: 30,
+        position: "left back"
+    },
+    {
+        name: "Samuel Armitage",
+        number: 11,
+        position: "central attacking midfielder"
+    }
+]
