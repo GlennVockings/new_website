@@ -1,8 +1,39 @@
 export const dummyData = [
   {
+    home: "West Hoathly",
+    away: "Oxted FC",
+    date: "20 Aug 2022 14:00",
+    venue: "Somewhere",
+    result: {
+      home: 0,
+      away: 3,
+    },
+    highlights: [
+      {
+        team: "Oxted FC",
+        name: "Buster Hoy",
+        event: "goal",
+        time: "8",
+      },
+      {
+        team: "Oxted FC",
+        name: "Jake Dadgson",
+        event: "goal",
+        time: "24",
+      },
+      {
+        team: "Oxted FC",
+        name: "Buster Hoy",
+        event: "goal",
+        time: "30",
+      },
+    ],
+  },
+  {
     home: "Oxted FC",
     away: "Crawley Devils",
     date: "11 Feb 2023 14:00",
+    venue: "Master Park",
     result: {
       home: 5,
       away: 1,
@@ -56,6 +87,7 @@ export const dummyData = [
     home: "Sovereign Saints",
     away: "Oxted FC",
     date: "25 Feb 2023 13:30",
+    venue: "Somewhere",
     result: {
       home: 5,
       away: 0,
@@ -94,10 +126,51 @@ export const dummyData = [
     ],
   },
   {
+    home: "Crawley Devils",
+    away: "Oxted FC",
+    date: "03 Sep 2022 14:00",
+    venue: "Somewhere",
+    result: null,
+    highlights: null,
+  },
+  {
+    home: "Oxted FC",
+    away: "Hurstpierpoint",
+    date: "13 Apr 2023 00:30",
+    venue: "Master Park",
+    result: null,
+    highlights: null,
+  },
+  {
+    home: "Oxted FC",
+    away: "Sovereign Saints",
+    date: "13 Apr 2023 00:30",
+    venue: "Master Park",
+    result: null,
+    highlights: null,
+  },
+  {
+    home: "Peacehaven & Telscombe II",
+    away: "Oxted FC",
+    date: "27 Aug 2022 14:00",
+    venue: "Somewhere",
+    result: null,
+    highlights: null,
+  },
+  {
     home: "Oxted FC",
     away: "West Hoathly",
     date: "13 Apr 2023 00:30",
-    result: {},
+    venue: "Master Park",
+    result: null,
+    highlights: null,
+  },
+  {
+    home: "Oxted FC",
+    away: "Peacehaven & Telscombe II",
+    date: "13 Apr 2023 00:30",
+    venue: "Master Park",
+    result: null,
     highlights: null,
   },
 ];
@@ -186,64 +259,64 @@ export const table = [
 ];
 
 export const players = [
-    {
-        name: "John Wick",
-        number: 1,
-        position: "goalkeeper"
-    },
-    {
-        name: "Ben Roy",
-        number: 8,
-        position: "centre back"
-    },
-    {
-        name: "Emmanuel Blevins",
-        number: 4,
-        position: "centre midfielder"
-    },
-    {
-        name: "Ben Connolly",
-        number: 3,
-        position: "striker"
-    },
-    {
-        name: "Jake Dodgson",
-        number: 7,
-        position: "left midfielder"
-    },
-    {
-        name: "Spencer Clements",
-        number: 10,
-        position: "left back"
-    },
-    {
-        name: "James Heyburn",
-        number: 46,
-        position: "right back"
-    },
-    {
-        name: "Stephen Hodge",
-        number: 32,
-        position: "striker"
-    },
-    {
-        name: "Joseph Johnson",
-        number: 5,
-        position: "right midfielder"
-    },
-    {
-        name: "Luke McClean",
-        number: 21,
-        position: "centre back"
-    },
-    {
-        name: "Rhys Flitton",
-        number: 30,
-        position: "left back"
-    },
-    {
-        name: "Samuel Armitage",
-        number: 11,
-        position: "central attacking midfielder"
-    }
-]
+  {
+    name: "John Wick",
+    number: 1,
+    position: "goalkeeper",
+  },
+  {
+    name: "Ben Roy",
+    number: 8,
+    position: "centre back",
+  },
+  {
+    name: "Emmanuel Blevins",
+    number: 4,
+    position: "centre midfielder",
+  },
+  {
+    name: "Ben Connolly",
+    number: 3,
+    position: "striker",
+  },
+  {
+    name: "Jake Dodgson",
+    number: 7,
+    position: "left midfielder",
+  },
+  {
+    name: "Spencer Clements",
+    number: 10,
+    position: "left back",
+  },
+  {
+    name: "James Heyburn",
+    number: 46,
+    position: "right back",
+  },
+  {
+    name: "Stephen Hodge",
+    number: 32,
+    position: "striker",
+  },
+  {
+    name: "Joseph Johnson",
+    number: 5,
+    position: "right midfielder",
+  },
+  {
+    name: "Luke McClean",
+    number: 21,
+    position: "centre back",
+  },
+  {
+    name: "Rhys Flitton",
+    number: 30,
+    position: "left back",
+  },
+  {
+    name: "Samuel Armitage",
+    number: 11,
+    position: "central attacking midfielder",
+  },
+];

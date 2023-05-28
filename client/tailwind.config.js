@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Nunito", "sans-serif"],
-      cursive: ["Lilita One", "cursive"],
+      cursive: ["Lexend", "cursive"],
+      body: ["Sigmar"],
     },
     colors: {
       transparent: "transparent",
@@ -17,9 +18,14 @@ module.exports = {
       tertiary: "rgb(var(--color-tertiary) / <alpha-value>)",
       black: "rgb(var(--color-black) / <alpha-value>)",
       white: "rgb(var(--color-white) / <alpha-value>)",
+      gray: colors.gray,
+      neutral: colors.neutral,
     },
     minWidth: {
       14: "3.5rem",
+      28: "7rem",
+      56: "14rem",
+      64: "16rem",
     },
     minHeight: {
       36: "9rem",
@@ -30,9 +36,11 @@ module.exports = {
         "max-height": "max-height",
         width: "width",
         spacing: "width, padding",
+        height: "height",
       },
       maxWidth: {
         150: "150px",
+        "1/4": "25%",
       },
       borderWidth: {
         "1/2": "0.5px",

@@ -97,12 +97,16 @@
     @apply w-full;
   }
 
+  .player-list {
+    @apply flex flex-wrap justify-center items-end space-x-4 mt-20;
+  }
+
   .player-card {
-    @apply w-64 cursor-pointer;
+    @apply w-72 cursor-pointer mb-28 transition-all duration-300 delay-300;
   }
 
   .player-card .header {
-    @apply h-32 flex justify-start relative bg-primary rounded-t-lg overflow-hidden transition-colors duration-500;
+    @apply h-40 flex justify-start relative bg-primary rounded-t-lg overflow-hidden transition-colors duration-500;
   }
 
   .player-card .number {
@@ -114,19 +118,43 @@
   }
 
   .player-card .name {
-    @apply flex flex-col justify-center text-white w-3/5 text-4xl font-bold text-end z-30 font-cursive transition-opacity duration-200;
+    @apply absolute top-10 left-2 text-left text-white w-3/5 text-4xl font-bold z-30 font-cursive transition-opacity duration-200;
+  }
+
+  .player-card .position-container {
+    @apply absolute -bottom-2 w-full h-8 bg-secondary text-white px-6 py-1 rounded-b-lg text-center z-40 capitalize overflow-hidden [transition:height_.3s_ease,bottom_.3s_ease_.3s];
   }
 
   .player-card .position {
-    @apply relative bg-secondary text-white px-6 py-1 rounded-b-lg text-center z-20 transition-colors duration-500 capitalize;
+    @apply text-base transition-all duration-300;
   }
 
   .player-card .placeholder {
     @apply absolute bottom-0 right-0 h-64 w-auto mx-auto z-10;
   }
 
-  .player-card-logo-test:hover .logo {
+  .player-card:hover .logo {
     @apply opacity-20;
+  }
+
+  .stats {
+    @apply max-h-0 transition-max-height duration-500;
+  }
+
+  .show-stats {
+    @apply mb-44;
+  }
+
+  .show-stats .stats {
+    @apply max-h-96;
+  }
+
+  .show-stats .position {
+    @apply text-xl font-bold;
+  }
+
+  .show-stats .position-container {
+    @apply h-60 rounded -bottom-20;
   }
 
   .league-table {
@@ -148,24 +176,16 @@
   .league-table .home td {
     @apply bg-primary/5 py-4 font-cursive tracking-wide;
   }
-    
-  .stats {
-    @apply hidden;
+
+  .tabs {
+    @apply bg-neutral-300 rounded-full text-2xl;
   }
-    
-  .show-stats .stats {
-    @apply block;
+
+  .tab {
+    @apply py-2 px-4 min-w-28;
   }
-    
-  .btn-view-mode-switch > label.btn-view-mode-switch-inner{
-    @apply block transition-all relative hidden rounded bg-secondary h-5 w-20 m-0;
-  }
-    
-  .btn-view-mode-switch > label.btn-view-mode-switch-inner:before {
-    @apply right-5 content-[attr(data-on)] top-1 absolute;
-  }
-    
-  .btn-view-mode-switch > label.btn-view-mode-switch-inner:after{
-    @apply py-1 px-0 transition-all text-center top-1 left-1 absolute rounded bg-white h-3 w-10 content-[attr(data-off)]
+
+  .active {
+    @apply bg-primary text-white rounded-full;
   }
 }
