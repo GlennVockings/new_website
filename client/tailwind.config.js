@@ -28,6 +28,7 @@ module.exports = {
       64: "16rem",
     },
     minHeight: {
+      28: "7rem",
       36: "9rem",
     },
     extend: {

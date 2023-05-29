@@ -15,13 +15,13 @@ export const Header = () => {
         rel="noreferrer"
       >
         <div className="mid-sussex-container">
+          <p className="text">Mid Sussex League</p>
           <div className="image">
             <img
               src="/assets/images/mid-sussex-league.png"
               alt="Mid Sussex League logo"
             />
           </div>
-          <p className="text">Mid Sussex League</p>
         </div>
       </a>
       <Navigation />

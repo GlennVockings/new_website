@@ -16,21 +16,25 @@ export const convertDate = (date) => {
 
 export const getStatus = (fixture) => {
   const date = new Date();
-  const matchTime = new Date(fixture.date);
-
-  console.log(date.toLocaleDateString("en-GB", DATEOPTIONS));
-  console.log(matchTime.toLocaleDateString("en-GB", DATEOPTIONS));
-
-  if (
-    date.toLocaleDateString("en-GB", DATEOPTIONS) ===
-    matchTime.toDateString("en-GB", DATEOPTIONS)
-  ) {
-    console.log("test");
+  
+  const week = date.setDate(date.getDate() + 7);
+  const today = new Date();
+  const matchDate = new Date(`${fixture.date} ${fixture.time}`);
+  const timeDifference = today.getTime() - matchDate.getTime();
+    
+  if ( fixture.highlights ) {
+    return "Completed"
   }
-
-  if (fixture.hightlights !== null) {
-    return "Completed";
+    
+  if ( timeDifference < 7200000 && timeDifference > 0 ) {
+    return "Playing Now"
   }
+    
+  if ( matchDate.getTime() > today.getTime() && matchDate.getTime() < week ) {
+    return "Upcoming"
+  }
+    
+  return "";
 };
 
 export const calculatesTableData = (table) => {

@@ -182,10 +182,19 @@
   }
 
   .tab {
-    @apply py-2 px-4 min-w-28;
+    @apply py-1 px-3 min-w-28;
   }
 
   .active {
     @apply bg-primary text-white rounded-full;
   }
+    
+  .upcoming {
+    @apply bg-secondary;
+  }
+    
+  .completed {
+    @apply bg-tertiary;
+  }
+    
 }
