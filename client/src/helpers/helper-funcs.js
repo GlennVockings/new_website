@@ -22,7 +22,7 @@ export const getStatus = (fixture) => {
   const matchDate = new Date(`${fixture.date} ${fixture.time}`);
   const timeDifference = today.getTime() - matchDate.getTime();
     
-  if ( fixture.highlights ) {
+  if ( fixture.result ) {
     return "Completed"
   }
     

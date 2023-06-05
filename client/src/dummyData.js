@@ -1,4 +1,4 @@
-export const dummyData = [
+export const dummyFixtures = [
   {
     opponent: "West Hoathly",
     hoa: "Away",
@@ -134,7 +134,10 @@ export const dummyData = [
     date: "29 May 2023",
     time: "21:30",
     venue: "Somewhere",
-    result: null,
+    result: {
+      home: 4,
+      away: 5,
+    },
     highlights: null,
   },
   {
@@ -143,7 +146,10 @@ export const dummyData = [
     date: "3 June 2023",
     time: "13:00",
     venue: "Master Park",
-    result: null,
+    result: {
+      home: 4,
+      away: 5,
+    },
     highlights: null,
   },
   {
@@ -211,7 +217,7 @@ export const dummyData = [
   },
 ];
 
-export const table = [
+export const dummyTable = [
   {
     name: "Oxted FC",
     wins: 16,
@@ -294,7 +300,7 @@ export const table = [
   },
 ];
 
-export const players = [
+export const dummyPlayers = [
   {
     name: "John Wick",
     number: 1,

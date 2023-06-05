@@ -48,14 +48,12 @@ export const Fixture = ({ fixture }) => {
           }
         </div>
         <div className="border-l p-3 w-1/4 ">
-          {fixture.highlights && (
             <button
               className={`btn btn-primary`}
             >
               Details
               <BiDetail />
             </button>
-          )}
         </div>
       </div>
     </div>

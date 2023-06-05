@@ -1,5 +1,5 @@
-import { dummyData } from "../dummyData";
-import { FixtureTest } from "../components/FixtureTest";
+import { dummyFixtures } from "../dummyData";
+import { Fixture } from "../components/Fixture";
 import { useState } from 'react';
 
 export const Fixtures = () => {
@@ -29,21 +29,21 @@ export const Fixtures = () => {
               </button>
             </div>
         </div>
-        <div className="container mx-auto py-3 grid grid-cols-3 place-content-stretch gap-6">
-          {dummyData.map((fixture) => {
+        <div className="container mx-auto py-3 flex flex-col divide-y">
+          {dummyFixtures.map((fixture) => {
             switch(filter) {
                 case "all": 
-                    return <FixtureTest fixture={fixture} />;
+                    return <Fixture fixture={fixture} />;
                 break;
                 case "home":
-                    if (fixture.home === "Oxted FC" ) return <FixtureTest fixture={fixture} />;
+                    if (fixture.hoa.toLowerCase() === filter ) return <Fixture fixture={fixture} />;
                 break;
                 case "away":
-                    if (fixture.away === "Oxted FC" ) return <FixtureTest fixture={fixture} />;
+                    if (fixture.hoa.toLowerCase() === filter ) return <Fixture fixture={fixture} />;
                 break;
                 default:
-                    return <FixtureTest fixture={fixture} />;
-            }           
+                    return <Fixture fixture={fixture} />;
+            }
           })}
         </div>
     </>
