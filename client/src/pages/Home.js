@@ -1,51 +1,37 @@
-import { dummyData } from "../dummyData";
-import { Fixture } from "../components/Fixture";
-import { useState } from "react";
+import { players } from "../dummyData";
+import { PlayerTest } from "../components/PlayerTest";
 
 export const Home = () => {
-    const [ filter, setFilter ] = useState("all");
-    
   return (
-    <>
-      <div className="flex justify-center py-6">
-            <div className="tabs">
-              <button
-                className={`tab ${filter === "all" ? "active" : ""}`}
-                onClick={() => setFilter("all")}
-              >
-                All
-              </button>
-              <button
-                className={`tab ${filter === "home" ? "active" : ""}`}
-                onClick={() => setFilter("home")}
-              >
-                Home
-              </button>
-              <button
-                className={`tab ${filter === "away" ? "active" : ""}`}
-                onClick={() => setFilter("away")}
-              >
-                Away
-              </button>
-            </div>
-        </div>
-        <div className="container mx-auto py-3 flex flex-col divide-y">
-          {dummyData.map((fixture) => {
-            switch(filter) {
-                case "all": 
-                    return <Fixture fixture={fixture} />;
-                break;
-                case "home":
-                    if (fixture.hoa.toLowerCase() === filter ) return <Fixture fixture={fixture} />;
-                break;
-                case "away":
-                    if (fixture.hoa.toLowerCase() === filter ) return <Fixture fixture={fixture} />;
-                break;
-                default:
-                    return <Fixture fixture={fixture} />;
-            }
+    <div className="container mx-auto md:overflow-x-scroll">
+      <table className="player-table">
+        <thead>
+          <tr className="header">
+            <th>Name</th>
+            <th>Appearances</th>
+            <th>Goals</th>
+            <th>Penalties</th>
+            <th>Assists</th>
+            <th>Yellow Cards</th>
+            <th>Red Cards</th>
+            <th>Started</th>
+            <th>Player of Match</th>
+            <th>Clean Sheets</th>
+          </tr>
+        </thead>
+        <tbody>
+          {players.map((player) => {
+            return (
+              <PlayerTest
+                name={player.name}
+                position={player.position}
+                number={player.number}
+                stats={player.stats}
+              />
+            );
           })}
-        </div>
-    </>
+        </tbody>
+      </table>
+    </div>
   );
 };
