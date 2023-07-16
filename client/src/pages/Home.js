@@ -1,4 +1,4 @@
-import { players } from "../dummyData";
+import { dummyPlayers } from "../dummyData";
 import { PlayerTest } from "../components/PlayerTest";
 
 export const Home = () => {
@@ -20,7 +20,7 @@ export const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {players.map((player) => {
+          {dummyPlayers.map((player) => {
             return (
               <PlayerTest
                 name={player.name}

@@ -1,9 +1,9 @@
 import { TableRow } from "../components/TableRow";
-import { table } from "../dummyData";
+import { dummyTable } from "../dummyData";
 import { calculatesTableData } from "../helpers/helper-funcs";
 
 export const Table = () => {
-  const leagueTable = calculatesTableData(table);
+  const leagueTable = calculatesTableData(dummyTable);
   leagueTable.sort((a, b) => b.points - a.points);
 
   return (

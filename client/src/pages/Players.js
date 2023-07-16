@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { players } from "../dummyData";
+import { dummyPlayers } from "../dummyData";
 import { Player } from "../components/Player";
 
 export const Players = () => {
@@ -26,7 +26,7 @@ export const Players = () => {
         </div>
       </div>
       <div className="player-list">
-        {players.map((player) => {
+        {dummyPlayers.map((player) => {
           return (
             <Player
               name={player.name}

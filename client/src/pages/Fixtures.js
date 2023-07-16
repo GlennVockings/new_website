@@ -1,4 +1,4 @@
-import { dummyData } from "../dummyData";
+import { dummyFixtures } from "../dummyData";
 import { Fixture } from "../components/Fixture";
 import { useState } from "react";
 
@@ -30,7 +30,7 @@ export const Fixtures = () => {
         </div>
       </div>
       <div className="container mx-auto py-3 flex flex-col divide-y">
-        {dummyData.map((fixture) => {
+        {dummyFixtures.map((fixture) => {
           switch (filter) {
             case "all":
               return <Fixture fixture={fixture} />;

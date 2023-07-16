@@ -1,4 +1,4 @@
-export const dummyData = [
+export const dummyFixtures = [
   {
     opponent: "West Hoathly",
     hoa: "Away",
@@ -279,7 +279,7 @@ export const dummyData = [
   },
 ];
 
-export const table = [
+export const dummyTable = [
   {
     name: "Oxted FC",
     wins: 16,
@@ -362,7 +362,7 @@ export const table = [
   },
 ];
 
-export const players = [
+export const dummyPlayers = [
   {
     name: "John Wick",
     number: 1,
