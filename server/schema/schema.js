@@ -147,7 +147,16 @@ const mutation = new GraphQLObjectType({
       args: {
         week: { type: GraphQLNonNull(GraphQLInt) },
         wc: { type: GraphQLNonNull(GraphQLString) },
-        status: { type: GraphQLNonNull(GraphQLString) },
+        status: {
+          type: new GraphQLEnumType({
+            name: "WeekStatus",
+            values: {
+              new: { value: "Not Started" },
+              completed: { value: "Completed" },
+            },
+          }),
+          defaultValue: "Not Started",
+        },
       },
       resolve(parent, args) {
         const week = new Week({
@@ -166,6 +175,50 @@ const mutation = new GraphQLObjectType({
       },
       resolve(parent, args) {
         return Week.findByIdAndRemove(args.id);
+      },
+    },
+    addPlayer: {
+      type: PlayerType,
+      args: {
+        name: { type: GraphQLNonNull(GraphQLString) },
+        number: { type: GraphQLNonNull(GraphQLInt) },
+        position: { type: GraphQLNonNull(GraphQLString) },
+        appearances: { type: GraphQLNonNull(GraphQLInt) },
+        goals: { type: GraphQLNonNull(GraphQLInt) },
+        penalties: { type: GraphQLNonNull(GraphQLInt) },
+        assists: { type: GraphQLNonNull(GraphQLInt) },
+        yellowCards: { type: GraphQLNonNull(GraphQLInt) },
+        redCards: { type: GraphQLNonNull(GraphQLInt) },
+        started: { type: GraphQLNonNull(GraphQLInt) },
+        mom: { type: GraphQLNonNull(GraphQLInt) },
+        cleanSheets: { type: GraphQLNonNull(GraphQLInt) },
+      },
+      resolve(parent, args) {
+        const player = new Player({
+          name: args.name,
+          number: args.number,
+          position: args.position,
+          appearances: args.appearances,
+          goals: args.goals,
+          penalties: args.penalties,
+          assists: args.assists,
+          yellowCards: args.yellowCards,
+          redCards: args.redCards,
+          started: args.started,
+          mom: args.mom,
+          cleanSheets: args.cleanSheets,
+        });
+
+        return player.save();
+      },
+    },
+    deletePlayer: {
+      type: PlayerType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Player.findByIdAndRemove(args.id);
       },
     },
   },

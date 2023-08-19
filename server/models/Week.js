@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const WeekSchema = new mongoose.Schema({
-  week: { type: Int },
+  week: { type: Number },
   wc: { type: String },
   status: {
     type: String,

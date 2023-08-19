@@ -6,8 +6,8 @@ const FixtureSchema = new mongoose.Schema({
   time: { type: String },
   date: { type: String },
   venue: { type: String },
-  homeScore: { type: Int },
-  awayScore: { type: Int },
+  homeScore: { type: Number },
+  awayScore: { type: Number },
   status: {
     type: String,
     enum: ["Not Started", "In Progress", "Completed"],
