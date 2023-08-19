@@ -1,34 +1,31 @@
 import { dummyPlayers } from "../dummyData";
 import { PlayerTest } from "../components/PlayerTest";
+import { StatsRow } from "../components/StatsRow";
+import { playerTableHelper } from "../helpers/helper-funcs";
 
 export const Home = () => {
+  const stats = playerTableHelper(dummyPlayers);
+
   return (
     <div className="container mx-auto md:overflow-x-scroll">
       <table className="player-table">
         <thead>
           <tr className="header">
-            <th>Name</th>
-            <th>Appearances</th>
-            <th>Goals</th>
-            <th>Penalties</th>
-            <th>Assists</th>
-            <th>Yellow Cards</th>
-            <th>Red Cards</th>
-            <th>Started</th>
-            <th>Player of Match</th>
-            <th>Clean Sheets</th>
+            <th>Players</th>
+            {dummyPlayers.map((player) => {
+              return (
+                <PlayerTest
+                  name={player.name}
+                  position={player.position}
+                  number={player.number}
+                />
+              );
+            })}
           </tr>
         </thead>
         <tbody>
-          {dummyPlayers.map((player) => {
-            return (
-              <PlayerTest
-                name={player.name}
-                position={player.position}
-                number={player.number}
-                stats={player.stats}
-              />
-            );
+          {stats.map((stat) => {
+            return <StatsRow stats={stat} />;
           })}
         </tbody>
       </table>
