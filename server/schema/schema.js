@@ -94,6 +94,7 @@ const RootQuery = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
+    // Fixture Mutations
     addFixture: {
       type: FixtureType,
       args: {
@@ -142,6 +143,49 @@ const mutation = new GraphQLObjectType({
         return Fixture.findByIdAndRemove(args.id);
       },
     },
+    updateFixture: {
+      type: FixtureType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+        homeTeam: { type: GraphQLString },
+        awayTeam: { type: GraphQLString },
+        time: { type: GraphQLString },
+        date: { type: GraphQLString },
+        venue: { type: GraphQLString },
+        homeScore: { type: GraphQLInt },
+        awayScore: { type: GraphQLInt },
+        status: {
+          type: new GraphQLEnumType({
+            name: "FixtureStatusUpdate",
+            values: {
+              new: { value: "Not Started" },
+              progress: { value: "In Progress" },
+              completed: { value: "Completed" },
+            },
+          }),
+        },
+        weekId: { type: GraphQLID },
+      },
+      resolve(parent, args) {
+        return Fixture.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              homeTeam: args.homeTeam,
+              awayTeam: args.awayTeam,
+              time: args.time,
+              date: args.date,
+              venue: args.venue,
+              homeScore: args.homeScore,
+              awayScore: args.awayScore,
+              status: args.status,
+            },
+          },
+          { new: true }
+        );
+      },
+    },
+    // Week Mutations
     addWeek: {
       type: WeekType,
       args: {
@@ -177,6 +221,37 @@ const mutation = new GraphQLObjectType({
         return Week.findByIdAndRemove(args.id);
       },
     },
+    updateWeek: {
+      type: WeekType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+        week: { type: GraphQLInt },
+        wc: { type: GraphQLString },
+        status: {
+          type: new GraphQLEnumType({
+            name: "WeekStatusUpdate",
+            values: {
+              new: { value: "Not Started" },
+              completed: { value: "Completed" },
+            },
+          }),
+        },
+      },
+      resolve(parent, args) {
+        return Week.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              week: args.week,
+              wc: args.wc,
+              status: args.status,
+            },
+          },
+          { new: true }
+        );
+      },
+    },
+    // Player Mutations
     addPlayer: {
       type: PlayerType,
       args: {
@@ -219,6 +294,46 @@ const mutation = new GraphQLObjectType({
       },
       resolve(parent, args) {
         return Player.findByIdAndRemove(args.id);
+      },
+    },
+    updatePlayer: {
+      type: PlayerType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+        name: { type: GraphQLString },
+        number: { type: GraphQLInt },
+        position: { type: GraphQLString },
+        appearances: { type: GraphQLInt },
+        goals: { type: GraphQLInt },
+        penalties: { type: GraphQLInt },
+        assists: { type: GraphQLInt },
+        yellowCards: { type: GraphQLInt },
+        redCards: { type: GraphQLInt },
+        started: { type: GraphQLInt },
+        mom: { type: GraphQLInt },
+        cleanSheets: { type: GraphQLInt },
+      },
+      resolve(parent, args) {
+        return Player.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              name: args.name,
+              number: args.number,
+              position: args.position,
+              appearances: args.appearances,
+              goals: args.goals,
+              penalties: args.penalties,
+              assists: args.assists,
+              yellowCards: args.yellowCards,
+              redCards: args.redCards,
+              started: args.started,
+              mom: args.mom,
+              cleanSheets: args.cleanSheets,
+            },
+          },
+          { new: true }
+        );
       },
     },
   },
