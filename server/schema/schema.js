@@ -1,5 +1,3 @@
-const { fixtures, weeks, players } = require("../sampleData.js");
-
 // Mongoose models
 const Week = require("../models/Week.js");
 const Fixture = require("../models/Fixture.js");
@@ -12,6 +10,8 @@ const {
   GraphQLString,
   GraphQLSchema,
   GraphQLList,
+  GraphQLNonNull,
+  GraphQLEnumType,
 } = require("graphql");
 
 // Week Type
@@ -91,6 +91,87 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 
+const mutation = new GraphQLObjectType({
+  name: "Mutation",
+  fields: {
+    addFixture: {
+      type: FixtureType,
+      args: {
+        homeTeam: { type: GraphQLNonNull(GraphQLString) },
+        awayTeam: { type: GraphQLNonNull(GraphQLString) },
+        time: { type: GraphQLNonNull(GraphQLString) },
+        date: { type: GraphQLNonNull(GraphQLString) },
+        venue: { type: GraphQLNonNull(GraphQLString) },
+        homeScore: { type: GraphQLNonNull(GraphQLInt) },
+        awayScore: { type: GraphQLNonNull(GraphQLInt) },
+        status: {
+          type: new GraphQLEnumType({
+            name: "FixtureStatus",
+            values: {
+              new: { value: "Not Started" },
+              progress: { value: "In Progress" },
+              completed: { value: "Completed" },
+            },
+          }),
+          defaultValue: "Not Started",
+        },
+        weekId: { type: GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        const fixture = new Fixture({
+          homeTeam: args.homeTeam,
+          awayTeam: args.awayTeam,
+          time: args.time,
+          date: args.date,
+          venue: args.venue,
+          homeScore: args.homeScore,
+          awayScore: args.awayScore,
+          status: args.status,
+          weekId: args.weekId,
+        });
+
+        return fixture.save();
+      },
+    },
+    deleteFixture: {
+      type: FixtureType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Fixture.findByIdAndRemove(args.id);
+      },
+    },
+    addWeek: {
+      type: WeekType,
+      args: {
+        week: { type: GraphQLNonNull(GraphQLInt) },
+        wc: { type: GraphQLNonNull(GraphQLString) },
+        status: { type: GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        const week = new Week({
+          week: args.week,
+          wc: args.wc,
+          status: args.status,
+        });
+
+        return week.save();
+      },
+    },
+    deleteWeek: {
+      type: WeekType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Week.findByIdAndRemove(args.id);
+      },
+    },
+  },
+});
+
 module.exports = new GraphQLSchema({
   query: RootQuery,
+  mutation: mutation,
 });
