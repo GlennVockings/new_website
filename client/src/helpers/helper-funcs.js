@@ -46,39 +46,23 @@ export const calculatesTableData = (table) => {
   return table;
 };
 
-export const playerTableHelper = (data) => {
-  let appearancesGroup = [];
-  let goalsGroup = [];
-  let penalitiesGroup = [];
-  let assistsGroup = [];
-  let yellowCardsGroup = [];
-  let redCardGroup = [];
-  let startedGroup = [];
-  let pomGroup = [];
-  let cleanSheetsGroup = [];
+// Fixture helpers
+export const getRelevantFixtures = (fixtures, mainTeam) => {
+  let mainFixtures = [];
 
-  data.forEach((player) => {
-    appearancesGroup.push(player.stats.appearances);
-    goalsGroup.push(player.stats.goals);
-    penalitiesGroup.push(player.stats.penalities);
-    assistsGroup.push(player.stats.assists);
-    yellowCardsGroup.push(player.stats.yellowCards);
-    redCardGroup.push(player.stats.redCards);
-    startedGroup.push(player.stats.started);
-    pomGroup.push(player.stats.mom);
-    cleanSheetsGroup.push(player.stats.cleanSheets);
+  fixtures.forEach((fixture) => {
+    if (fixture.homeTeam === mainTeam) {
+      mainFixtures.push({
+        ...fixture,
+        hoa: "Home",
+      });
+    } else if (fixture.awayTeam === mainTeam) {
+      mainFixtures.push({
+        ...fixture,
+        hoa: "Away",
+      });
+    }
   });
 
-  const newData = {
-    appearances: appearancesGroup,
-    goals: goalsGroup,
-    penalities: penalitiesGroup,
-    assists: assistsGroup,
-    yellowCards: yellowCardsGroup,
-    redCards: redCardGroup,
-    pom: pomGroup,
-    cleanSheets: cleanSheetsGroup,
-  };
-
-  return newData;
+  return mainFixtures;
 };

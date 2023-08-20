@@ -1,9 +1,34 @@
 import { TableRow } from "../components/TableRow";
-import { dummyTable } from "../dummyData";
 import { calculatesTableData } from "../helpers/helper-funcs";
 
+import { gql, useQuery } from "@apollo/client";
+
+const GET_FIXTURES = gql`
+  query {
+    getFixtures {
+      fixtures {
+        homeTeam
+        homeScore
+        awayTeam
+        awayScore
+        time
+        date
+        venue
+        status
+        week {
+          week
+        }
+      }
+    }
+  }
+`;
+
 export const Table = () => {
-  const leagueTable = calculatesTableData(dummyTable);
+  const { loading, data, error } = useQuery(GET_FIXTURES);
+
+  if (loading) return <p>Loading...</p>;
+
+  const leagueTable = calculatesTableData(data.fixtures);
   leagueTable.sort((a, b) => b.points - a.points);
 
   return (

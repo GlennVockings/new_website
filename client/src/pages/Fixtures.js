@@ -1,9 +1,33 @@
-import { dummyFixtures } from "../dummyData";
 import { Fixture } from "../components/Fixture";
 import { useState } from "react";
 
+import { gql, useQuery } from "@apollo/client";
+
+const GET_FIXTURES = gql`
+  query {
+    getFixtures {
+      fixtures {
+        homeTeam
+        homeScore
+        awayTeam
+        awayScore
+        time
+        date
+        venue
+        status
+        week {
+          week
+        }
+      }
+    }
+  }
+`;
+
 export const Fixtures = () => {
+  const { loading, data } = useQuery(GET_FIXTURES);
   const [filter, setFilter] = useState("all");
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>
@@ -30,11 +54,10 @@ export const Fixtures = () => {
         </div>
       </div>
       <div className="container mx-auto py-3 flex flex-col divide-y">
-        {dummyFixtures.map((fixture) => {
+        {data.fixtures.map((fixture) => {
           switch (filter) {
             case "all":
               return <Fixture fixture={fixture} />;
-              break;
             case "home":
               if (fixture.hoa.toLowerCase() === filter)
                 return <Fixture fixture={fixture} />;

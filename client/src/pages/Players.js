@@ -1,42 +1,58 @@
-import { useState } from "react";
+import { PlayerTest } from "../components/PlayerTest";
 
-import { dummyPlayers } from "../dummyData";
-import { Player } from "../components/Player";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_PLAYERS = gql`
+  {
+    players {
+      name
+      number
+      position
+      appearances
+      goals
+      penalties
+      assists
+      yellowCards
+      redCards
+      started
+      mom
+      cleanSheets
+    }
+  }
+`;
 
 export const Players = () => {
-  // States
-  const [statsView, setStatsView] = useState(false);
+  const { loading, data } = useQuery(GET_PLAYERS);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>
-      <div className="flex justify-center py-6">
-        <div className="tabs">
-          <button
-            className={`tab ${statsView ? "" : "active"}`}
-            onClick={() => setStatsView((prev) => !prev)}
-          >
-            Players
-          </button>
-          <button
-            className={`tab ${statsView ? "active" : ""}`}
-            onClick={() => setStatsView((prev) => !prev)}
-          >
-            Stats
-          </button>
+      {!loading && (
+        <div className="container mx-auto md:overflow-x-scroll">
+          <table className="player-table">
+            <thead>
+              <tr className="header">
+                <th>Players</th>
+                <th>Appearances</th>
+                <th>Goals</th>
+                <th>Penalties</th>
+                <th>Assists</th>
+                <th>Yellow Cards</th>
+                <th>Red Cards</th>
+                <th>Started</th>
+                <th>Man of the Match</th>
+                <th>Clean Sheets</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.players.map((player) => {
+                return <PlayerTest player={player} />;
+              })}
+            </tbody>
+          </table>
         </div>
-      </div>
-      <div className="player-list">
-        {dummyPlayers.map((player) => {
-          return (
-            <Player
-              name={player.name}
-              position={player.position}
-              number={player.number}
-              statsView={statsView}
-            />
-          );
-        })}
-      </div>
+      )}
     </>
   );
 };

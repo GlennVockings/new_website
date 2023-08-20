@@ -1,34 +1,74 @@
-import { dummyPlayers } from "../dummyData";
-import { PlayerTest } from "../components/PlayerTest";
-import { StatsRow } from "../components/StatsRow";
-import { playerTableHelper } from "../helpers/helper-funcs";
+import { Fixture } from "../components/Fixture";
+import { useState } from "react";
+
+import { gql, useQuery } from "@apollo/client";
+import { getRelevantFixtures } from "../helpers/helper-funcs";
+
+const GET_FIXTURES = gql`
+  {
+    fixtures {
+      homeTeam
+      homeScore
+      awayTeam
+      awayScore
+      time
+      date
+      venue
+      status
+    }
+  }
+`;
 
 export const Home = () => {
-  const stats = playerTableHelper(dummyPlayers);
+  const { loading, data } = useQuery(GET_FIXTURES);
+  const [filter, setFilter] = useState("all");
+
+  if (loading) return <p>Loading...</p>;
+
+  const mainFixtures = getRelevantFixtures(data.fixtures, "Oxted & District");
 
   return (
-    <div className="container mx-auto md:overflow-x-scroll">
-      <table className="player-table">
-        <thead>
-          <tr className="header">
-            <th>Players</th>
-            {dummyPlayers.map((player) => {
-              return (
-                <PlayerTest
-                  name={player.name}
-                  position={player.position}
-                  number={player.number}
-                />
-              );
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {stats.map((stat) => {
-            return <StatsRow stats={stat} />;
-          })}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className="flex justify-center py-6">
+        <div className="tabs">
+          <button
+            className={`tab ${filter === "all" ? "active" : ""}`}
+            onClick={() => setFilter("all")}
+          >
+            All
+          </button>
+          <button
+            className={`tab ${filter === "home" ? "active" : ""}`}
+            onClick={() => setFilter("home")}
+          >
+            Home
+          </button>
+          <button
+            className={`tab ${filter === "away" ? "active" : ""}`}
+            onClick={() => setFilter("away")}
+          >
+            Away
+          </button>
+        </div>
+      </div>
+      <div className="container mx-auto py-3 flex flex-col divide-y">
+        {mainFixtures.map((fixture) => {
+          switch (filter) {
+            case "all":
+              return <Fixture fixture={fixture} />;
+            case "home":
+              if (fixture.hoa.toLowerCase() === filter)
+                return <Fixture fixture={fixture} />;
+              break;
+            case "away":
+              if (fixture.hoa.toLowerCase() === filter)
+                return <Fixture fixture={fixture} />;
+              break;
+            default:
+              return <Fixture fixture={fixture} />;
+          }
+        })}
+      </div>
+    </>
   );
 };

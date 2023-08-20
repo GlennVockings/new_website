@@ -37,7 +37,9 @@ export const Fixture = ({ fixture }) => {
               </IconContext.Provider>
               <p>{fixture.venue}</p>
             </div>
-            <p className="text-5xl font-bold">{fixture.opponent}</p>
+            <p className="text-5xl font-bold">
+              {fixture.hoa === "Home" ? fixture.awayTeam : fixture.homeTeam}
+            </p>
           </div>
           {fixture.result && (
             <div className="flex items-center">
