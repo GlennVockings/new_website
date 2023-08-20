@@ -2,23 +2,19 @@ import { Fixture } from "../components/Fixture";
 import { useState } from "react";
 
 import { gql, useQuery } from "@apollo/client";
+import { getRelevantFixtures } from "../helpers/helper-funcs";
 
 const GET_FIXTURES = gql`
-  query {
-    getFixtures {
-      fixtures {
-        homeTeam
-        homeScore
-        awayTeam
-        awayScore
-        time
-        date
-        venue
-        status
-        week {
-          week
-        }
-      }
+  {
+    fixtures {
+      homeTeam
+      homeScore
+      awayTeam
+      awayScore
+      time
+      date
+      venue
+      status
     }
   }
 `;
@@ -28,6 +24,8 @@ export const Fixtures = () => {
   const [filter, setFilter] = useState("all");
 
   if (loading) return <p>Loading...</p>;
+
+  const mainFixtures = getRelevantFixtures(data.fixtures, "Oxted & District");
 
   return (
     <>
@@ -54,7 +52,7 @@ export const Fixtures = () => {
         </div>
       </div>
       <div className="container mx-auto py-3 flex flex-col divide-y">
-        {data.fixtures.map((fixture) => {
+        {mainFixtures.map((fixture) => {
           switch (filter) {
             case "all":
               return <Fixture fixture={fixture} />;
