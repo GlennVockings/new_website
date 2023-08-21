@@ -45,24 +45,3 @@ export const calculatesTableData = (table) => {
   });
   return table;
 };
-
-// Fixture helpers
-export const getRelevantFixtures = (fixtures, mainTeam) => {
-  let mainFixtures = [];
-
-  fixtures.forEach((fixture) => {
-    if (fixture.homeTeam === mainTeam) {
-      mainFixtures.push({
-        ...fixture,
-        hoa: "Home",
-      });
-    } else if (fixture.awayTeam === mainTeam) {
-      mainFixtures.push({
-        ...fixture,
-        hoa: "Away",
-      });
-    }
-  });
-
-  return mainFixtures;
-};

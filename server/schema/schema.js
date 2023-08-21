@@ -38,6 +38,7 @@ const FixtureType = new GraphQLObjectType({
     homeScore: { type: GraphQLInt },
     awayScore: { type: GraphQLInt },
     status: { type: GraphQLString },
+    hoa: { type: GraphQLString },
     week: {
       type: WeekType,
       resolve(parent, args) {
@@ -86,6 +87,24 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(PlayerType),
       resolve(parent, args) {
         return Player.find();
+      },
+    },
+    fixture: {
+      type: new GraphQLList(FixtureType),
+      args: {
+        teamName: { type: GraphQLString },
+      },
+      async resolve(parent, args) {
+        const filteredFixtures = await Fixture.find({
+          $or: [{ homeTeam: args.teamName }, { awayTeam: args.teamName }],
+        });
+
+        const fixturesWithHoa = filteredFixtures.map((fixture) => ({
+          ...fixture._doc,
+          hoa: fixture.homeTeam === args.teamName ? "Home" : "Away",
+        }));
+
+        return fixturesWithHoa;
       },
     },
   },

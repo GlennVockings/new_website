@@ -12,6 +12,7 @@ const FixtureSchema = new mongoose.Schema({
     type: String,
     enum: ["Not Started", "In Progress", "Completed"],
   },
+  hoa: { type: String },
   weekId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Week",
