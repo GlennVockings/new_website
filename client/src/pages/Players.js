@@ -1,25 +1,6 @@
 import { PlayerTest } from "../components/PlayerTest";
-
-import { gql, useQuery } from "@apollo/client";
-
-const GET_PLAYERS = gql`
-  {
-    players {
-      name
-      number
-      position
-      appearances
-      goals
-      penalties
-      assists
-      yellowCards
-      redCards
-      started
-      mom
-      cleanSheets
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import { GET_PLAYERS } from "../queries/playerQueries";
 
 export const Players = () => {
   const { loading, data } = useQuery(GET_PLAYERS);

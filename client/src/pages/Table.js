@@ -1,35 +1,15 @@
 import { TableRow } from "../components/TableRow";
 import { calculatesTableData } from "../helpers/helper-funcs";
-
-import { gql, useQuery } from "@apollo/client";
-
-const GET_FIXTURES = gql`
-  query {
-    getFixtures {
-      fixtures {
-        homeTeam
-        homeScore
-        awayTeam
-        awayScore
-        time
-        date
-        venue
-        status
-        week {
-          week
-        }
-      }
-    }
-  }
-`;
+import { GET_FIXTURES } from "../queries/fixtureQueries";
+import { useQuery } from "@apollo/client";
+import { mainTeam } from "../helpers/constants";
 
 export const Table = () => {
-  const { loading, data, error } = useQuery(GET_FIXTURES);
+  const { loading, data } = useQuery(GET_FIXTURES);
 
   if (loading) return <p>Loading...</p>;
 
   const leagueTable = calculatesTableData(data.fixtures);
-  leagueTable.sort((a, b) => b.points - a.points);
 
   return (
     <div className="container mx-auto">
@@ -55,7 +35,7 @@ export const Table = () => {
                 <TableRow
                   position={index + 1}
                   entry={entry}
-                  cssClass={entry.name === "Oxted FC" ? "home" : ""}
+                  cssClass={entry.name === mainTeam ? "home" : ""}
                 />
               );
             })}

@@ -1,3 +1,5 @@
+import { table } from "./constants";
+
 const DATEOPTIONS = {
   dateStyle: "medium",
 };
@@ -37,11 +39,41 @@ export const getStatus = (fixture) => {
   return "";
 };
 
-export const calculatesTableData = (table) => {
-  table.forEach((entry) => {
-    entry.points = entry.wins * 3 + entry.draws;
-    entry.difference = entry.for - entry.against;
-    entry.played = entry.wins + entry.loses + entry.draws;
+export const calculatesTableData = (fixtures) => {
+  console.log(fixtures);
+  fixtures.forEach((fixture) => {
+    const { homeScore, awayScore, homeTeam, awayTeam, status } = fixture;
+    const homeIndex = table.findIndex((fixture) => fixture.name === homeTeam);
+    const awayIndex = table.findIndex((fixture) => fixture.name === awayTeam);
+
+    console.log(table[homeIndex]);
+
+    table[homeIndex].played += 1;
+    table[awayIndex].played += 1;
+    table[homeIndex].for += homeScore;
+    table[homeIndex].against += awayScore;
+    table[awayIndex].for += awayScore;
+    table[awayIndex].against += homeScore;
+
+    if (status !== "Not started" && homeScore > awayScore) {
+      table[homeIndex].wins += 1;
+      table[awayIndex].loses += 1;
+      table[homeIndex].points += 3;
+    } else if (status !== "Not started" && homeScore < awayScore) {
+      table[awayIndex].wins += 1;
+      table[homeIndex].loses += 1;
+      table[awayIndex].points += 3;
+    } else if (status !== "Not started" && homeScore === awayScore) {
+      table[homeIndex].draws += 1;
+      table[awayIndex].draws += 1;
+      table[awayIndex].points += 1;
+      table[homeIndex].points += 1;
+    }
   });
+
+  table.sort((a, b) => b.points - a.points);
+  table.sort((a, b) => b.for - b.against - (a.for - a.against));
+  table.sort((a, b) => b.for - a.for);
+
   return table;
 };

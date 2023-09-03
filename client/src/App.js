@@ -18,7 +18,7 @@ function App() {
       <ApolloProvider client={client}>
         <Header />
         <Router>
-          <div className="pt-6">
+          <div className="pt-6 m-auto xl:max-w-6xl lg:max-w-4xl md:max-w-xl">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/fixtures" element={<Fixtures />} />

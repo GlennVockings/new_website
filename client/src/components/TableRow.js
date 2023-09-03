@@ -9,7 +9,7 @@ export const TableRow = ({ position, entry, cssClass }) => {
       <td>{entry.loses}</td>
       <td>{entry.for}</td>
       <td>{entry.against}</td>
-      <td>{entry.difference}</td>
+      <td>{entry.for - entry.against}</td>
       <td>{entry.points}</td>
     </tr>
   );

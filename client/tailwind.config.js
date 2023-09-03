@@ -32,6 +32,10 @@ module.exports = {
       36: "9rem",
     },
     extend: {
+      height: {
+        128: "32rem",
+        132: "36rem",
+      },
       transitionProperty: {
         transform: "transform",
         "max-height": "max-height",
