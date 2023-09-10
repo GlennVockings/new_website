@@ -10,10 +10,10 @@ export const Dropdown = ({ name, required, options, callback, cssClass }) => {
         <option className="text-3xl" value="">
           Please select one
         </option>
-        {options.map((option) => {
+        {options.map((option, index) => {
           return (
-            <option className="text-3xl" value={option}>
-              {option}
+            <option key={index} className="text-3xl" value={option.value}>
+              {option.label}
             </option>
           );
         })}

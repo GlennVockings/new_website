@@ -43,11 +43,11 @@ export const AdminFixtures = ({ handleOpen }) => {
             </button>
           </div>
         </li>
-        {data.fixtures.map((fixture) => {
+        {data.fixtures.map((fixture, index) => {
           return (
-            <li className="py-4 hover:bg-gray-400">
+            <li key={index} className="py-4 hover:bg-gray-400">
               <a
-                href="#"
+                href={`/admin/fixture/${fixture.id}`}
                 className="grid grid-cols-5 gap-x-2 place-items-center"
               >
                 <div className="">

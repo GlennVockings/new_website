@@ -3,9 +3,10 @@ import { Header } from "./components/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Players } from "./pages/Players";
 import { Admin } from "./pages/Admin";
-import { Table } from "./pages/Table";
+import { TablePage } from "./pages/TablePage";
 import { Fixtures } from "./pages/Fixtures";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { EditFixture } from "./components/EditFixture";
 
 const client = new ApolloClient({
   uri: "http://localhost:5000/graphql",
@@ -23,8 +24,9 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/fixtures" element={<Fixtures />} />
               <Route path="/team" element={<Players />} />
-              <Route path="/table" element={<Table />} />
+              <Route path="/table" element={<TablePage />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/admin/fixture/:id" element={<EditFixture />} />
             </Routes>
           </div>
         </Router>

@@ -49,6 +49,10 @@
     @apply bg-primary text-white border-primary;
   }
 
+  .btn-disabled {
+    @apply bg-gray-200 text-gray-500 border-gray-200 pointer-events-none cursor-not-allowed;
+  }
+
   .open svg {
     @apply -rotate-90;
   }

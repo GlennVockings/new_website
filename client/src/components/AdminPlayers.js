@@ -37,9 +37,9 @@ export const AdminPlayers = () => {
             </button>
           </div>
         </li>
-        {data.players.map((player) => {
+        {data.players.map((player, index) => {
           return (
-            <li className="py-4 hover:bg-gray-400">
+            <li key={index} className="py-4 hover:bg-gray-400">
               <a
                 href="#"
                 className="grid grid-cols-3 gap-x-2 place-items-center"

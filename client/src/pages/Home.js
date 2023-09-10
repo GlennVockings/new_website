@@ -3,6 +3,7 @@ import { AdminFixtures } from "../components/AdminFixtures";
 import { AdminPlayers } from "../components/AdminPlayers";
 import { AdminWeeks } from "../components/AdminWeeks";
 import { FixtureModal } from "../components/FixtureModal";
+import { PlayerModal } from "../components/PlayerModal";
 
 export const Home = () => {
   const [fixturesModal, setFixturesModal] = useState(false);
@@ -20,6 +21,7 @@ export const Home = () => {
       <AdminPlayers />
       <AdminWeeks />
       <FixtureModal handleClose={handleFixtuuresModal} show={fixturesModal} />
+      <PlayerModal />
     </>
   );
 };

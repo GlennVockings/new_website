@@ -1,14 +1,12 @@
+import { useState } from "react";
 import { Dropdown } from "./Dropdown";
 import { mainTeam, status, teams } from "../helpers/constants";
-import { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WEEKS } from "../queries/weekQueries";
-import { Loading } from "./Loading";
 import { BsSendFill } from "react-icons/bs";
-import { ADD_FIXTURE } from "../mutations/fixtureMutations";
-import { GET_FIXTURES } from "../queries/fixtureQueries";
+import { Loading } from "./Loading";
 
-export const FixtureModal = ({ handleClose, show }) => {
+export const EditFixture = () => {
   const [homeTeam, setHomeTeam] = useState("");
   const [awayTeam, setAwayTeam] = useState("");
   const [homeScore, setHomeScore] = useState(0);
@@ -22,80 +20,15 @@ export const FixtureModal = ({ handleClose, show }) => {
 
   const { loading, data } = useQuery(GET_WEEKS);
 
-  useEffect(() => {
-    if (awayTeam === mainTeam) {
-      setHoa("Away");
-    } else if (homeTeam === mainTeam) {
-      setHoa("Home");
-    }
-  }, [awayTeam, homeTeam]);
-
-  const [addFixture] = useMutation(ADD_FIXTURE, {
-    variables: {
-      homeTeam,
-      awayTeam,
-      time,
-      date,
-      venue,
-      homeScore,
-      awayScore,
-      weekId: week,
-      status: fixtureStatus,
-      hoa,
-    },
-    update(cache, { data: { addFixture } }) {
-      const { fixtures } = cache.readQuery({ query: GET_FIXTURES });
-      cache.writeQuery({
-        query: GET_FIXTURES,
-        data: { fixtures: [...fixtures, addFixture] },
-      });
-    },
-  });
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (
-      homeTeam === "" ||
-      awayTeam === "" ||
-      venue === "" ||
-      time === "" ||
-      date === "" ||
-      week === "" ||
-      fixtureStatus === ""
-    ) {
-      return alert("Oops you missed a field");
-    }
-    console.log(hoa);
-    addFixture(
-      homeTeam,
-      awayTeam,
-      time,
-      date,
-      venue,
-      homeScore,
-      awayScore,
-      week,
-      fixtureStatus,
-      hoa
-    );
-    console.log(fixtureStatus);
-    handleClose();
-  };
-
   if (loading) return <Loading />;
 
   return (
-    <div
-      className={`bg-black/80 absolute w-full h-full top-0 left-0 m-auto ${
-        show ? "block" : "hidden"
-      }`}
-    >
-      <div className="z-20 rounded opacity-100 absolute p-8 bg-white -translate-x-2/4 left-1/2 top-40">
-        <form onSubmit={onSubmit}>
-          <div className="flex justify-between">
-            <p className="text-5xl">Add fixture</p>
-            <button onClick={handleClose}>X</button>
-          </div>
+    <>
+      <div>
+        <h1>Edit Fixture</h1>
+      </div>
+      <div>
+        <form>
           <div className="flex">
             <div className="flex flex-col p-6 items-center">
               <p className="text-2xl underline font-bold">Home</p>
@@ -185,6 +118,6 @@ export const FixtureModal = ({ handleClose, show }) => {
           </div>
         </form>
       </div>
-    </div>
+    </>
   );
 };

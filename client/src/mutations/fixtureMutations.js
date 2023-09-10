@@ -7,10 +7,11 @@ export const ADD_FIXTURE = gql`
     $time: String!
     $date: String!
     $venue: String!
-    $homeScore: int
-    $awayScore: int
-    $status: String!
+    $homeScore: Int!
+    $awayScore: Int!
+    $status: FixtureStatus
     $weekId: ID!
+    $hoa: String!
   ) {
     addFixture(
       homeTeam: $homeTeam
@@ -22,6 +23,7 @@ export const ADD_FIXTURE = gql`
       awayScore: $awayScore
       status: $status
       weekId: $weekId
+      hoa: $hoa
     ) {
       id
       homeTeam
@@ -31,6 +33,7 @@ export const ADD_FIXTURE = gql`
       time
       date
       venue
+      hoa
       status
       week {
         week

@@ -40,40 +40,173 @@ export const getStatus = (fixture) => {
 };
 
 export const calculatesTableData = (fixtures) => {
-  console.log(fixtures);
-  fixtures.forEach((fixture) => {
-    const { homeScore, awayScore, homeTeam, awayTeam, status } = fixture;
-    const homeIndex = table.findIndex((fixture) => fixture.name === homeTeam);
-    const awayIndex = table.findIndex((fixture) => fixture.name === awayTeam);
+  // Create a fresh copy of the table data
+  const updatedTable = [
+    {
+      name: "Oxted & District",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Eastbourne United Association",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Reigate Priory",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Ringmer AFC",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Crawley Devils",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Westfield",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Cuckfield Rangers",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Rotherfield",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Holland Sports",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Battle Town",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Balcombe",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Copthorne II",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+    {
+      name: "Sedlescombe Rangers",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+    },
+  ];
 
-    console.log(table[homeIndex]);
+  for (let i = 0; i < fixtures.length; i++) {
+    const { homeScore, awayScore, homeTeam, awayTeam, status } = fixtures[i];
 
-    table[homeIndex].played += 1;
-    table[awayIndex].played += 1;
-    table[homeIndex].for += homeScore;
-    table[homeIndex].against += awayScore;
-    table[awayIndex].for += awayScore;
-    table[awayIndex].against += homeScore;
+    let homeIndex = updatedTable.findIndex((entry) => entry.name === homeTeam);
+    let awayIndex = updatedTable.findIndex((entry) => entry.name === awayTeam);
+
+    updatedTable[homeIndex].played += 1;
+    updatedTable[awayIndex].played += 1;
+    updatedTable[homeIndex].for += homeScore;
+    updatedTable[homeIndex].against += awayScore;
+    updatedTable[awayIndex].for += awayScore;
+    updatedTable[awayIndex].against += homeScore;
 
     if (status !== "Not started" && homeScore > awayScore) {
-      table[homeIndex].wins += 1;
-      table[awayIndex].loses += 1;
-      table[homeIndex].points += 3;
+      updatedTable[homeIndex].wins += 1;
+      updatedTable[awayIndex].loses += 1;
+      updatedTable[homeIndex].points += 3;
     } else if (status !== "Not started" && homeScore < awayScore) {
-      table[awayIndex].wins += 1;
-      table[homeIndex].loses += 1;
-      table[awayIndex].points += 3;
+      updatedTable[awayIndex].wins += 1;
+      updatedTable[homeIndex].loses += 1;
+      updatedTable[awayIndex].points += 3;
     } else if (status !== "Not started" && homeScore === awayScore) {
-      table[homeIndex].draws += 1;
-      table[awayIndex].draws += 1;
-      table[awayIndex].points += 1;
-      table[homeIndex].points += 1;
+      updatedTable[homeIndex].draws += 1;
+      updatedTable[awayIndex].draws += 1;
+      updatedTable[awayIndex].points += 1;
+      updatedTable[homeIndex].points += 1;
     }
-  });
+  }
 
-  table.sort((a, b) => b.points - a.points);
-  table.sort((a, b) => b.for - b.against - (a.for - a.against));
-  table.sort((a, b) => b.for - a.for);
+  // Sort the updated table data
+  updatedTable.sort((a, b) => b.points - a.points);
+  updatedTable.sort((a, b) => b.for - b.against - (a.for - a.against));
+  updatedTable.sort((a, b) => b.for - a.for);
 
-  return table;
+  return updatedTable;
 };

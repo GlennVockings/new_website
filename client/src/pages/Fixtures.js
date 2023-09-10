@@ -38,7 +38,7 @@ export const Fixtures = () => {
         </div>
       </div>
       <div className="container mx-auto py-3 flex flex-col divide-y">
-        {data.fixture.map((fixture) => {
+        {data.teamFixtures.map((fixture) => {
           switch (filter) {
             case "all":
               return <Fixture fixture={fixture} />;
