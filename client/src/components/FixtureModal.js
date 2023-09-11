@@ -65,7 +65,6 @@ export const FixtureModal = ({ handleClose, show }) => {
     ) {
       return alert("Oops you missed a field");
     }
-    console.log(hoa);
     addFixture(
       homeTeam,
       awayTeam,
@@ -78,7 +77,6 @@ export const FixtureModal = ({ handleClose, show }) => {
       fixtureStatus,
       hoa
     );
-    console.log(fixtureStatus);
     handleClose();
   };
 

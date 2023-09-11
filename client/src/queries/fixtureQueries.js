@@ -34,6 +34,7 @@ export const GET_FIXTURE = gql`
       status
       hoa
       week {
+        id
         week
       }
     }

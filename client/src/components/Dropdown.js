@@ -1,4 +1,11 @@
-export const Dropdown = ({ name, required, options, callback, cssClass }) => {
+export const Dropdown = ({
+  name,
+  required,
+  options,
+  callback,
+  cssClass,
+  activeOption,
+}) => {
   return (
     <>
       <select
@@ -6,13 +13,14 @@ export const Dropdown = ({ name, required, options, callback, cssClass }) => {
         required={required ? true : false}
         onChange={callback}
         className={cssClass}
+        defaultValue={activeOption}
       >
-        <option className="text-3xl" value="">
+        <option className="text-2xl" value="">
           Please select one
         </option>
         {options.map((option, index) => {
           return (
-            <option key={index} className="text-3xl" value={option.value}>
+            <option key={index} className="text-2xl" value={option.value}>
               {option.label}
             </option>
           );

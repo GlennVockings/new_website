@@ -33,7 +33,7 @@ export const AdminWeeks = () => {
           return (
             <li key={index} className="py-4 hover:bg-gray-400">
               <a
-                href="#"
+                href={`/admin/week/${week.id}`}
                 className="grid grid-cols-3 gap-x-2 place-items-center"
               >
                 <div>

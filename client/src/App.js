@@ -7,6 +7,7 @@ import { TablePage } from "./pages/TablePage";
 import { Fixtures } from "./pages/Fixtures";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { EditFixture } from "./components/EditFixture";
+import { EditWeek } from "./components/EditWeek";
 
 const client = new ApolloClient({
   uri: "http://localhost:5000/graphql",
@@ -27,6 +28,7 @@ function App() {
               <Route path="/table" element={<TablePage />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/fixture/:id" element={<EditFixture />} />
+              <Route path="/admin/week/:id" element={<EditWeek />} />
             </Routes>
           </div>
         </Router>

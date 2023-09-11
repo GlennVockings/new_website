@@ -10,3 +10,14 @@ export const GET_WEEKS = gql`
     }
   }
 `;
+
+export const GET_WEEK = gql`
+  query getWeek($id: ID!) {
+    week(id: $id) {
+      id
+      week
+      wc
+      status
+    }
+  }
+`;

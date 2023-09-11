@@ -8,11 +8,15 @@ import { calculatesTableData } from "../helpers/helper-funcs";
 
 export const TablePage = () => {
   const [weeks, setWeeks] = useState([]); // Use useState to manage weeks state
+  const [latestWeek, setLatestWeek] = useState("");
   const [leagueTable, setLeagueTable] = useState([]);
 
   const { loading: weeksLoading, data: weeksData } = useQuery(GET_WEEKS, {
     onCompleted: (data) => {
       setWeeks(data.weeks);
+      data.weeks.forEach((week) => {
+        if (week.status === "Completed") setLatestWeek(week.id);
+      });
     },
   });
 
@@ -22,7 +26,9 @@ export const TablePage = () => {
     refetch,
   } = useQuery(GET_WEEK_FIXTURES, {
     skip: !weeksData,
-    variables: { week: weeks.length > 0 ? weeks[weeks.length - 1].id : null }, // Use the last week's ID if available
+    variables: {
+      week: weeks.length > 0 ? latestWeek : null,
+    }, // Use the last week's ID if available
   });
 
   useEffect(() => {
