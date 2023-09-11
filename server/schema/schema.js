@@ -90,6 +90,24 @@ const RootQuery = new GraphQLObjectType({
       },
     },
     fixture: {
+      type: FixtureType,
+      args: {
+        id: { type: GraphQLID },
+      },
+      resolve(parent, args) {
+        return Fixture.findById(args.id);
+      },
+    },
+    week: {
+      type: WeekType,
+      args: {
+        id: { type: GraphQLID },
+      },
+      resolve(parent, args) {
+        return Week.findById(args.id);
+      },
+    },
+    teamFixtures: {
       type: new GraphQLList(FixtureType),
       args: {
         teamName: { type: GraphQLString },
@@ -105,6 +123,20 @@ const RootQuery = new GraphQLObjectType({
         }));
 
         return fixturesWithHoa;
+      },
+    },
+    table: {
+      type: new GraphQLList(FixtureType),
+      args: {
+        week: { type: GraphQLID },
+      },
+      async resolve(parent, args) {
+        // You can use MongoDB's $lte (less than or equal) operator to filter fixtures
+        const fixturesForWeekAndPrevious = await Fixture.find({
+          weekId: { $lte: args.week },
+        });
+
+        return fixturesForWeekAndPrevious;
       },
     },
   },
@@ -124,6 +156,7 @@ const mutation = new GraphQLObjectType({
         venue: { type: GraphQLNonNull(GraphQLString) },
         homeScore: { type: GraphQLNonNull(GraphQLInt) },
         awayScore: { type: GraphQLNonNull(GraphQLInt) },
+        hoa: { type: GraphQLNonNull(GraphQLString) },
         status: {
           type: new GraphQLEnumType({
             name: "FixtureStatus",
@@ -148,6 +181,7 @@ const mutation = new GraphQLObjectType({
           awayScore: args.awayScore,
           status: args.status,
           weekId: args.weekId,
+          hoa: args.hoa,
         });
 
         return fixture.save();
@@ -173,6 +207,7 @@ const mutation = new GraphQLObjectType({
         venue: { type: GraphQLString },
         homeScore: { type: GraphQLInt },
         awayScore: { type: GraphQLInt },
+        hoa: { type: GraphQLString },
         status: {
           type: new GraphQLEnumType({
             name: "FixtureStatusUpdate",
@@ -198,6 +233,7 @@ const mutation = new GraphQLObjectType({
               homeScore: args.homeScore,
               awayScore: args.awayScore,
               status: args.status,
+              hoa: args.hoa,
             },
           },
           { new: true }
