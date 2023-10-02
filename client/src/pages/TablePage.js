@@ -28,7 +28,7 @@ export const TablePage = () => {
     skip: !weeksData,
     variables: {
       week: weeks.length > 0 ? latestWeek : null,
-    }, // Use the last week's ID if available
+    },
   });
 
   useEffect(() => {

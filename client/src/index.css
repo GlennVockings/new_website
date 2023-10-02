@@ -82,7 +82,7 @@
   }
 
   .mid-sussex-container {
-    @apply flex items-center bg-tertiary rounded-full h-16 w-16 transition-width duration-700;
+    @apply flex items-center bg-tertiary rounded-full h-16 w-16 transition-width duration-700 absolute right-0;
   }
 
   .mid-sussex .image {
@@ -90,7 +90,7 @@
   }
 
   .mid-sussex .text {
-    @apply text-white w-0 overflow-hidden px-0 whitespace-nowrap transition-spacing duration-500 delay-200 text-sm;
+    @apply text-white w-0 overflow-hidden px-0 whitespace-nowrap transition-spacing duration-700 text-sm;
   }
 
   .mid-sussex:hover .text {
@@ -98,7 +98,7 @@
   }
 
   .mid-sussex:hover .mid-sussex-container {
-    @apply w-full;
+    @apply w-52;
   }
 
   .player-list {
@@ -217,5 +217,33 @@
   .player-table th:first-child,
   .player-table td:first-child {
     @apply text-left pr-10;
+  }
+
+  .league-table-slim {
+    @apply table-auto overflow-auto;
+  }
+
+  .league-table-slim th {
+    @apply py-1 px-1 rounded text-lg font-sans text-center underline underline-offset-2;
+  }
+
+  .league-table-slim .name-header {
+    @apply text-left;
+  }
+
+  .league-table-slim td {
+    @apply py-1 px-1 text-center text-base whitespace-nowrap min-w-13;
+  }
+
+  .league-table-slim .name {
+    @apply text-left pr-2 truncate max-w-10;
+  }
+
+  .league-table-slim .home {
+    @apply bg-primary text-white font-cursive tracking-wide;
+  }
+
+  .league-table-slim .home td {
+    @apply py-2;
   }
 }

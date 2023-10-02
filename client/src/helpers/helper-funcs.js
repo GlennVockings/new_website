@@ -1,4 +1,4 @@
-import { table } from "./constants";
+import { mainTeam, table } from "./constants";
 
 const DATEOPTIONS = {
   dateStyle: "medium",
@@ -51,6 +51,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Eastbourne United Association",
@@ -61,6 +62,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Reigate Priory",
@@ -71,6 +73,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Ringmer AFC",
@@ -81,6 +84,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Crawley Devils",
@@ -91,6 +95,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Westfield",
@@ -101,6 +106,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Cuckfield Rangers",
@@ -111,6 +117,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Rotherfield",
@@ -121,6 +128,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Holland Sports",
@@ -131,6 +139,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Battle Town",
@@ -141,6 +150,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Balcombe",
@@ -151,6 +161,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Copthorne II",
@@ -161,6 +172,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
     {
       name: "Sedlescombe Rangers",
@@ -171,6 +183,7 @@ export const calculatesTableData = (fixtures) => {
       for: 0,
       against: 0,
       points: 0,
+      show: false,
     },
   ];
 
@@ -204,9 +217,41 @@ export const calculatesTableData = (fixtures) => {
   }
 
   // Sort the updated table data
-  updatedTable.sort((a, b) => b.points - a.points);
   updatedTable.sort((a, b) => b.for - b.against - (a.for - a.against));
   updatedTable.sort((a, b) => b.for - a.for);
+  updatedTable.sort((a, b) => b.points - a.points);
+
+  for (let i = 0; i < updatedTable.length; i++) {
+    if (updatedTable[i].name === mainTeam) {
+      if (i === 0) {
+        updatedTable[i].show = true;
+        updatedTable[i + 1].show = true;
+        updatedTable[i + 2].show = true;
+        updatedTable[i + 3].show = true;
+      } else if (i === 1) {
+        updatedTable[i - 1].show = true;
+        updatedTable[i].show = true;
+        updatedTable[i + 1].show = true;
+        updatedTable[i + 2].show = true;
+      } else if (i === 12) {
+        updatedTable[i - 2].show = true;
+        updatedTable[i - 1].show = true;
+        updatedTable[i].show = true;
+        updatedTable[i + 1].show = true;
+      } else if (i === 13) {
+        updatedTable[i - 3].show = true;
+        updatedTable[i - 2].show = true;
+        updatedTable[i - 1].show = true;
+        updatedTable[i].show = true;
+      } else if (i >= 2) {
+        updatedTable[i - 2].show = true;
+        updatedTable[i - 1].show = true;
+        updatedTable[i].show = true;
+        updatedTable[i + 1].show = true;
+        updatedTable[i + 2].show = true;
+      }
+    }
+  }
 
   return updatedTable;
 };

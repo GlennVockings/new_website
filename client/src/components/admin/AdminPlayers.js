@@ -1,11 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { GET_PLAYERS } from "../queries/playerQueries";
+import { GET_PLAYERS } from "../../queries/playerQueries";
 import { GrAdd, GrSubtract } from "react-icons/gr";
 import { useState } from "react";
 import { GoArrowRight } from "react-icons/go";
-import { Loading } from "./Loading";
+import { Loading } from "../Loading";
 
-export const AdminPlayers = () => {
+export const AdminPlayers = ({ handleOpen }) => {
   const { loading, data } = useQuery(GET_PLAYERS);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
 
@@ -32,7 +32,10 @@ export const AdminPlayers = () => {
       >
         <li>
           <div className="flex">
-            <button className="btn btn-primary mx-2 my-4 w-40 shadow-md shadow-primary">
+            <button
+              className="btn btn-primary mx-2 my-4 w-40 shadow-md shadow-primary"
+              onClick={handleOpen}
+            >
               Add player <GoArrowRight />
             </button>
           </div>

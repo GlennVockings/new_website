@@ -1,12 +1,12 @@
-import { Dropdown } from "./Dropdown";
-import { mainTeam, status, teams } from "../helpers/constants";
+import { Dropdown } from "../Dropdown";
+import { mainTeam, status, teams } from "../../helpers/constants";
 import { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_WEEKS } from "../queries/weekQueries";
-import { Loading } from "./Loading";
+import { GET_WEEKS } from "../../queries/weekQueries";
+import { Loading } from "../Loading";
 import { BsSendFill } from "react-icons/bs";
-import { ADD_FIXTURE } from "../mutations/fixtureMutations";
-import { GET_FIXTURES } from "../queries/fixtureQueries";
+import { ADD_FIXTURE } from "../../mutations/fixtureMutations";
+import { GET_FIXTURES } from "../../queries/fixtureQueries";
 
 export const FixtureModal = ({ handleClose, show }) => {
   const [homeTeam, setHomeTeam] = useState("");
@@ -85,15 +85,15 @@ export const FixtureModal = ({ handleClose, show }) => {
   return (
     <div
       className={`bg-black/80 absolute w-full h-full top-0 left-0 m-auto ${
-        show ? "block" : "hidden"
+        show === "fixture" ? "block" : "hidden"
       }`}
     >
       <div className="z-20 rounded opacity-100 absolute p-8 bg-white -translate-x-2/4 left-1/2 top-40">
+        <div className="flex justify-between">
+          <p className="text-5xl">Add fixture</p>
+          <button onClick={handleClose}>X</button>
+        </div>
         <form onSubmit={onSubmit}>
-          <div className="flex justify-between">
-            <p className="text-5xl">Add fixture</p>
-            <button onClick={handleClose}>X</button>
-          </div>
           <div className="flex">
             <div className="flex flex-col p-6 items-center">
               <p className="text-2xl underline font-bold">Home</p>

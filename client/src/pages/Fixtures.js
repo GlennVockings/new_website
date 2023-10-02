@@ -1,12 +1,12 @@
 import { Fixture } from "../components/Fixture";
 import { useState } from "react";
-
+import { mainTeam } from "../helpers/constants";
 import { useQuery } from "@apollo/client";
 import { GET_TEAM_FIXTURES } from "../queries/fixtureQueries";
 
 export const Fixtures = () => {
   const { loading, data } = useQuery(GET_TEAM_FIXTURES, {
-    variables: { teamName: "Oxted & District" },
+    variables: { teamName: mainTeam },
   });
 
   const [filter, setFilter] = useState("all");

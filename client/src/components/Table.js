@@ -1,5 +1,4 @@
 import { TableRow } from "./TableRow";
-
 import { mainTeam } from "../helpers/constants";
 
 export const Table = ({ leagueTable }) => {

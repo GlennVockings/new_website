@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { Dropdown } from "./Dropdown";
-import { mainTeam, status, teams } from "../helpers/constants";
+import { Dropdown } from "../Dropdown";
+import { mainTeam, status, teams } from "../../helpers/constants";
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_WEEKS } from "../queries/weekQueries";
+import { GET_WEEKS } from "../../queries/weekQueries";
 import { BsSendFill } from "react-icons/bs";
-import { Loading } from "./Loading";
+import { Loading } from "../Loading";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { GET_FIXTURE } from "../queries/fixtureQueries";
-import { UPDATE_FIXTURE } from "../mutations/fixtureMutations";
+import { GET_FIXTURE } from "../../queries/fixtureQueries";
+import { UPDATE_FIXTURE } from "../../mutations/fixtureMutations";
 
 export const EditFixture = () => {
   const { id } = useParams();
@@ -19,7 +19,6 @@ export const EditFixture = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [newWeek, setNewWeek] = useState("");
-  const [fixtureStatus, setFixtureStatus] = useState("new");
   const [hoa, setHoa] = useState("Home");
   const navigate = useNavigate();
 
@@ -40,12 +39,11 @@ export const EditFixture = () => {
       homeScore,
       awayScore,
       weekId: newWeek,
-      status: fixtureStatus,
       hoa,
     },
     refetchQueries: [{ query: GET_FIXTURE, variables: { id } }],
     onCompleted: () => {
-      navigate("/");
+      navigate("/admin");
     },
   });
 
@@ -79,8 +77,7 @@ export const EditFixture = () => {
       venue === "" ||
       time === "" ||
       date === "" ||
-      newWeek === "" ||
-      fixtureStatus === ""
+      newWeek === ""
     ) {
       return alert("Oops you missed a field");
     }
@@ -95,7 +92,6 @@ export const EditFixture = () => {
       homeScore,
       awayScore,
       newWeek,
-      fixtureStatus,
       hoa
     );
   };
@@ -106,7 +102,7 @@ export const EditFixture = () => {
     <>
       <div className="flex justify-between">
         <h1 className="text-3xl">Edit Fixture</h1>
-        <Link to="/" className="btn btn-secondary">
+        <Link to="/admin" className="btn btn-secondary">
           Back
         </Link>
       </div>
@@ -180,7 +176,6 @@ export const EditFixture = () => {
               <select
                 className="text-xl"
                 onChange={(e) => setNewWeek(e.target.value)}
-                defaultValue={fixtureData.fixture.week.id}
               >
                 <option value="">Please select one</option>
                 {data.weeks.map((week, index) => {
@@ -191,15 +186,6 @@ export const EditFixture = () => {
                   );
                 })}
               </select>
-            </div>
-            <div className="grow flex flex-col items-center">
-              <p className="text-2xl underline font-bold pb-2">Status</p>
-              <Dropdown
-                options={status}
-                name="status"
-                callback={(e) => setFixtureStatus(e.target.value)}
-                cssClass="text-xl"
-              />
             </div>
           </div>
           <div className="flex">

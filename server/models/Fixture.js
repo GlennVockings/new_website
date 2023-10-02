@@ -8,10 +8,6 @@ const FixtureSchema = new mongoose.Schema({
   venue: { type: String },
   homeScore: { type: Number },
   awayScore: { type: Number },
-  status: {
-    type: String,
-    enum: ["Not Started", "In Progress", "Completed"],
-  },
   hoa: { type: String },
   weekId: {
     type: mongoose.Schema.Types.ObjectId,

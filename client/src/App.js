@@ -6,8 +6,9 @@ import { Admin } from "./pages/Admin";
 import { TablePage } from "./pages/TablePage";
 import { Fixtures } from "./pages/Fixtures";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import { EditFixture } from "./components/EditFixture";
-import { EditWeek } from "./components/EditWeek";
+import { EditFixture } from "./components/admin/EditFixture";
+import { EditWeek } from "./components/admin/EditWeek";
+import { Footer } from "./components/Footer";
 
 const client = new ApolloClient({
   uri: "http://localhost:5000/graphql",
@@ -20,7 +21,7 @@ function App() {
       <ApolloProvider client={client}>
         <Header />
         <Router>
-          <div className="pt-6 m-auto xl:max-w-6xl lg:max-w-4xl md:max-w-xl">
+          <div className="pt-6 m-auto xl:max-w-7xl lg:max-w-4xl md:max-w-2xl">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/fixtures" element={<Fixtures />} />
@@ -32,6 +33,7 @@ function App() {
             </Routes>
           </div>
         </Router>
+        <Footer />
       </ApolloProvider>
     </>
   );

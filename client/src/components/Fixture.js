@@ -41,22 +41,22 @@ export const Fixture = ({ fixture }) => {
               {fixture.hoa === "Home" ? fixture.awayTeam : fixture.homeTeam}
             </p>
           </div>
-          {fixture.result && (
+          {fixture.status !== "Not Started" && (
             <div className="flex items-center">
-              <p className="text-5xl">{fixture.result.home}</p>
+              <p className="text-5xl">{fixture.homeScore}</p>
               <p className="text-2xl px-2">V</p>
-              <p className="text-5xl pr-2">{fixture.result.away}</p>
+              <p className="text-5xl pr-2">{fixture.awayScore}</p>
             </div>
           )}
         </div>
-        <div className="border-l p-3 w-1/4 ">
-          {fixture.highlights && (
+        {fixture.highlights && (
+          <div className="border-l p-3 w-1/4 ">
             <button className={`btn btn-primary`}>
               Details
               <BiDetail />
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

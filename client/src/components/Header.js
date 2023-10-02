@@ -5,7 +5,7 @@ export const Header = () => {
     <div className="bg-gradient-to-r relative pt-28 overflow-hidden from-secondary to-primary">
       <img
         className="absolute h-60 top-0 -left-4 opacity-70"
-        src="/assets/images/oxted-fc.png"
+        src="../assets/images/oxted-fc.png"
         alt="Oxted FC Logo"
       />
       <a
@@ -18,7 +18,7 @@ export const Header = () => {
           <p className="text">Mid Sussex League</p>
           <div className="image">
             <img
-              src="/assets/images/mid-sussex-league.png"
+              src="../assets/images/mid-sussex-league.png"
               alt="Mid Sussex League logo"
             />
           </div>

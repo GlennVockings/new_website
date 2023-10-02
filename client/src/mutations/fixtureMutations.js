@@ -9,7 +9,6 @@ export const ADD_FIXTURE = gql`
     $venue: String!
     $homeScore: Int!
     $awayScore: Int!
-    $status: FixtureStatus
     $weekId: ID!
     $hoa: String!
   ) {
@@ -21,7 +20,6 @@ export const ADD_FIXTURE = gql`
       venue: $venue
       homeScore: $homeScore
       awayScore: $awayScore
-      status: $status
       weekId: $weekId
       hoa: $hoa
     ) {
@@ -34,7 +32,6 @@ export const ADD_FIXTURE = gql`
       date
       venue
       hoa
-      status
       week {
         week
       }
@@ -52,7 +49,6 @@ export const UPDATE_FIXTURE = gql`
     $venue: String!
     $homeScore: Int!
     $awayScore: Int!
-    $status: FixtureStatusUpdate
     $weekId: ID!
     $hoa: String!
   ) {
@@ -65,7 +61,6 @@ export const UPDATE_FIXTURE = gql`
       venue: $venue
       homeScore: $homeScore
       awayScore: $awayScore
-      status: $status
       weekId: $weekId
       hoa: $hoa
     ) {
@@ -78,7 +73,6 @@ export const UPDATE_FIXTURE = gql`
       date
       venue
       hoa
-      status
       week {
         week
       }
@@ -97,7 +91,6 @@ export const DELETE_FIXTURE = gql`
       time
       date
       venue
-      status
       week {
         week
       }

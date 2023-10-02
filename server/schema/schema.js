@@ -37,7 +37,6 @@ const FixtureType = new GraphQLObjectType({
     venue: { type: GraphQLString },
     homeScore: { type: GraphQLInt },
     awayScore: { type: GraphQLInt },
-    status: { type: GraphQLString },
     hoa: { type: GraphQLString },
     week: {
       type: WeekType,
@@ -79,8 +78,12 @@ const RootQuery = new GraphQLObjectType({
     },
     fixtures: {
       type: new GraphQLList(FixtureType),
-      resolve(parent, args) {
-        return Fixture.find();
+      async resolve(parent, args) {
+        const fixtures = await Fixture.find().populate("weekId").exec();
+
+        fixtures.sort((a, b) => a.weekId.week - b.weekId.week);
+
+        return fixtures;
       },
     },
     players: {
@@ -96,6 +99,63 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parent, args) {
         return Fixture.findById(args.id);
+      },
+    },
+    latestResult: {
+      type: FixtureType,
+      args: {
+        teamName: { type: GraphQLString },
+      },
+      async resolve(parent, args) {
+        const filteredFixtures = await Fixture.find({
+          $or: [{ homeTeam: args.teamName }, { awayTeam: args.teamName }],
+        });
+
+        filteredFixtures.forEach((fixture) => {
+          const [day, month, year] = fixture.date.split("/").map(Number);
+          fixture.dateObject = new Date(year, month - 1, day);
+        });
+
+        const currentDate = Date.now();
+
+        const pastObjects = filteredFixtures.filter(
+          (obj) => obj.dateObject < currentDate
+        );
+
+        const fixturesWithHoa = pastObjects.map((fixture) => ({
+          ...fixture._doc,
+          hoa: fixture.homeTeam === args.teamName ? "Home" : "Away",
+        }));
+
+        fixturesWithHoa.sort((a, b) => b.dateObject - a.dateObject);
+
+        return fixturesWithHoa[0];
+      },
+    },
+    latestFixture: {
+      type: FixtureType,
+      args: {
+        teamName: { type: GraphQLString },
+      },
+      async resolve(parent, args) {
+        const filteredFixtures = await Fixture.find({
+          $or: [{ homeTeam: args.teamName }, { awayTeam: args.teamName }],
+        });
+
+        filteredFixtures.forEach((fixture) => {
+          const [day, month, year] = fixture.date.split("/").map(Number);
+          fixture.dateObject = new Date(year, month - 1, day);
+        });
+
+        const currentDate = Date.now();
+
+        const futureObjects = filteredFixtures.filter(
+          (obj) => obj.dateObject > currentDate
+        );
+
+        futureObjects.sort((a, b) => a.dateObject - b.dateObject);
+
+        return futureObjects[0];
       },
     },
     week: {
@@ -157,17 +217,6 @@ const mutation = new GraphQLObjectType({
         homeScore: { type: GraphQLNonNull(GraphQLInt) },
         awayScore: { type: GraphQLNonNull(GraphQLInt) },
         hoa: { type: GraphQLNonNull(GraphQLString) },
-        status: {
-          type: new GraphQLEnumType({
-            name: "FixtureStatus",
-            values: {
-              new: { value: "Not Started" },
-              progress: { value: "In Progress" },
-              completed: { value: "Completed" },
-            },
-          }),
-          defaultValue: "Not Started",
-        },
         weekId: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
@@ -179,7 +228,6 @@ const mutation = new GraphQLObjectType({
           venue: args.venue,
           homeScore: args.homeScore,
           awayScore: args.awayScore,
-          status: args.status,
           weekId: args.weekId,
           hoa: args.hoa,
         });
@@ -208,16 +256,6 @@ const mutation = new GraphQLObjectType({
         homeScore: { type: GraphQLInt },
         awayScore: { type: GraphQLInt },
         hoa: { type: GraphQLString },
-        status: {
-          type: new GraphQLEnumType({
-            name: "FixtureStatusUpdate",
-            values: {
-              new: { value: "Not Started" },
-              progress: { value: "In Progress" },
-              completed: { value: "Completed" },
-            },
-          }),
-        },
         weekId: { type: GraphQLID },
       },
       resolve(parent, args) {
@@ -232,8 +270,8 @@ const mutation = new GraphQLObjectType({
               venue: args.venue,
               homeScore: args.homeScore,
               awayScore: args.awayScore,
-              status: args.status,
               hoa: args.hoa,
+              weekId: args.weekId,
             },
           },
           { new: true }

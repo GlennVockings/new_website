@@ -22,8 +22,11 @@ module.exports = {
       neutral: colors.neutral,
     },
     minWidth: {
+      2: "2rem",
+      13: "2.5rem",
       14: "3.5rem",
       28: "7rem",
+      30: "8rem",
       56: "14rem",
       64: "16rem",
     },
@@ -44,6 +47,7 @@ module.exports = {
         height: "height",
       },
       maxWidth: {
+        10: "10rem",
         150: "150px",
         "1/4": "25%",
       },

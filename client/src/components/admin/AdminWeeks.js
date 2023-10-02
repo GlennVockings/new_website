@@ -1,10 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { GET_WEEKS } from "../queries/weekQueries";
+import { GET_WEEKS } from "../../queries/weekQueries";
 import { GrAdd, GrSubtract } from "react-icons/gr";
 import { useState } from "react";
-import { Loading } from "./Loading";
+import { GoArrowRight } from "react-icons/go";
+import { Loading } from "../Loading";
 
-export const AdminWeeks = () => {
+export const AdminWeeks = ({ handleOpen }) => {
   const { loading, data } = useQuery(GET_WEEKS);
   const [isWeekOpen, setIsWeekOpen] = useState(false);
 
@@ -29,6 +30,16 @@ export const AdminWeeks = () => {
           isWeekOpen ? "h-96 overflow-x-scroll" : "h-0 overflow-hidden"
         }`}
       >
+        <li>
+          <div className="flex">
+            <button
+              className="btn btn-primary mx-2 my-4 w-40 shadow-md shadow-primary"
+              onClick={handleOpen}
+            >
+              Add player <GoArrowRight />
+            </button>
+          </div>
+        </li>
         {data.weeks.map((week, index) => {
           return (
             <li key={index} className="py-4 hover:bg-gray-400">

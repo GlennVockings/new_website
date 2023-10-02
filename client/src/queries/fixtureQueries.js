@@ -11,7 +11,6 @@ export const GET_FIXTURES = gql`
       time
       date
       venue
-      status
       hoa
       week {
         week
@@ -31,12 +30,43 @@ export const GET_FIXTURE = gql`
       time
       date
       venue
-      status
       hoa
       week {
         id
         week
       }
+    }
+  }
+`;
+
+export const GET_LATEST_FIXTURE = gql`
+  query getLatestFixture($teamName: String) {
+    latestFixture(teamName: $teamName) {
+      id
+      homeTeam
+      homeScore
+      awayTeam
+      awayScore
+      time
+      date
+      venue
+      hoa
+    }
+  }
+`;
+
+export const GET_LATEST_RESULT = gql`
+  query getLatestResult($teamName: String) {
+    latestResult(teamName: $teamName) {
+      id
+      homeTeam
+      homeScore
+      awayTeam
+      awayScore
+      time
+      date
+      venue
+      hoa
     }
   }
 `;
@@ -52,7 +82,6 @@ export const GET_TEAM_FIXTURES = gql`
       time
       date
       venue
-      status
       hoa
     }
   }
@@ -65,7 +94,6 @@ export const GET_WEEK_FIXTURES = gql`
       homeScore
       awayTeam
       awayScore
-      status
       week {
         id
         week
