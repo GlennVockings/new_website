@@ -1,5 +1,5 @@
 import { Dropdown } from "../Dropdown";
-import { mainTeam, status, teams } from "../../helpers/constants";
+import { mainTeam, teams } from "../../helpers/constants";
 import { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WEEKS } from "../../queries/weekQueries";
@@ -17,7 +17,6 @@ export const FixtureModal = ({ handleClose, show }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [week, setWeek] = useState("");
-  const [fixtureStatus, setFixtureStatus] = useState("new");
   const [hoa, setHoa] = useState("Home");
 
   const { loading, data } = useQuery(GET_WEEKS);
@@ -40,7 +39,6 @@ export const FixtureModal = ({ handleClose, show }) => {
       homeScore,
       awayScore,
       weekId: week,
-      status: fixtureStatus,
       hoa,
     },
     update(cache, { data: { addFixture } }) {
@@ -60,8 +58,7 @@ export const FixtureModal = ({ handleClose, show }) => {
       venue === "" ||
       time === "" ||
       date === "" ||
-      week === "" ||
-      fixtureStatus === ""
+      week === ""
     ) {
       return alert("Oops you missed a field");
     }
@@ -74,7 +71,6 @@ export const FixtureModal = ({ handleClose, show }) => {
       homeScore,
       awayScore,
       week,
-      fixtureStatus,
       hoa
     );
     handleClose();
@@ -165,15 +161,6 @@ export const FixtureModal = ({ handleClose, show }) => {
                   );
                 })}
               </select>
-            </div>
-            <div className="grow flex flex-col items-center">
-              <p className="text-2xl underline font-bold pb-2">Status</p>
-              <Dropdown
-                options={status}
-                name="status"
-                callback={(e) => setFixtureStatus(e.target.value)}
-                cssClass="text-xl"
-              />
             </div>
           </div>
           <div className="flex">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Dropdown } from "../Dropdown";
-import { mainTeam, status, teams } from "../../helpers/constants";
+import { mainTeam, teams } from "../../helpers/constants";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WEEKS } from "../../queries/weekQueries";
 import { BsSendFill } from "react-icons/bs";
