@@ -5,10 +5,12 @@ export const Dropdown = ({
   callback,
   cssClass,
   activeOption,
+  ref,
 }) => {
   return (
     <>
       <select
+        ref={ref}
         name={name}
         required={required ? true : false}
         onChange={callback}

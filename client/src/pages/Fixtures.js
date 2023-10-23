@@ -1,8 +1,10 @@
+/* eslint-disable array-callback-return */
 import { Fixture } from "../components/Fixture";
 import { useState } from "react";
 import { mainTeam } from "../helpers/constants";
 import { useQuery } from "@apollo/client";
 import { GET_TEAM_FIXTURES } from "../queries/fixtureQueries";
+import { Wrapper } from "../components/wrapper/Wrapper";
 
 export const Fixtures = () => {
   const { loading, data } = useQuery(GET_TEAM_FIXTURES, {
@@ -14,7 +16,7 @@ export const Fixtures = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <>
+    <Wrapper>
       <div className="flex justify-center py-6">
         <div className="tabs">
           <button
@@ -55,6 +57,6 @@ export const Fixtures = () => {
           }
         })}
       </div>
-    </>
+    </Wrapper>
   );
 };

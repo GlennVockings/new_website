@@ -22,11 +22,12 @@ module.exports = {
       neutral: colors.neutral,
     },
     minWidth: {
-      2: "2rem",
-      13: "2.5rem",
+      8: "2rem",
+      10: "2.5rem",
       14: "3.5rem",
       28: "7rem",
-      30: "8rem",
+      30: "7.5rem",
+      32: "8rem",
       56: "14rem",
       64: "16rem",
     },
@@ -38,6 +39,8 @@ module.exports = {
       height: {
         128: "32rem",
         132: "36rem",
+        175: "43.75rem",
+        200: "50rem",
       },
       transitionProperty: {
         transform: "transform",
@@ -47,8 +50,9 @@ module.exports = {
         height: "height",
       },
       maxWidth: {
-        10: "10rem",
-        150: "150px",
+        37.5: "9.375rem",
+        40: "10rem",
+        125: "31.25rem",
         "1/4": "25%",
       },
       borderWidth: {

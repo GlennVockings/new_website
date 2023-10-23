@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  /* :root {
     --color-primary: 220 38 38;
     --color-secondary: 127 29 29;
     --color-tertiary: 69 10 10;
     --color-black: 0 0 0;
     --color-white: 255 255 255;
-  }
+  } */
 
   /* :root {
     --color-primary: 37 99 235;
@@ -18,6 +18,14 @@
     --color-black: 0 0 0;
     --color-white: 255 255 255;
   } */
+
+  :root {
+    --color-primary: 37 235 40;
+    --color-secondary: 38 138 30;
+    --color-tertiary: 23 84 34;
+    --color-black: 0 0 0;
+    --color-white: 255 255 255;
+  }
 }
 
 @layer components {
@@ -174,7 +182,7 @@
   }
 
   .league-table .name {
-    @apply text-left pr-44;
+    @apply text-left pr-24;
   }
 
   .league-table .home td {
@@ -192,6 +200,8 @@
   .active {
     @apply bg-primary text-white rounded-full;
   }
+
+  /* player table */
 
   .player-table {
     @apply table-auto mx-auto;
@@ -219,6 +229,8 @@
     @apply text-left pr-10;
   }
 
+  /* Homepage league table */
+
   .league-table-slim {
     @apply table-auto overflow-auto;
   }
@@ -232,11 +244,11 @@
   }
 
   .league-table-slim td {
-    @apply py-1 px-1 text-center text-base whitespace-nowrap min-w-13;
+    @apply py-1 px-1 text-center text-base whitespace-nowrap min-w-10;
   }
 
   .league-table-slim .name {
-    @apply text-left pr-2 truncate max-w-10;
+    @apply text-left pr-2 truncate max-w-40;
   }
 
   .league-table-slim .home {
@@ -245,5 +257,52 @@
 
   .league-table-slim .home td {
     @apply py-2;
+  }
+
+  /* headline */
+  .headline {
+    @apply p-5 rounded-md shadow-lg flex flex-col relative;
+  }
+
+  .headline .image {
+    @apply relative;
+  }
+
+  .headline img {
+    @apply rounded-md object-cover;
+  }
+
+  .headline .content {
+    @apply py-3 bg-white;
+  }
+
+  .headline-flat {
+    @apply flex items-center px-4 py-3 hover:underline;
+  }
+
+  .headline-flat .image {
+    @apply relative w-32 h-32 drop-shadow-md;
+  }
+
+  .headline-flat .image img {
+    @apply absolute w-full h-full rounded-md object-cover;
+  }
+
+  .headline-flat .content {
+    @apply pl-4 w-64;
+  }
+
+  /* Admin table */
+
+  .admin-table {
+    @apply table-auto border-separate border-spacing-2 mx-auto overflow-auto;
+  }
+
+  .admin-table th {
+    @apply border py-1 px-1 rounded bg-tertiary text-white border-tertiary text-lg font-sans;
+  }
+
+  .admin-table td {
+    @apply border py-2 px-3 text-center text-lg whitespace-nowrap;
   }
 }

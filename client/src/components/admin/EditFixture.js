@@ -8,6 +8,7 @@ import { Loading } from "../Loading";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { GET_FIXTURE } from "../../queries/fixtureQueries";
 import { UPDATE_FIXTURE } from "../../mutations/fixtureMutations";
+import { Wrapper } from "../wrapper/Wrapper";
 
 export const EditFixture = () => {
   const { id } = useParams();
@@ -99,7 +100,7 @@ export const EditFixture = () => {
   if (loading || fixtureLoading) return <Loading />;
 
   return (
-    <>
+    <Wrapper>
       <div className="flex justify-between">
         <h1 className="text-3xl">Edit Fixture</h1>
         <Link to="/admin" className="btn btn-secondary">
@@ -195,6 +196,6 @@ export const EditFixture = () => {
           </div>
         </form>
       </div>
-    </>
+    </Wrapper>
   );
 };

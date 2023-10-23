@@ -1,6 +1,5 @@
-import { Dropdown } from "../Dropdown";
 import { mainTeam, teams } from "../../helpers/constants";
-import { useEffect, useState } from "react";
+import { useRef } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WEEKS } from "../../queries/weekQueries";
 import { Loading } from "../Loading";
@@ -9,38 +8,18 @@ import { ADD_FIXTURE } from "../../mutations/fixtureMutations";
 import { GET_FIXTURES } from "../../queries/fixtureQueries";
 
 export const FixtureModal = ({ handleClose, show }) => {
-  const [homeTeam, setHomeTeam] = useState("");
-  const [awayTeam, setAwayTeam] = useState("");
-  const [homeScore, setHomeScore] = useState(0);
-  const [awayScore, setAwayScore] = useState(0);
-  const [venue, setVenue] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [week, setWeek] = useState("");
-  const [hoa, setHoa] = useState("Home");
+  const homeTeamRef = useRef();
+  const awayTeamRef = useRef();
+  const homeScoreRef = useRef();
+  const awayScoreRef = useRef();
+  const venueRef = useRef();
+  const dateRef = useRef();
+  const timeRef = useRef();
+  const weekRef = useRef();
 
   const { loading, data } = useQuery(GET_WEEKS);
 
-  useEffect(() => {
-    if (awayTeam === mainTeam) {
-      setHoa("Away");
-    } else if (homeTeam === mainTeam) {
-      setHoa("Home");
-    }
-  }, [awayTeam, homeTeam]);
-
   const [addFixture] = useMutation(ADD_FIXTURE, {
-    variables: {
-      homeTeam,
-      awayTeam,
-      time,
-      date,
-      venue,
-      homeScore,
-      awayScore,
-      weekId: week,
-      hoa,
-    },
     update(cache, { data: { addFixture } }) {
       const { fixtures } = cache.readQuery({ query: GET_FIXTURES });
       cache.writeQuery({
@@ -53,26 +32,31 @@ export const FixtureModal = ({ handleClose, show }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (
-      homeTeam === "" ||
-      awayTeam === "" ||
-      venue === "" ||
-      time === "" ||
-      date === "" ||
-      week === ""
+      homeTeamRef.current.value === "" ||
+      awayTeamRef.current.value === "" ||
+      timeRef.current.value === "" ||
+      dateRef.current.value === "" ||
+      venueRef.current.value === "" ||
+      weekRef.current.value === ""
     ) {
       return alert("Oops you missed a field");
     }
-    addFixture(
-      homeTeam,
-      awayTeam,
-      time,
-      date,
-      venue,
-      homeScore,
-      awayScore,
-      week,
-      hoa
-    );
+
+    const hoa = homeScoreRef.current.value === mainTeam ? "Home" : "Away";
+
+    addFixture({
+      variables: {
+        homeTeam: homeTeamRef.current.value,
+        awayTeam: awayTeamRef.current.value,
+        time: timeRef.current.value,
+        date: dateRef.current.value,
+        venue: venueRef.current.value,
+        homeScore: Number(homeScoreRef.current.value),
+        awayScore: Number(awayScoreRef.current.value),
+        weekId: weekRef.current.value,
+        hoa,
+      },
+    });
     handleClose();
   };
 
@@ -93,32 +77,58 @@ export const FixtureModal = ({ handleClose, show }) => {
           <div className="flex">
             <div className="flex flex-col p-6 items-center">
               <p className="text-2xl underline font-bold">Home</p>
-              <Dropdown
-                options={teams}
-                name="teams"
-                cssClass="py-3 text-xl"
-                callback={(e) => setHomeTeam(e.target.value)}
-              />
+              <select
+                ref={homeTeamRef}
+                className="py-1 mb-2 text-xl mx-3 border rounded-md border-black"
+              >
+                <option className="text-2xl" value="">
+                  Please select one
+                </option>
+                {teams.map((option, index) => {
+                  return (
+                    <option
+                      key={index}
+                      className="text-2xl"
+                      value={option.value}
+                    >
+                      {option.label}
+                    </option>
+                  );
+                })}
+              </select>
               <input
+                ref={homeScoreRef}
                 type="number"
                 placeholder="Home Score"
-                className="w-full text-xl"
-                onChange={(e) => setHomeScore(Number(e.target.value))}
+                className="w-full text-xl mx-3 border rounded-md p-1 border-black"
               />
             </div>
             <div className="flex flex-col p-6 items-center">
               <p className="text-2xl underline font-bold">Away</p>
-              <Dropdown
-                options={teams}
-                name="teams"
-                cssClass="py-3 text-xl"
-                callback={(e) => setAwayTeam(e.target.value)}
-              />
+              <select
+                ref={awayTeamRef}
+                className="py-1 mb-2 text-xl mx-3 border rounded-md border-black"
+              >
+                <option className="text-2xl" value="">
+                  Please select one
+                </option>
+                {teams.map((option, index) => {
+                  return (
+                    <option
+                      key={index}
+                      className="text-2xl"
+                      value={option.value}
+                    >
+                      {option.label}
+                    </option>
+                  );
+                })}
+              </select>
               <input
+                ref={awayScoreRef}
                 type="number"
                 placeholder="Away Score"
-                className="w-full text-xl"
-                onChange={(e) => setAwayScore(Number(e.target.value))}
+                className="w-full text-xl mx-3 border rounded-md p-1 border-black"
               />
             </div>
           </div>
@@ -128,30 +138,27 @@ export const FixtureModal = ({ handleClose, show }) => {
               <input
                 type="text"
                 placeholder="Venue"
-                className="text-xl"
-                onChange={(e) => setVenue(e.target.value)}
+                className="text-xl border rounded-md p-1 border-black"
+                ref={venueRef}
               />
               <input
                 type="text"
                 placeholder="Date"
-                className="text-xl mx-3"
-                onChange={(e) => setDate(e.target.value)}
+                className="text-xl mx-3 border rounded-md p-1 border-black"
+                ref={dateRef}
               />
               <input
                 type="text"
                 placeholder="Time"
-                className="text-xl"
-                onChange={(e) => setTime(e.target.value)}
+                className="text-xl border rounded-md p-1 border-black"
+                ref={timeRef}
               />
             </div>
           </div>
           <div className="flex py-4">
             <div className="grow flex flex-col items-center">
               <p className="text-2xl underline font-bold pb-2">Week</p>
-              <select
-                className="text-xl"
-                onChange={(e) => setWeek(e.target.value)}
-              >
+              <select className="text-xl" ref={weekRef}>
                 <option value="">Please select one</option>
                 {data.weeks.map((week, index) => {
                   return (

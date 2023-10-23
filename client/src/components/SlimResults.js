@@ -47,7 +47,7 @@ export const SlimResults = () => {
                   : "divide-gray-500"
               }`}
             >
-              <p className="text-2xl font-semibold min-w-2">
+              <p className="text-2xl font-semibold min-w-8">
                 {data.latestResult.homeScore}
               </p>
               <p className="text-2xl font-semibold pl-3">
@@ -61,7 +61,7 @@ export const SlimResults = () => {
                   : "divide-gray-500"
               }`}
             >
-              <p className="text-2xl font-semibold min-w-2">
+              <p className="text-2xl font-semibold min-w-8">
                 {data.latestResult.awayScore}
               </p>
               <p className="text-2xl font-semibold pl-3">

@@ -185,6 +185,17 @@ export const calculatesTableData = (fixtures) => {
       points: 0,
       show: false,
     },
+    {
+      name: "Lindfield",
+      played: 0,
+      wins: 0,
+      draws: 0,
+      loses: 0,
+      for: 0,
+      against: 0,
+      points: 0,
+      show: false,
+    },
   ];
 
   for (let i = 0; i < fixtures.length; i++) {

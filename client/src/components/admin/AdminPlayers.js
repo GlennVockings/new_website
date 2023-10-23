@@ -4,10 +4,12 @@ import { GrAdd, GrSubtract } from "react-icons/gr";
 import { useState } from "react";
 import { GoArrowRight } from "react-icons/go";
 import { Loading } from "../Loading";
+import { useNavigate } from "react-router-dom";
 
 export const AdminPlayers = ({ handleOpen }) => {
   const { loading, data } = useQuery(GET_PLAYERS);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleIsPlayer = () => {
     setIsPlayerOpen(isPlayerOpen ? false : true);
@@ -25,12 +27,12 @@ export const AdminPlayers = ({ handleOpen }) => {
         {isPlayerOpen && <GrSubtract />}
         <span className="ml-4 text-3xl">Players</span>
       </div>
-      <ul
+      <div
         className={`divide-y transition-all duration-300 ${
           isPlayerOpen ? "h-96 overflow-x-scroll" : "h-0 overflow-hidden"
         }`}
       >
-        <li>
+        <div>
           <div className="flex">
             <button
               className="btn btn-primary mx-2 my-4 w-40 shadow-md shadow-primary"
@@ -39,37 +41,50 @@ export const AdminPlayers = ({ handleOpen }) => {
               Add player <GoArrowRight />
             </button>
           </div>
-        </li>
-        {data.players.map((player, index) => {
-          return (
-            <li key={index} className="py-4 hover:bg-gray-400">
-              <a
-                href="#"
-                className="grid grid-cols-3 gap-x-2 place-items-center"
-              >
-                <div className="text-xl">
-                  <p>{`Name: ${player.name}`}</p>
-                  <p>{`Number: ${player.number}`}</p>
-                  <p>{`Position: ${player.position}`}</p>
-                </div>
-                <div className="text-xl">
-                  <p>{`Appearances: ${player.appearances}`}</p>
-                  <p>{`Goals: ${player.goals}`}</p>
-                  <p>{`Penalties: ${player.penalties}`}</p>
-                  <p>{`Assists: ${player.assists}`}</p>
-                </div>
-                <div className="text-xl">
-                  <p>{`Yellow cards: ${player.yellowCards}`}</p>
-                  <p>{`Red cards: ${player.redCards}`}</p>
-                  <p>{`Started: ${player.started}`}</p>
-                  <p>{`Man of match: ${player.mom}`}</p>
-                  <p>{`Clean sheets: ${player.cleanSheets}`}</p>
-                </div>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>App.</th>
+                <th>Goals</th>
+                <th>Penalties</th>
+                <th>Assists</th>
+                <th>Yellow</th>
+                <th>Red</th>
+                <th>Started</th>
+                <th>Man of match</th>
+                <th>Clean Sheets</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.players.map((player, index) => {
+                return (
+                  <tr
+                    key={index}
+                    className="py-4 hover:bg-gray-400"
+                    onClick={() => navigate(`/admin/player/${player.id}`)}
+                  >
+                    <td>{player.number}</td>
+                    <td>{player.name}</td>
+                    <td>{player.position}</td>
+                    <td>{player.appearances}</td>
+                    <td>{player.goals}</td>
+                    <td>{player.penalties}</td>
+                    <td>{player.assists}</td>
+                    <td>{player.yellowCards}</td>
+                    <td>{player.redCards}</td>
+                    <td>{player.started}</td>
+                    <td>{player.mom}</td>
+                    <td>{player.cleanSheets}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </>
   );
 };

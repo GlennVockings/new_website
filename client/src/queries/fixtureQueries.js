@@ -12,6 +12,7 @@ export const GET_FIXTURES = gql`
       date
       venue
       hoa
+      status
       week {
         week
       }
@@ -83,6 +84,7 @@ export const GET_TEAM_FIXTURES = gql`
       date
       venue
       hoa
+      status
     }
   }
 `;

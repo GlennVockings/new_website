@@ -1,11 +1,15 @@
 import { Navigation } from "./Navigation";
+import { mainTeam } from "../helpers/constants";
 
 export const Header = () => {
   return (
     <div className="bg-gradient-to-r relative pt-28 overflow-hidden from-secondary to-primary">
       <img
         className="absolute h-60 top-0 -left-4 opacity-70"
-        src="../assets/images/oxted-fc.png"
+        src={`../assets/images/${mainTeam
+          .split(" ")
+          .join("-")
+          .toLowerCase()}.png`}
         alt="Oxted FC Logo"
       />
       <a

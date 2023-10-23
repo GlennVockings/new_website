@@ -23,13 +23,13 @@ export const SlimFixture = () => {
             className="bg-cover"
             src={`../assets/images/${
               data.latestFixture.homeTeam === mainTeam
-                ? data.latestFixture.awayTeam.split(" ").join("-").toLowerCase()
-                : data.latestFixture.homeTeam.split(" ").join("-").toLowerCase()
+                ? data.latestFixture.awayTeam.replace(/ /g, "-").toLowerCase()
+                : data.latestFixture.homeTeam.replace(/ /g, "-").toLowerCase()
             }.png`}
             alt={`${
               data.latestFixture.homeTeam === mainTeam
-                ? data.latestFixture.awayTeam.split(" ").join("-")
-                : data.latestFixture.homeTeam.split(" ").join("-")
+                ? data.latestFixture.awayTeam.replace(/ /g, "-")
+                : data.latestFixture.homeTeam.replace(/ /g, "-")
             }.png`}
           />
         </div>

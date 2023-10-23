@@ -1,19 +1,8 @@
 import { GiSoccerField } from "react-icons/gi";
 import { BiDetail } from "react-icons/bi";
 import { IconContext } from "react-icons";
-import { useState, useEffect } from "react";
-import { getStatus } from "../helpers/helper-funcs";
 
 export const Fixture = ({ fixture }) => {
-  // states
-  const [matchStatus, setMatchStatus] = useState("Ready");
-
-  // effects
-  useEffect(() => {
-    const status = getStatus(fixture);
-    setMatchStatus(status);
-  }, [fixture]);
-
   return (
     <div className="container p-2 min-h-28 hover:shadow-xl font-cursive">
       <div className="flex items-center justify-between">
@@ -21,9 +10,13 @@ export const Fixture = ({ fixture }) => {
           <p className="text-center mb-1 text-xl">{fixture.date}</p>
           <p>{fixture.time}</p>
           <p className="text-center text-6xl">{fixture.hoa[0]}</p>
-          <div className="bg-tertiary absolute -rotate-90 -left-16 text-center text-white top-16 w-36">
-            <p>{matchStatus}</p>
-          </div>
+          {fixture.status === "Completed" ? (
+            <div className="bg-tertiary absolute -rotate-90 -left-16 text-center text-white top-16 w-36">
+              <p>{fixture.status}</p>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div
           className={`flex justify-between items-center p-3 w-full relative overflow-hidden`}
@@ -41,7 +34,7 @@ export const Fixture = ({ fixture }) => {
               {fixture.hoa === "Home" ? fixture.awayTeam : fixture.homeTeam}
             </p>
           </div>
-          {fixture.status !== "Not Started" && (
+          {fixture.status !== "Upcoming" && (
             <div className="flex items-center">
               <p className="text-5xl">{fixture.homeScore}</p>
               <p className="text-2xl px-2">V</p>

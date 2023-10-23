@@ -5,6 +5,7 @@ import { GET_WEEKS } from "../queries/weekQueries";
 import { useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
 import { calculatesTableData } from "../helpers/helper-funcs";
+import { Wrapper } from "../components/wrapper/Wrapper";
 
 export const TablePage = () => {
   const [weeks, setWeeks] = useState([]); // Use useState to manage weeks state
@@ -15,6 +16,7 @@ export const TablePage = () => {
     onCompleted: (data) => {
       setWeeks(data.weeks);
       data.weeks.forEach((week) => {
+        console.log(week);
         if (week.status === "Completed") setLatestWeek(week.id);
       });
     },
@@ -41,9 +43,9 @@ export const TablePage = () => {
   if (weeksLoading || fixturesLoading) return <Loading />;
 
   return (
-    <>
-      <div>
-        <p>Weeks</p>
+    <Wrapper>
+      <div className="py-3 flex flex-col items-center">
+        <p className="text-lg">Weeks</p>
         <ul className="flex gap-x-3">
           {weeks.map((week) => {
             return (
@@ -63,6 +65,6 @@ export const TablePage = () => {
         </ul>
       </div>
       <Table leagueTable={leagueTable} />
-    </>
+    </Wrapper>
   );
 };

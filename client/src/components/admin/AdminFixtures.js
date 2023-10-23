@@ -48,12 +48,15 @@ export const AdminFixtures = ({ handleOpen }) => {
         {data.fixtures.map((fixture, index) => {
           return (
             <li key={index} className="py-4 hover:bg-gray-400">
-              <a href={`/admin/fixture/${fixture.id}`} className="flex gap-x-5">
+              <a
+                href={`/admin/fixture/${fixture.id}`}
+                className="flex justify-between gap-x-5"
+              >
                 {/* Match info */}
                 <div className="flex flex-col items-center border-r p-3 w-96 relative">
                   <p className="text-center mb-1 text-2xl">{fixture.date}</p>
                   <p className="text-center mb-1 text-2xl">{fixture.time}</p>
-                  <div className="flex items-baseline">
+                  <div className="flex items-center">
                     <IconContext.Provider value={{ size: "2rem" }}>
                       <div className="pr-2">
                         <GiSoccerField />
@@ -86,6 +89,14 @@ export const AdminFixtures = ({ handleOpen }) => {
                 <div className="flex flex-col justify-center gap-2">
                   <p className="text-center text-xl px-4">Week:</p>
                   <p className="text-center text-4xl">{fixture.week.week}</p>
+                </div>
+
+                {/* Status */}
+                <div className="flex items-center">
+                  <div className="py-3 px-4 flex flex-col items-center bg-primary text-white">
+                    <p className="text-xl">Status:</p>
+                    <p className="text-4xl">{fixture.status}</p>
+                  </div>
                 </div>
               </a>
             </li>
