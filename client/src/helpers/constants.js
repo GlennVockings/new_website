@@ -57,8 +57,8 @@ export const teams = [
   },
 ];
 
-export const mainTeam = "Lindfield";
-// export const mainTeam = "Oxted & District";
+// export const mainTeam = "Lindfield";
+export const mainTeam = "Oxted & District";
 
 export const status = [
   {
