@@ -11,7 +11,7 @@ import { EditWeek } from "./components/admin/EditWeek";
 import { Footer } from "./components/Footer";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql",
+  uri: "https://oxted-api.onrender.com/graphql",
   cache: new InMemoryCache(),
 });
 
