@@ -11,7 +11,7 @@ export const Home = () => {
       <div className="">
         {/* Team Update */}
         <Wrapper>
-          <div className="flex items-center justify-around py-5 shadow-lg rounded-lg">
+          <div className="flex flex-col items-center justify-around py-5 shadow-lg rounded-lg md:flex-row">
             <div>
               <SlimFixture />
             </div>
@@ -29,7 +29,7 @@ export const Home = () => {
           <p className="font-semibold text-4xl pb-3 text-white underline underline-offset-4">
             News
           </p>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div className="flex flex-col justify-between shadow">
               <div className="relative h-64 w-full">
                 <img
@@ -90,7 +90,7 @@ export const Home = () => {
           <p className="font-semibold text-4xl pb-3 underline underline-offset-4">
             News
           </p>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div className="flex flex-col justify-between shadow rounded-lg">
               <div className="relative h-64 w-full">
                 <img

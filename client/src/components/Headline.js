@@ -12,7 +12,7 @@ export const Headline = () => {
           Headline
         </p>
       </div>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between md:flex-row">
         {/* Main Headline */}
         <div className="headline">
           <div className="image">

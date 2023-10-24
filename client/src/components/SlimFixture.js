@@ -41,7 +41,7 @@ export const SlimFixture = () => {
               <p>{data.latestFixture.date}</p>
               <p>{data.latestFixture.time}</p>
             </div>
-            <p className="text-3xl font-bold">
+            <p className="text-3xl font-bold truncate">
               {data.latestFixture.homeTeam === mainTeam
                 ? data.latestFixture.awayTeam
                 : data.latestFixture.homeTeam}
