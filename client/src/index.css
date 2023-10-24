@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  /* :root {
+  :root {
     --color-primary: 220 38 38;
     --color-secondary: 127 29 29;
     --color-tertiary: 69 10 10;
     --color-black: 0 0 0;
     --color-white: 255 255 255;
-  } */
+  }
 
   /* :root {
     --color-primary: 37 99 235;
@@ -19,13 +19,13 @@
     --color-white: 255 255 255;
   } */
 
-  :root {
+  /* :root {
     --color-primary: 37 235 40;
     --color-secondary: 38 138 30;
     --color-tertiary: 23 84 34;
     --color-black: 0 0 0;
     --color-white: 255 255 255;
-  }
+  } */
 }
 
 @layer components {
