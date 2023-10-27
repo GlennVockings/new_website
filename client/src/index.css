@@ -169,20 +169,22 @@
     @apply h-60 rounded -bottom-20;
   }
 
+  /* League table */
+
   .league-table {
     @apply table-auto border-separate border-spacing-2 mx-auto overflow-auto;
   }
 
   .league-table th {
-    @apply border py-2 px-3 rounded bg-tertiary text-white border-tertiary text-xl font-sans uppercase;
+    @apply border py-2 px-3 rounded bg-tertiary text-white border-tertiary text-sm md:text-xl font-sans uppercase md:capitalize;
   }
 
   .league-table td {
-    @apply border py-2 px-3 text-center text-lg whitespace-nowrap;
+    @apply border py-2 px-2 md:px-3 text-center text-sm md:text-lg whitespace-nowrap;
   }
 
   .league-table .name {
-    @apply text-left pr-24;
+    @apply text-left md:pr-24;
   }
 
   .league-table .home td {

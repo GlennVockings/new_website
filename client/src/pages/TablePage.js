@@ -46,7 +46,7 @@ export const TablePage = () => {
     <Wrapper>
       <div className="py-3 flex flex-col items-center">
         <p className="text-lg">Weeks</p>
-        <ul className="flex gap-x-3">
+        <ul className="flex gap-x-3 overflow-auto w-full pb-3">
           {weeks.map((week) => {
             return (
               <li key={week.week}>

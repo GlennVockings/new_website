@@ -3,7 +3,7 @@ import { mainTeam } from "../helpers/constants";
 
 export const Header = () => {
   return (
-    <div className="bg-gradient-to-r relative pt-28 overflow-hidden from-secondary to-primary">
+    <div className="bg-gradient-to-r pt-28 w-full overflow-hidden from-secondary to-primary fixed z-30 top-0">
       <img
         className="absolute h-60 top-0 -left-4 opacity-70"
         src={`../assets/images/${mainTeam

@@ -266,3 +266,10 @@ export const calculatesTableData = (fixtures) => {
 
   return updatedTable;
 };
+
+export const isMobile = function isMobileDevice() {
+  const userAgent = navigator.userAgent;
+  const mobileRegex =
+    /Mobile|Android|iPhone|iPad|iPod|Windows Phone|BlackBerry|Opera Mini|IEMobile/i;
+  return mobileRegex.test(userAgent);
+};
