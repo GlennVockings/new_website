@@ -1,34 +1,75 @@
 import { Navigation } from "./Navigation";
+import { MobileNavigation } from "./MobileNavigation";
 import { mainTeam } from "../helpers/constants";
+import { useEffect, useState } from "react";
 
 export const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="bg-gradient-to-r pt-28 w-full overflow-hidden from-secondary to-primary fixed z-30 top-0">
-      <img
-        className="absolute h-60 top-0 -left-4 opacity-70"
-        src={`../assets/images/${mainTeam
-          .split(" ")
-          .join("-")
-          .toLowerCase()}.png`}
-        alt="Oxted FC Logo"
-      />
-      <a
-        className="mid-sussex"
-        href="https://fulltime.thefa.com/index.html?selectedSeason=179247076&selectedFixtureGroupAgeGroup=0&selectedDivision=116511351&selectedCompetition=0"
-        target="_blank"
-        rel="noreferrer"
+    <>
+      <div
+        className={`bg-gradient-to-r ${
+          isScrolled ? "pt-10 md:pt-12" : "pt-10 md:pt-28"
+        } w-full overflow-hidden from-secondary to-primary fixed z-30 top-0 transition-all`}
       >
-        <div className="mid-sussex-container">
-          <p className="text">Mid Sussex League</p>
-          <div className="image">
-            <img
-              src="../assets/images/mid-sussex-league.png"
-              alt="Mid Sussex League logo"
-            />
+        <a href="/">
+          <img
+            className={`absolute ${
+              isScrolled
+                ? "h-48 md:h-44 -left-4 md:-left-0"
+                : "h-48 md:h-60 -left-4"
+            } top-0 opacity-70 transition-all`}
+            src={`../assets/images/${mainTeam
+              .split(" ")
+              .join("-")
+              .toLowerCase()}.png`}
+            alt="Oxted FC Logo"
+          />
+        </a>
+        <a
+          className="mid-sussex"
+          href="https://fulltime.thefa.com/index.html?selectedSeason=179247076&selectedFixtureGroupAgeGroup=0&selectedDivision=116511351&selectedCompetition=0"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="mid-sussex-container">
+            <p className="text">Mid Sussex League</p>
+            <div className="image">
+              <img
+                src="../assets/images/mid-sussex-league.png"
+                alt="Mid Sussex League logo"
+              />
+            </div>
           </div>
-        </div>
-      </a>
-      <Navigation />
-    </div>
+        </a>
+        <Navigation
+          toggleMobileMenu={setShowMobileMenu}
+          showMobileMenu={showMobileMenu}
+        />
+      </div>
+      <MobileNavigation
+        toggleMobileMenu={setShowMobileMenu}
+        showMobileMenu={showMobileMenu}
+      />
+    </>
   );
 };

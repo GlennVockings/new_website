@@ -86,7 +86,7 @@
   }
 
   .mid-sussex {
-    @apply absolute top-3 right-8;
+    @apply hidden md:absolute top-3 right-8;
   }
 
   .mid-sussex-container {

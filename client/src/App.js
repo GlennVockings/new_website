@@ -20,17 +20,19 @@ function App() {
     <>
       <ApolloProvider client={client}>
         <Header />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/fixtures" element={<Fixtures />} />
-            <Route path="/team" element={<Players />} />
-            <Route path="/table" element={<TablePage />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/admin/fixture/:id" element={<EditFixture />} />
-            <Route path="/admin/week/:id" element={<EditWeek />} />
-          </Routes>
-        </Router>
+        <div className="mt-16 md:mt-40">
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/fixtures" element={<Fixtures />} />
+              <Route path="/team" element={<Players />} />
+              <Route path="/table" element={<TablePage />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin/fixture/:id" element={<EditFixture />} />
+              <Route path="/admin/week/:id" element={<EditWeek />} />
+            </Routes>
+          </Router>
+        </div>
         <Footer />
       </ApolloProvider>
     </>

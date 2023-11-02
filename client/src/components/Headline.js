@@ -6,7 +6,7 @@ export const Headline = () => {
   const [mainNews, setMainNews] = useState(0);
 
   return (
-    <>
+    <div className="hidden md:block">
       <div>
         <p className="text-4xl underline font-semibold underline-offset-4">
           Headline
@@ -41,6 +41,6 @@ export const Headline = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
