@@ -4,9 +4,9 @@ export const SlimTableRow = ({ position, entry, cssClass }) => {
       <td>{position}</td>
       <td className="name">{entry.name}</td>
       <td>{entry.played}</td>
-      <td className="md:hidden">{entry.wins}</td>
-      <td className="md:hidden">{entry.draws}</td>
-      <td className="md:hidden">{entry.loses}</td>
+      <td className="lg:hidden">{entry.wins}</td>
+      <td className="lg:hidden">{entry.draws}</td>
+      <td className="lg:hidden">{entry.loses}</td>
       <td>{entry.points}</td>
     </tr>
   );

@@ -21,7 +21,7 @@ export const SlimTable = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="md:container mx-auto">
+    <div className="lg:container mx-auto">
       <table className="league-table-slim">
         <thead>
           <tr>
@@ -29,9 +29,9 @@ export const SlimTable = () => {
               Name
             </th>
             <th>P</th>
-            <th className="md:hidden">W</th>
-            <th className="md:hidden">D</th>
-            <th className="md:hidden">L</th>
+            <th className="lg:hidden">W</th>
+            <th className="lg:hidden">D</th>
+            <th className="lg:hidden">L</th>
             <th>Pts</th>
           </tr>
         </thead>
