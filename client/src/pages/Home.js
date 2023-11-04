@@ -19,8 +19,8 @@ export const Home = () => {
         </Wrapper>
 
         {/* News */}
-        <Wrapper background="bg-primary">
-          <p className="font-semibold text-4xl pb-3 text-white underline underline-offset-4">
+        <Wrapper background="">
+          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-28 before:h-5 before:bg-primary/20">
             News
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
@@ -81,7 +81,7 @@ export const Home = () => {
 
         {/* News */}
         <Wrapper>
-          <p className="font-semibold text-4xl pb-3 underline underline-offset-4">
+          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-28 before:h-5 before:bg-primary/20">
             News
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">

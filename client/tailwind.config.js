@@ -25,6 +25,7 @@ module.exports = {
       8: "2rem",
       10: "2.5rem",
       14: "3.5rem",
+      15: "3.75rem",
       28: "7rem",
       30: "7.5rem",
       32: "8rem",
@@ -40,6 +41,7 @@ module.exports = {
     },
     extend: {
       inset: {
+        17.25: "4.313rem",
         18: "4.5rem",
       },
       height: {

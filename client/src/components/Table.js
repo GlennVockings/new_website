@@ -23,6 +23,7 @@ export const Table = ({ leagueTable }) => {
           {leagueTable.map((entry, index) => {
             return (
               <TableRow
+                key={index}
                 position={index + 1}
                 entry={entry}
                 cssClass={entry.name === mainTeam ? "home" : ""}

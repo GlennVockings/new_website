@@ -4,10 +4,10 @@ import { mainTeam } from "../helpers/constants";
 
 export const Fixture = ({ fixture }) => {
   return (
-    <div className="container px-2 min-h-44 hover:shadow-xl font-cursive">
+    <div className="container px-2 min-h-44 md:hover:shadow-xl font-cursive relative">
       {fixture.status !== "Upcoming" ? (
-        <div className="flex flex-col justify-between relative">
-          <div className="bg-tertiary absolute -rotate-90 -left-18 text-center text-white top-20 w-40">
+        <div className="flex flex-col justify-between">
+          <div className="bg-tertiary absolute -rotate-90 -left-16 text-center text-white bottom-17.25 w-40">
             <p>{fixture.status}</p>
           </div>
           <div className="flex p-3 w-full ml-6 gap-3 relative md:w-1/4">
