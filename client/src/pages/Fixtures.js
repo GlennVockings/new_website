@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { GET_TEAM_FIXTURES } from "../queries/fixtureQueries";
 import { Wrapper } from "../components/wrapper/Wrapper";
 
-export const Fixtures = () => {
+export const Fixtures = ({ isScrolled }) => {
   const { loading, data } = useQuery(GET_TEAM_FIXTURES, {
     variables: { teamName: mainTeam },
   });
@@ -17,7 +17,11 @@ export const Fixtures = () => {
 
   return (
     <Wrapper>
-      <div className="flex justify-center py-6">
+      <div
+        className={`${
+          isScrolled ? "lg:top-22" : "lg:top-40"
+        } flex justify-center py-6 fixed bottom-0 left-0 z-40 bg-white w-full lg:bottom-auto transition-all lg:shadow-md`}
+      >
         <div className="tabs">
           <button
             className={`tab ${filter === "all" ? "active" : ""}`}
@@ -39,7 +43,7 @@ export const Fixtures = () => {
           </button>
         </div>
       </div>
-      <div className="container mx-auto py-3 flex flex-col divide-y">
+      <div className="md:container mx-auto py-3 flex flex-col divide-y overflow-x-auto lg:pt-20">
         {data.teamFixtures.map((fixture) => {
           switch (filter) {
             case "all":

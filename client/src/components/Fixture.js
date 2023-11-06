@@ -4,20 +4,18 @@ import { mainTeam } from "../helpers/constants";
 
 export const Fixture = ({ fixture }) => {
   return (
-    <div className="container px-2 min-h-44 md:hover:shadow-xl font-cursive relative">
+    <div className="container lg:hover:shadow-xl font-cursive relative">
       {fixture.status !== "Upcoming" ? (
-        <div className="flex flex-col justify-between">
-          <div className="bg-tertiary absolute -rotate-90 -left-16 text-center text-white bottom-17.25 w-40">
+        <div className="flex flex-col justify-between min-h-40">
+          <div className="flex items-center justify-center bg-tertiary absolute -rotate-90 -left-12 md:-left-14 text-white bottom-13.25 md:bottom-16 w-36 h-9 md:w-40">
             <p>{fixture.status}</p>
           </div>
-          <div className="flex p-3 w-full ml-6 gap-3 relative md:w-1/4">
-            <p className="text-center mb-1 text-sm md:text-xl">
-              {fixture.date}
-            </p>
-            <p className="text-sm">{fixture.time}</p>
-            <p className="text-center text-sm">{fixture.hoa}</p>
+          <div className="flex p-3 ml-12 mt-3 gap-3 relative text-sm md:text-xl md:w-1/4">
+            <p className="text-center mb-1">{fixture.date}</p>
+            <p>{fixture.time}</p>
+            <p>{fixture.hoa}</p>
           </div>
-          <div className="overflow-hidden relative p-3 w-full ml-6 flex flex-col gap-3 items-start justify-center">
+          <div className="overflow-hidden relative px-3 ml-12 mb-5 flex flex-col gap-3 items-start justify-center">
             <div
               className={`flex items-center divide-x-2 ${
                 fixture.homeTeam === mainTeam
@@ -25,10 +23,10 @@ export const Fixture = ({ fixture }) => {
                   : "divide-gray-500"
               }`}
             >
-              <p className="text-2xl font-semibold min-w-8">
+              <p className="text-2xl md:text-3xl font-semibold min-w-8">
                 {fixture.homeScore}
               </p>
-              <p className="text-2xl text-wrap font-semibold pl-3">
+              <p className="text-2xl max-w-80 md:text-3xl truncate font-semibold pl-3 md:max-w-full">
                 {fixture.homeTeam}
               </p>
             </div>
@@ -39,19 +37,19 @@ export const Fixture = ({ fixture }) => {
                   : "divide-gray-500"
               }`}
             >
-              <p className="text-2xl font-semibold min-w-8">
+              <p className="text-2xl md:text-3xl font-semibold min-w-8">
                 {fixture.awayScore}
               </p>
-              <p className="text-2xl text-wrap font-semibold pl-3">
+              <p className="text-2xl max-w-80 md:text-3xl truncate font-semibold pl-3 md:max-w-full">
                 {fixture.awayTeam}
               </p>
             </div>
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-between">
+        <div className="flex items-end justify-start">
           {/* fixture date info */}
-          <div className="flex flex-col items-center border-r p-3 w-1/3 relative md:w-1/4">
+          <div className="flex flex-col items-center border-r py-6 w-1/3 relative md:w-1/4">
             <p className="text-center mb-1 text-lg md:text-xl">
               {fixture.date}
             </p>
@@ -60,7 +58,7 @@ export const Fixture = ({ fixture }) => {
           </div>
           {/* fixture match info */}
           <div
-            className={`flex justify-between items-center p-3 w-full relative overflow-hidden`}
+            className={`flex justify-between items-center px-3 py-6 relative overflow-hidden`}
           >
             <div className=" h-28 overflow-hidden relative flex flex-col items-start justify-center">
               <div className="flex">

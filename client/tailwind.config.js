@@ -41,8 +41,10 @@ module.exports = {
     },
     extend: {
       inset: {
+        13.25: "3.313rem",
         17.25: "4.313rem",
         18: "4.5rem",
+        22: "5.5rem",
       },
       height: {
         128: "32rem",
@@ -57,9 +59,13 @@ module.exports = {
         spacing: "width, padding",
         height: "height",
       },
+      transitionDuration: {
+        10000: "10000ms",
+      },
       maxWidth: {
         37.5: "9.375rem",
         40: "10rem",
+        80: "20rem",
         125: "31.25rem",
         "1/4": "25%",
       },

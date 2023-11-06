@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Home } from "./pages/Home";
 import { Header } from "./components/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -16,15 +17,37 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <ApolloProvider client={client}>
-        <Header />
+        <Header isScrolled={isScrolled} />
         <div className="mt-16 md:mt-40">
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/fixtures" element={<Fixtures />} />
+              <Route
+                path="/fixtures"
+                element={<Fixtures isScrolled={isScrolled} />}
+              />
               <Route path="/team" element={<Players />} />
               <Route path="/table" element={<TablePage />} />
               <Route path="/admin" element={<Admin />} />

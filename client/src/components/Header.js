@@ -1,28 +1,10 @@
 import { Navigation } from "./Navigation";
 import { MobileNavigation } from "./MobileNavigation";
 import { mainTeam } from "../helpers/constants";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+export const Header = ({ isScrolled }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <>

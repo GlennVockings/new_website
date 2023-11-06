@@ -86,11 +86,11 @@
   }
 
   .mid-sussex {
-    @apply hidden md:absolute top-3 right-8;
+    @apply hidden md:block absolute top-3 right-8;
   }
 
   .mid-sussex-container {
-    @apply flex items-center bg-tertiary rounded-full h-16 w-16 transition-width duration-700 absolute right-0;
+    @apply flex items-center bg-tertiary rounded-full h-16 w-16 transition-width duration-1000 delay-100 absolute right-0;
   }
 
   .mid-sussex .image {
@@ -98,7 +98,7 @@
   }
 
   .mid-sussex .text {
-    @apply text-white w-0 overflow-hidden px-0 whitespace-nowrap transition-spacing duration-700 text-sm;
+    @apply text-white w-0 overflow-hidden px-0 whitespace-nowrap transition-spacing duration-1000 text-sm;
   }
 
   .mid-sussex:hover .text {
