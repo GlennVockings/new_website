@@ -40,7 +40,7 @@ function App() {
     <>
       <ApolloProvider client={client}>
         <Header isScrolled={isScrolled} />
-        <div className="mt-16 md:mt-40">
+        <div className="mt-20 md:mt-40">
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />

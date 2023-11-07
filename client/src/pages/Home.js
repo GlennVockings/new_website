@@ -20,7 +20,7 @@ export const Home = () => {
 
         {/* News */}
         <Wrapper background="">
-          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-28 before:h-5 before:bg-primary/20">
+          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-28 before:h-5 before:bg-primary/20 before:rounded-md">
             News
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
@@ -32,7 +32,7 @@ export const Home = () => {
                   alt="news"
                 />
               </div>
-              <div className="py-4 px-2 bg-white">
+              <div className="py-6 px-2 bg-white">
                 <p className="text-xl font-semibold">News Headline 1</p>
                 <p>News subtitle that describes something</p>
               </div>
@@ -45,7 +45,7 @@ export const Home = () => {
                   alt="news"
                 />
               </div>
-              <div className="py-4 px-2 bg-white">
+              <div className="py-6 px-2 bg-white">
                 <p className="text-xl font-semibold">News Headline 2</p>
                 <p>News subtitle that describes something</p>
               </div>
@@ -58,7 +58,7 @@ export const Home = () => {
                   alt="news"
                 />
               </div>
-              <div className="py-4 px-2 bg-white">
+              <div className="py-6 px-2 bg-white">
                 <p className="text-xl font-semibold">News Headline 3</p>
                 <p>News subtitle that describes something</p>
               </div>
@@ -71,7 +71,7 @@ export const Home = () => {
                   alt="news"
                 />
               </div>
-              <div className="py-4 px-2 bg-white">
+              <div className="py-6 px-2 bg-white">
                 <p className="text-xl font-semibold">News Headline 3</p>
                 <p>News subtitle that describes something</p>
               </div>
@@ -81,7 +81,7 @@ export const Home = () => {
 
         {/* News */}
         <Wrapper>
-          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-28 before:h-5 before:bg-primary/20">
+          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-28 before:h-5 before:bg-primary/20 before:rounded-md">
             News
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
@@ -93,7 +93,7 @@ export const Home = () => {
                   alt="news"
                 />
               </div>
-              <div className="p-2">
+              <div className="py-6 px-2 bg-white">
                 <p className="text-xl font-semibold">News Headline 1</p>
                 <p>News subtitle that describes something</p>
               </div>
@@ -106,7 +106,7 @@ export const Home = () => {
                   alt="news"
                 />
               </div>
-              <div className="p-2">
+              <div className="py-6 px-2 bg-white">
                 <p className="text-xl font-semibold">News Headline 2</p>
                 <p>News subtitle that describes something</p>
               </div>
@@ -119,7 +119,7 @@ export const Home = () => {
                   alt="news"
                 />
               </div>
-              <div className="p-2">
+              <div className="py-6 px-2 bg-white">
                 <p className="text-xl font-semibold">News Headline 3</p>
                 <p>News subtitle that describes something</p>
               </div>
@@ -132,7 +132,7 @@ export const Home = () => {
                   alt="news"
                 />
               </div>
-              <div className="p-2">
+              <div className="py-6 px-2 bg-white">
                 <p className="text-xl font-semibold">News Headline 3</p>
                 <p>News subtitle that describes something</p>
               </div>
