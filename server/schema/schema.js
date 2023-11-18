@@ -12,6 +12,7 @@ const {
   GraphQLList,
   GraphQLNonNull,
   GraphQLEnumType,
+  GraphQLUnionType,
 } = require("graphql");
 
 // Week Type
@@ -22,6 +23,26 @@ const WeekType = new GraphQLObjectType({
     week: { type: GraphQLInt },
     wc: { type: GraphQLString },
     status: { type: GraphQLString },
+  }),
+});
+
+// Player Type
+const PlayerType = new GraphQLObjectType({
+  name: "Player",
+  fields: () => ({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    number: { type: GraphQLInt },
+    position: { type: GraphQLString },
+    appearances: { type: GraphQLInt },
+    goals: { type: GraphQLInt },
+    penalties: { type: GraphQLInt },
+    assists: { type: GraphQLInt },
+    yellowCards: { type: GraphQLInt },
+    redCards: { type: GraphQLInt },
+    started: { type: GraphQLInt },
+    mom: { type: GraphQLInt },
+    cleanSheets: { type: GraphQLInt },
   }),
 });
 
@@ -48,24 +69,25 @@ const FixtureType = new GraphQLObjectType({
   }),
 });
 
-// Player Type
-const PlayerType = new GraphQLObjectType({
-  name: "Player",
+// Error Type
+const FixtureNotFoundError = new GraphQLObjectType({
+  name: "FixtureNotFoundError",
   fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    number: { type: GraphQLInt },
-    position: { type: GraphQLString },
-    appearances: { type: GraphQLInt },
-    goals: { type: GraphQLInt },
-    penalties: { type: GraphQLInt },
-    assists: { type: GraphQLInt },
-    yellowCards: { type: GraphQLInt },
-    redCards: { type: GraphQLInt },
-    started: { type: GraphQLInt },
-    mom: { type: GraphQLInt },
-    cleanSheets: { type: GraphQLInt },
+    message: { type: GraphQLString },
   }),
+});
+
+const FixtureResult = new GraphQLUnionType({
+  name: "FixtureResult",
+  types: [FixtureType, FixtureNotFoundError],
+  resolveType({ __typename }) {
+    if (__typename === "Fixture") {
+      return FixtureType;
+    }
+    if (__typename === "FixtureNotFoundError") {
+      return FixtureNotFoundError;
+    }
+  },
 });
 
 const RootQuery = new GraphQLObjectType({
@@ -161,7 +183,7 @@ const RootQuery = new GraphQLObjectType({
       },
     },
     latestFixture: {
-      type: FixtureType,
+      type: FixtureResult,
       args: {
         teamName: { type: GraphQLString },
       },
@@ -183,7 +205,17 @@ const RootQuery = new GraphQLObjectType({
 
         futureObjects.sort((a, b) => a.dateObject - b.dateObject);
 
-        return futureObjects[0];
+        if (futureObjects.length === 0) {
+          return {
+            __typename: "FixtureNotFoundError",
+            message: "No future fixtures found for the specified team.",
+          };
+        }
+
+        return {
+          __typename: "Fixture",
+          fixture: futureObjects[0],
+        };
       },
     },
     week: {

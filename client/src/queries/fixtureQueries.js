@@ -43,15 +43,21 @@ export const GET_FIXTURE = gql`
 export const GET_LATEST_FIXTURE = gql`
   query getLatestFixture($teamName: String) {
     latestFixture(teamName: $teamName) {
-      id
-      homeTeam
-      homeScore
-      awayTeam
-      awayScore
-      time
-      date
-      venue
-      hoa
+      __typename
+      ... on Fixture {
+        id
+        homeTeam
+        homeScore
+        awayTeam
+        awayScore
+        time
+        date
+        venue
+        hoa
+      }
+      ... on FixtureNotFoundError {
+        message
+      }
     }
   }
 `;

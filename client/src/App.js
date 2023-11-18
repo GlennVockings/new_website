@@ -6,14 +6,32 @@ import { Players } from "./pages/Players";
 import { Admin } from "./pages/Admin";
 import { TablePage } from "./pages/TablePage";
 import { Fixtures } from "./pages/Fixtures";
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  ApolloLink,
+  createHttpLink,
+} from "@apollo/client";
 import { EditFixture } from "./components/admin/EditFixture";
 import { EditWeek } from "./components/admin/EditWeek";
 import { Footer } from "./components/Footer";
+import { IntrospectionFragmentMatcher } from "@apollo/client/core";
+import introspectionQueryResultData from "./fragmentTypes.json";
+
+const httpLink = createHttpLink({
+  uri: "https://oxted-api.onrender.com/graphql",
+});
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData,
+});
+
+const link = ApolloLink.from([httpLink]);
 
 const client = new ApolloClient({
-  uri: "https://oxted-api.onrender.com/graphql",
-  cache: new InMemoryCache(),
+  link,
+  cache: new InMemoryCache({ fragmentMatcher }),
 });
 
 function App() {
