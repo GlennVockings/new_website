@@ -44,7 +44,7 @@ export const EditWeek = () => {
     <>
       <div className="pb-3 flex justify-between">
         <h2 className="text-3xl font-bold underline">Edit Week</h2>
-        <Link to="/" className="btn btn-secondary">
+        <Link to="/admin" className="btn btn-secondary">
           Back
         </Link>
       </div>

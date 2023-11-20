@@ -36,7 +36,7 @@ export const AdminWeeks = ({ handleOpen }) => {
               className="btn btn-primary mx-2 my-4 w-40 shadow-md shadow-primary"
               onClick={handleOpen}
             >
-              Add player <GoArrowRight />
+              Add week <GoArrowRight />
             </button>
           </div>
         </li>

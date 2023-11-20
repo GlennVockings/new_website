@@ -4,6 +4,7 @@ import { mainTeam } from "../helpers/constants";
 import { Loading } from "./Loading";
 import { GiSoccerField } from "react-icons/gi";
 import { IconContext } from "react-icons";
+import teamPlaceholder from "../images/team-placeholder.svg";
 
 export const SlimFixture = () => {
   const { loading, data } = useQuery(GET_LATEST_FIXTURE, {
@@ -15,7 +16,25 @@ export const SlimFixture = () => {
   if (loading) return <Loading />;
 
   return data.latestFixture.message ? (
-    <div className="lg:container p-2 min-h-28 font-cursive"></div>
+    <div className="lg:container p-2 min-h-28 font-cursive">
+      <p className="text-xs">Next match</p>
+      <div className="flex items-center justify-start">
+        <div className="flex items-center justify-center border-r p-1 md:p-3 w-20 md:w-32">
+          <img
+            className="bg-cover w-20"
+            src={teamPlaceholder}
+            alt="placeholder"
+          />
+        </div>
+        <div
+          className={`flex justify-between items-center px-3 w-auto relative overflow-hidden`}
+        >
+          <div className="h-28 overflow-hidden relative flex flex-col items-start justify-center gap-1">
+            <p>No fixtures planned</p>
+          </div>
+        </div>
+      </div>
+    </div>
   ) : (
     <div className="lg:container p-2 min-h-28 font-cursive">
       <p className="text-xs">Next match</p>
