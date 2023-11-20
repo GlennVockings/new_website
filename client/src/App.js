@@ -16,22 +16,18 @@ import {
 import { EditFixture } from "./components/admin/EditFixture";
 import { EditWeek } from "./components/admin/EditWeek";
 import { Footer } from "./components/Footer";
-import { IntrospectionFragmentMatcher } from "@apollo/client/core";
-import introspectionQueryResultData from "./fragmentTypes.json";
+import possibleTypes from "./possibleTypes.json";
 
 const httpLink = createHttpLink({
   uri: "https://oxted-api.onrender.com/graphql",
-});
-
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData,
+  //uri: "http://localhost:5000/graphql",
 });
 
 const link = ApolloLink.from([httpLink]);
 
 const client = new ApolloClient({
   link,
-  cache: new InMemoryCache({ fragmentMatcher }),
+  cache: new InMemoryCache({ possibleTypes }),
 });
 
 function App() {
