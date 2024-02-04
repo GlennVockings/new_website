@@ -10,7 +10,7 @@ export const Players = () => {
   return (
     <>
       {!loading && (
-        <div className="container mx-auto md:overflow-x-scroll">
+        <div className="container mx-auto overflow-auto">
           <table className="player-table">
             <thead>
               <tr>

@@ -170,7 +170,7 @@
   }
 
   .player-table th {
-    @apply py-2 px-4 text-lg leading-5;
+    @apply text-base leading-5;
   }
 
   .player-table th:not(:first-child) {
@@ -219,6 +219,12 @@
 
   .player-table tbody td {
     @apply text-base;
+  }
+
+  @media (min-width: 768px) {
+    .player-table th {
+      @apply py-2 px-4 text-lg leading-5;
+    }
   }
 
   /* Homepage league table */
