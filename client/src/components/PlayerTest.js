@@ -2,11 +2,20 @@ import placeholderFull from "../images/player-placeholder-full.png";
 
 export const PlayerTest = ({ player }) => {
   return (
-    <tr className="border-b divide-x-2">
-      <td>
-        <p>{player.name}</p>
-        <p>{player.position}</p>
-        <p>{player.number}</p>
+    <tr className="">
+      <td className="info">
+        <div className="icn-container">
+          <img
+            className="player-icn"
+            src={placeholderFull}
+            alt="player placeholder"
+          />
+        </div>
+        <div className="text-container">
+          <p className="info-name">{player.name}</p>
+          <p className="info-position">{player.position}</p>
+          <p className="info-number">{`#${player.number}`}</p>
+        </div>
       </td>
       <td>{player.appearances}</td>
       <td>{player.goals}</td>

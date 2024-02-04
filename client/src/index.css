@@ -109,46 +109,6 @@
     @apply w-52;
   }
 
-  .player-list {
-    @apply flex flex-wrap justify-center items-end space-x-4 mt-20;
-  }
-
-  .player-card {
-    @apply w-72 cursor-pointer mb-28 transition-all duration-300 delay-300;
-  }
-
-  .player-card .header {
-    @apply h-40 flex justify-start relative bg-primary rounded-t-lg overflow-hidden transition-colors duration-500;
-  }
-
-  .player-card .number {
-    @apply font-cursive text-white absolute top-1 left-1 z-30;
-  }
-
-  .player-card .logo {
-    @apply absolute opacity-0 -left-14 transition-opacity duration-500;
-  }
-
-  .player-card .name {
-    @apply absolute top-10 left-2 text-left text-white w-3/5 text-4xl font-bold z-30 font-cursive transition-opacity duration-200;
-  }
-
-  .player-card .position-container {
-    @apply absolute -bottom-2 w-full h-8 bg-secondary text-white px-6 py-1 rounded-b-lg text-center z-40 capitalize overflow-hidden [transition:height_.3s_ease,bottom_.3s_ease_.3s];
-  }
-
-  .player-card .position {
-    @apply text-base transition-all duration-300;
-  }
-
-  .player-card .placeholder {
-    @apply absolute bottom-0 right-0 h-64 w-auto mx-auto z-10;
-  }
-
-  .player-card:hover .logo {
-    @apply opacity-20;
-  }
-
   .stats {
     @apply max-h-0 transition-max-height duration-500;
   }
@@ -209,26 +169,56 @@
     @apply table-auto mx-auto;
   }
 
-  .player-table .header {
-    @apply border-b-2 divide-x-2;
-  }
-
   .player-table th {
-    @apply text-xl;
+    @apply py-2 px-4 text-lg leading-5;
+  }
+
+  .player-table th:not(:first-child) {
+    @apply w-28;
   }
 
   .player-table td {
-    @apply px-2 text-center text-lg py-3;
+    @apply text-center text-lg;
   }
 
-  .player-table th,
-  .player-table td {
-    @apply px-2 text-center;
+  .player-table tbody tr {
+    @apply border-b;
   }
 
-  .player-table th:first-child,
-  .player-table td:first-child {
-    @apply text-left pr-10;
+  .player-table tbody tr:hover {
+    @apply bg-primary text-white;
+  }
+
+  .player-table .info {
+    @apply flex items-center py-1;
+  }
+
+  .player-table .text-container {
+    @apply flex justify-end items-end relative overflow-hidden px-3 py-2 flex-col flex-1 gap-1;
+  }
+
+  .player-table .icn-container {
+    @apply relative rounded-full w-20 h-20 overflow-hidden bg-primary/20;
+  }
+
+  .player-table .player-icn {
+    @apply absolute -top-1 object-contain;
+  }
+
+  .player-table .info-name {
+    @apply text-lg whitespace-nowrap leading-none;
+  }
+
+  .player-table .info-position {
+    @apply leading-none;
+  }
+
+  .player-table .info-number {
+    @apply leading-none;
+  }
+
+  .player-table tbody td {
+    @apply text-base;
   }
 
   /* Homepage league table */

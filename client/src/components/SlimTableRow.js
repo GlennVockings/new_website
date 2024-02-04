@@ -5,8 +5,8 @@ export const SlimTableRow = ({ position, entry, cssClass }) => {
       <td className="name">{entry.name}</td>
       <td>{entry.played}</td>
       <td className="lg:hidden">{entry.wins}</td>
-      <td className="lg:hidden">{entry.draws}</td>
-      <td className="lg:hidden">{entry.loses}</td>
+      <td className="hidden sm:table-cell lg:hidden">{entry.draws}</td>
+      <td className="hidden sm:table-cell lg:hidden">{entry.loses}</td>
       <td>{entry.points}</td>
     </tr>
   );

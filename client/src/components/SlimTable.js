@@ -30,8 +30,8 @@ export const SlimTable = () => {
             </th>
             <th>P</th>
             <th className="lg:hidden">W</th>
-            <th className="lg:hidden">D</th>
-            <th className="lg:hidden">L</th>
+            <th className="hidden sm:table-cell lg:hidden">D</th>
+            <th className="hidden sm:table-cell lg:hidden">L</th>
             <th>Pts</th>
           </tr>
         </thead>

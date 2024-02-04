@@ -26,6 +26,9 @@ export const PlayerModal = ({ handleClose, show }) => {
         data: { palyers: [...players, addPlayer] },
       });
     },
+    onCompleted() {
+      handleClose();
+    },
   });
 
   const onSubmit = (e) => {
@@ -34,17 +37,17 @@ export const PlayerModal = ({ handleClose, show }) => {
     addPlayer({
       variables: {
         name: nameRef.current.value,
-        number: numberRef.current.value,
+        number: Number(numberRef.current.value),
         position: positionRef.current.value,
-        appearances: appearancesRef.current.value,
-        goals: goalsRef.current.value,
-        penalties: penaltiesRef.current.value,
-        assists: assistsRef.current.value,
-        yellowCards: yellowRef.current.value,
-        redCards: redRef.current.value,
-        started: startedRef.current.value,
-        mom: momRef.current.value,
-        cleanSheets: cleanSheetsRef.current.value,
+        appearances: Number(appearancesRef.current.value),
+        goals: Number(goalsRef.current.value),
+        penalties: Number(penaltiesRef.current.value),
+        assists: Number(assistsRef.current.value),
+        yellowCards: Number(yellowRef.current.value),
+        redCards: Number(redRef.current.value),
+        started: Number(startedRef.current.value),
+        mom: Number(momRef.current.value),
+        cleanSheets: Number(cleanSheetsRef.current.value),
       },
     });
   };
@@ -68,7 +71,7 @@ export const PlayerModal = ({ handleClose, show }) => {
             <div className="pb-2">
               <input
                 ref={nameRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Name"
               />
@@ -76,7 +79,7 @@ export const PlayerModal = ({ handleClose, show }) => {
             <div className="pb-2">
               <input
                 ref={numberRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Number"
               />
@@ -84,7 +87,7 @@ export const PlayerModal = ({ handleClose, show }) => {
             <div className="pb-2">
               <input
                 ref={positionRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Position"
               />
@@ -98,7 +101,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Appearances</label>
               <input
                 ref={appearancesRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Appearances"
               />
@@ -107,7 +110,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Started</label>
               <input
                 ref={startedRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Started"
               />
@@ -116,7 +119,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Clean sheets</label>
               <input
                 ref={cleanSheetsRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Clean sheets"
               />
@@ -127,7 +130,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Goals</label>
               <input
                 ref={goalsRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Goals"
               />
@@ -136,7 +139,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Penalties</label>
               <input
                 ref={penaltiesRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Penalties"
               />
@@ -145,7 +148,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Assists</label>
               <input
                 ref={assistsRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Assists"
               />
@@ -156,7 +159,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Yellow Card</label>
               <input
                 ref={yellowRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Yellow Card"
               />
@@ -165,7 +168,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Red Card</label>
               <input
                 ref={redRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Red Card"
               />
@@ -174,7 +177,7 @@ export const PlayerModal = ({ handleClose, show }) => {
               <label className="pb-1">Man of Matches</label>
               <input
                 ref={momRef}
-                className="border rounded-md"
+                className="border rounded-md px-2"
                 type="text"
                 placeholder="Man of Matches"
               />

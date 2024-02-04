@@ -13,7 +13,7 @@ export const Players = () => {
         <div className="container mx-auto md:overflow-x-scroll">
           <table className="player-table">
             <thead>
-              <tr className="header">
+              <tr>
                 <th>Players</th>
                 <th>Appearances</th>
                 <th>Goals</th>

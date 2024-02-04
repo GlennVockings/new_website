@@ -11,7 +11,7 @@ export const Home = () => {
       <div className="">
         {/* Team Update */}
         <Wrapper>
-          <div className="flex flex-col items-center justify-around py-5 shadow-lg rounded-lg xl:flex-row">
+          <div className="flex flex-col items-center justify-around py-5 shadow-lg rounded-lg lg:flex-row">
             <SlimFixture />
             <SlimResults />
             <SlimTable />
@@ -20,7 +20,7 @@ export const Home = () => {
 
         {/* News */}
         <Wrapper background="">
-          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-28 before:h-5 before:bg-primary/20 before:rounded-md">
+          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-32 before:h-6 before:bg-primary/20 before:rounded-md">
             News
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">

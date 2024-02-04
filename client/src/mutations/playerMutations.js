@@ -2,18 +2,18 @@ import { gql } from "@apollo/client";
 
 export const ADD_PLAYER = gql`
   mutation addPlayer(
-    $name: String
-    $number: int
-    $position: String
-    $appearances: int
-    $started: int
-    $cleanSheets: int
-    $goals: int
-    $penalties: int
-    $assists: int
-    $yellowCards: int
-    $redCards: int
-    $mom: int
+    $name: String!
+    $number: Int!
+    $position: String!
+    $appearances: Int!
+    $started: Int!
+    $cleanSheets: Int!
+    $goals: Int!
+    $penalties: Int!
+    $assists: Int!
+    $yellowCards: Int!
+    $redCards: Int!
+    $mom: Int!
   ) {
     addPlayer(
       name: $name
@@ -48,18 +48,18 @@ export const ADD_PLAYER = gql`
 export const UPDATE_PLAYER = gql`
   mutation addPlayer(
     $id: ID!
-    $name: String
-    $number: int
-    $position: String
-    $appearances: int
-    $started: int
-    $cleanSheets: int
-    $goals: int
-    $penalties: int
-    $assists: int
-    $yellowCards: int
-    $redCards: int
-    $mom: int
+    $name: String!
+    $number: Int!
+    $position: String!
+    $appearances: Int!
+    $started: Int!
+    $cleanSheets: Int!
+    $goals: Int!
+    $penalties: Int!
+    $assists: Int!
+    $yellowCards: Int!
+    $redCards: Int!
+    $mom: Int!
   ) {
     addPlayer(
       id: $id
