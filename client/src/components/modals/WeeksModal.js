@@ -7,7 +7,7 @@ export const WeeksModal = ({ handleClose, show }) => {
     >
       <div className="z-20 rounded opacity-100 absolute p-8 bg-white -translate-x-2/4 left-1/2 top-40">
         <div className="flex justify-between">
-          <p className="text-5xl">Add fixture</p>
+          <p className="text-5xl">Add Week</p>
           <button onClick={handleClose}>X</button>
         </div>
         <form></form>

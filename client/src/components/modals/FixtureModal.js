@@ -70,27 +70,20 @@ export const FixtureModal = ({ handleClose, show }) => {
     >
       <div className="z-20 rounded opacity-100 absolute p-8 bg-white -translate-x-2/4 left-1/2 top-40">
         <div className="flex justify-between">
-          <p className="text-5xl">Add fixture</p>
+          <p className="text-lg">Add fixture</p>
           <button onClick={handleClose}>X</button>
         </div>
         <form onSubmit={onSubmit}>
           <div className="flex">
             <div className="flex flex-col p-6 items-center">
-              <p className="text-2xl underline font-bold">Home</p>
               <select
                 ref={homeTeamRef}
-                className="py-1 mb-2 text-xl mx-3 border rounded-md border-black"
+                className="py-1 mb-2 mx-3 border rounded-md border-black"
               >
-                <option className="text-2xl" value="">
-                  Please select one
-                </option>
+                <option value="">Home team</option>
                 {teams.map((option, index) => {
                   return (
-                    <option
-                      key={index}
-                      className="text-2xl"
-                      value={option.value}
-                    >
+                    <option key={index} value={option.value}>
                       {option.label}
                     </option>
                   );
@@ -100,18 +93,15 @@ export const FixtureModal = ({ handleClose, show }) => {
                 ref={homeScoreRef}
                 type="number"
                 placeholder="Home Score"
-                className="w-full text-xl mx-3 border rounded-md p-1 border-black"
+                className="w-full mx-3 border rounded-md p-1 border-black"
               />
             </div>
             <div className="flex flex-col p-6 items-center">
-              <p className="text-2xl underline font-bold">Away</p>
               <select
                 ref={awayTeamRef}
-                className="py-1 mb-2 text-xl mx-3 border rounded-md border-black"
+                className="py-1 mb-2 mx-3 border rounded-md border-black"
               >
-                <option className="text-2xl" value="">
-                  Please select one
-                </option>
+                <option value="">Away team</option>
                 {teams.map((option, index) => {
                   return (
                     <option
@@ -128,37 +118,37 @@ export const FixtureModal = ({ handleClose, show }) => {
                 ref={awayScoreRef}
                 type="number"
                 placeholder="Away Score"
-                className="w-full text-xl mx-3 border rounded-md p-1 border-black"
+                className="w-full mx-3 border rounded-md p-1 border-black"
               />
             </div>
           </div>
           <div className="flex flex-col items-center pt-3">
-            <p className="text-2xl underline font-bold pb-2">Info</p>
+            <p className="underline font-bold pb-2">Info</p>
             <div className="flex">
               <input
                 type="text"
                 placeholder="Venue"
-                className="text-xl border rounded-md p-1 border-black"
+                className="border rounded-md p-1 border-black"
                 ref={venueRef}
               />
               <input
                 type="text"
                 placeholder="Date"
-                className="text-xl mx-3 border rounded-md p-1 border-black"
+                className="mx-3 border rounded-md p-1 border-black"
                 ref={dateRef}
               />
               <input
                 type="text"
                 placeholder="Time"
-                className="text-xl border rounded-md p-1 border-black"
+                className="border rounded-md p-1 border-black"
                 ref={timeRef}
               />
             </div>
           </div>
           <div className="flex py-4">
             <div className="grow flex flex-col items-center">
-              <p className="text-2xl underline font-bold pb-2">Week</p>
-              <select className="text-xl" ref={weekRef}>
+              <p className="underline font-bold pb-2">Week</p>
+              <select ref={weekRef}>
                 <option value="">Please select one</option>
                 {data.weeks.map((week, index) => {
                   return (
