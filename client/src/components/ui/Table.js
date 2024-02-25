@@ -22,7 +22,7 @@ export const Table = ({ data, columns }) => {
   });
 
   return (
-    <div>
+    <div className="border-0">
       <table className="mx-auto border-separate border-spacing-1">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -31,7 +31,7 @@ export const Table = ({ data, columns }) => {
                 return (
                   <th
                     key={header.id}
-                    className="px-4 py-2 bg-tertiary text-white"
+                    className="px-4 py-2 bg-tertiary text-white sticky top-0"
                   >
                     {header.isPlaceholder ? null : (
                       <div
@@ -61,7 +61,7 @@ export const Table = ({ data, columns }) => {
         <tbody>
           {table
             .getRowModel()
-            .rows.slice(0, 10)
+            .rows.slice(0, 30)
             .map((row) => {
               return (
                 <tr key={row.id}>

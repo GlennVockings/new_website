@@ -6,6 +6,7 @@ import { FixtureModal } from "../components/modals/FixtureModal";
 import { PlayerModal } from "../components/modals/PlayerModal";
 import { WeeksModal } from "../components/modals/WeeksModal";
 import { Wrapper } from "../components/wrapper/Wrapper";
+import { AdminButtons } from "../components/admin/AdminButtons";
 
 export const Admin = () => {
   const [modalOpen, setModalOpen] = useState("");
@@ -21,10 +22,15 @@ export const Admin = () => {
           Admin Page
         </h2>
       </div>
+      <AdminButtons
+        fixture={() => handleModalChange("fixture")}
+        week={() => handleModalChange("week")}
+        player={() => handleModalChange("player")}
+      />
       <Wrapper>
-        <AdminFixtures handleOpen={() => handleModalChange("fixture")} />
-        <AdminPlayers handleOpen={() => handleModalChange("player")} />
-        <AdminWeeks handleOpen={() => handleModalChange("week")} />
+        <AdminFixtures />
+        <AdminPlayers />
+        <AdminWeeks />
       </Wrapper>
       <FixtureModal
         handleClose={() => handleModalChange("fixture")}
