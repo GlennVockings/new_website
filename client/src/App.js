@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Home } from "./pages/Home";
 import { Header } from "./components/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Players } from "./pages/Players";
 import { Admin } from "./pages/Admin";
 import { TablePage } from "./pages/TablePage";
 import { Fixtures } from "./pages/Fixtures";
@@ -17,6 +16,7 @@ import { EditFixture } from "./components/admin/EditFixture";
 import { EditWeek } from "./components/admin/EditWeek";
 import { Footer } from "./components/Footer";
 import possibleTypes from "./possibleTypes.json";
+import { PlayersPage } from "./pages/PlayersPage";
 
 const httpLink = createHttpLink({
   uri: "https://oxted-api.onrender.com/graphql",
@@ -62,7 +62,7 @@ function App() {
                 path="/fixtures"
                 element={<Fixtures isScrolled={isScrolled} />}
               />
-              <Route path="/team" element={<Players />} />
+              <Route path="/team" element={<PlayersPage />} />
               <Route path="/table" element={<TablePage />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/fixture/:id" element={<EditFixture />} />
