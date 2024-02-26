@@ -29,7 +29,11 @@ export const Headline = () => {
           {/* News falt layout */}
           {newsList.map((news, index) => {
             return (
-              <div className="headline-flat" onClick={() => setMainNews(index)}>
+              <div
+                key={news.title}
+                className="headline-flat"
+                onClick={() => setMainNews(index)}
+              >
                 <div className="image">
                   <img src={news.src} alt="News" />
                 </div>

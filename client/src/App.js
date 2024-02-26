@@ -25,9 +25,33 @@ const httpLink = createHttpLink({
 
 const link = ApolloLink.from([httpLink]);
 
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        fixtures: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+      },
+    },
+    Fixture: {
+      keyFields: ["id", "awayTeam", "homeTeam"],
+    },
+    Player: {
+      keyFields: ["id", "name", "number", "goals", "appearances"],
+    },
+    Week: {
+      keyFields: ["week"],
+    },
+  },
+  possibleTypes,
+});
+
 const client = new ApolloClient({
   link,
-  cache: new InMemoryCache({ possibleTypes }),
+  cache,
 });
 
 function App() {

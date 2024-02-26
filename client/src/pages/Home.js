@@ -28,7 +28,7 @@ export const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
             {mockNews.map((news, index) => {
               if (index > 3) return "";
-              return <NewsCard {...news} />;
+              return <NewsCard key={news.title} {...news} />;
             })}
           </div>
         </Wrapper>
@@ -46,7 +46,7 @@ export const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
             {mockNews.map((news, index) => {
               if (index < 4) return "";
-              return <NewsCard {...news} />;
+              return <NewsCard key={news.title} {...news} />;
             })}
           </div>
         </Wrapper>

@@ -11,7 +11,6 @@ const {
   GraphQLSchema,
   GraphQLList,
   GraphQLNonNull,
-  GraphQLEnumType,
   GraphQLUnionType,
 } = require("graphql");
 
@@ -266,18 +265,37 @@ const RootQuery = new GraphQLObjectType({
         return fixturesForWeekAndPrevious;
       },
     },
-    topScorer: {
-      type: PlayerType,
+    stats: {
+      type: new GraphQLList(PlayerType),
       async resolve(parent, args) {
         const players = await Player.find();
 
+        // Find the player with the most goals
         const topScorer = players.reduce((prevTopScorer, currentPlayer) => {
           return currentPlayer.goals > prevTopScorer.goals
             ? currentPlayer
             : prevTopScorer;
         });
 
-        return topScorer;
+        // Find the player with the most clean sheets
+        const topCleanSheet = players.reduce(
+          (prevTopCleanSheet, currentPlayer) => {
+            return currentPlayer.cleanSheets > prevTopCleanSheet.cleanSheets
+              ? currentPlayer
+              : prevTopCleanSheet;
+          }
+        );
+
+        // Find the player with the most appearances
+        const mostAppearances = players.reduce(
+          (prevMostAppearances, currentPlayer) => {
+            return currentPlayer.appearances > prevMostAppearances.appearances
+              ? currentPlayer
+              : prevMostAppearances;
+          }
+        );
+
+        return [topScorer, topCleanSheet, mostAppearances];
       },
     },
   },

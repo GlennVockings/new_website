@@ -20,14 +20,16 @@ export const GET_PLAYERS = gql`
   }
 `;
 
-export const TOP_SCORER = gql`
-  query topScorer {
-    topScorer {
+export const STATS = gql`
+  query stats {
+    stats {
+      id
       name
       number
       position
       appearances
       goals
+      cleanSheets
     }
   }
 `;
