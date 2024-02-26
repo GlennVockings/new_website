@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GET_LATEST_FIXTURE } from "../queries/fixtureQueries";
 import { mainTeam } from "../helpers/constants";
-import { Loading } from "./Loading";
+import { Loading } from "./ui/Loading";
 import { GiSoccerField } from "react-icons/gi";
 import { IconContext } from "react-icons";
 import teamPlaceholder from "../images/team-placeholder.svg";

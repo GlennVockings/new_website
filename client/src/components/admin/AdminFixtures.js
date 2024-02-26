@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { GET_FIXTURES } from "../../queries/fixtureQueries";
 import { GrAdd, GrSubtract } from "react-icons/gr";
 import { useState } from "react";
-import { Loading } from "../Loading";
+import { Loading } from "../ui/Loading";
 import { GiSoccerField } from "react-icons/gi";
 import { IconContext } from "react-icons";
 

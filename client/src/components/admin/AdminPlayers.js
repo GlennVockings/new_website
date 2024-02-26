@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { GET_PLAYERS } from "../../queries/playerQueries";
 import { GrAdd, GrSubtract } from "react-icons/gr";
 import { useState } from "react";
-import { Loading } from "../Loading";
+import { Loading } from "../ui/Loading";
 import { useNavigate } from "react-router-dom";
 
 export const AdminPlayers = () => {

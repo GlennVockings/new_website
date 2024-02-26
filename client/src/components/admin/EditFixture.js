@@ -4,7 +4,7 @@ import { mainTeam, teams } from "../../helpers/constants";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WEEKS } from "../../queries/weekQueries";
 import { BsSendFill } from "react-icons/bs";
-import { Loading } from "../Loading";
+import { Loading } from "../ui/Loading";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { GET_FIXTURE } from "../../queries/fixtureQueries";
 import { UPDATE_FIXTURE } from "../../mutations/fixtureMutations";

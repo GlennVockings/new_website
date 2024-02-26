@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GET_LATEST_RESULT } from "../queries/fixtureQueries";
 import { mainTeam } from "../helpers/constants";
-import { Loading } from "./Loading";
+import { Loading } from "./ui/Loading";
 import { BiDetail } from "react-icons/bi";
 
 export const SlimResults = () => {

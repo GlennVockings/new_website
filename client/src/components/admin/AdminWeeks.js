@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { GET_WEEKS } from "../../queries/weekQueries";
 import { GrAdd, GrSubtract } from "react-icons/gr";
 import { useMemo, useState } from "react";
-import { Loading } from "../Loading";
+import { Loading } from "../ui/Loading";
 import { Table } from "../ui/Table";
 
 export const AdminWeeks = () => {

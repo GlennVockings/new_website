@@ -3,7 +3,9 @@ import { SlimFixture } from "../components/SlimFixture";
 import { SlimResults } from "../components/SlimResults";
 import { Wrapper } from "../components/wrapper/Wrapper";
 import { Headline } from "../components/Headline";
-import { news } from "../helpers/constants";
+import { NewsCard } from "../components/ui/NewsCard";
+import { mockNews } from "../mockData/mockData";
+import { PlayrStats } from "../components/PlayerStats";
 
 export const Home = () => {
   return (
@@ -24,119 +26,28 @@ export const Home = () => {
             News
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
-            <div className="flex flex-col justify-between shadow">
-              <div className="relative h-72 md:h-64 w-full">
-                <img
-                  src={news[0].image}
-                  className="absolute h-full w-full object-cover"
-                  alt="news"
-                />
-              </div>
-              <div className="py-6 px-2 bg-white">
-                <p className="text-xl font-semibold">News Headline 1</p>
-                <p>News subtitle that describes something</p>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between shadow">
-              <div className="relative h-72 md:h-64 w-full">
-                <img
-                  src={news[1].image}
-                  className="absolute h-full w-full object-cover"
-                  alt="news"
-                />
-              </div>
-              <div className="py-6 px-2 bg-white">
-                <p className="text-xl font-semibold">News Headline 2</p>
-                <p>News subtitle that describes something</p>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between shadow">
-              <div className="relative h-72 md:h-64 w-full">
-                <img
-                  src={news[2].image}
-                  className="absolute h-full w-full object-cover"
-                  alt="news"
-                />
-              </div>
-              <div className="py-6 px-2 bg-white">
-                <p className="text-xl font-semibold">News Headline 3</p>
-                <p>News subtitle that describes something</p>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between shadow">
-              <div className="relative h-72 md:h-64 w-full">
-                <img
-                  src={news[3].image}
-                  className="absolute h-full w-full object-cover"
-                  alt="news"
-                />
-              </div>
-              <div className="py-6 px-2 bg-white">
-                <p className="text-xl font-semibold">News Headline 3</p>
-                <p>News subtitle that describes something</p>
-              </div>
-            </div>
+            {mockNews.map((news, index) => {
+              if (index > 3) return "";
+              return <NewsCard {...news} />;
+            })}
           </div>
         </Wrapper>
 
-        {/* News */}
+        {/* Top player stats */}
         <Wrapper>
-          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-28 before:h-5 before:bg-primary/20 before:rounded-md">
+          <PlayrStats />
+        </Wrapper>
+
+        {/* News */}
+        <Wrapper background="">
+          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-32 before:h-6 before:bg-primary/20 before:rounded-md">
             News
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
-            <div className="flex flex-col justify-between shadow rounded-lg">
-              <div className="relative h-72 md:h-64 w-full">
-                <img
-                  src={news[4].image}
-                  className="absolute h-full w-full object-cover rounded-t-md"
-                  alt="news"
-                />
-              </div>
-              <div className="py-6 px-2 bg-white">
-                <p className="text-xl font-semibold">News Headline 1</p>
-                <p>News subtitle that describes something</p>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between shadow">
-              <div className="relative h-72 md:h-64 w-full">
-                <img
-                  src={news[5].image}
-                  className="absolute h-full w-full object-cover"
-                  alt="news"
-                />
-              </div>
-              <div className="py-6 px-2 bg-white">
-                <p className="text-xl font-semibold">News Headline 2</p>
-                <p>News subtitle that describes something</p>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between shadow">
-              <div className="relative h-72 md:h-64 w-full">
-                <img
-                  src={news[6].image}
-                  className="absolute h-full w-full object-cover"
-                  alt="news"
-                />
-              </div>
-              <div className="py-6 px-2 bg-white">
-                <p className="text-xl font-semibold">News Headline 3</p>
-                <p>News subtitle that describes something</p>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between shadow">
-              <div className="relative h-72 md:h-64 w-full">
-                <img
-                  src={news[7].image}
-                  className="absolute h-full w-full object-cover"
-                  alt="news"
-                />
-              </div>
-              <div className="py-6 px-2 bg-white">
-                <p className="text-xl font-semibold">News Headline 3</p>
-                <p>News subtitle that describes something</p>
-              </div>
-            </div>
+            {mockNews.map((news, index) => {
+              if (index < 4) return "";
+              return <NewsCard {...news} />;
+            })}
           </div>
         </Wrapper>
 

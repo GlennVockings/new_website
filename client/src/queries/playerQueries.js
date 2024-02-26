@@ -19,3 +19,15 @@ export const GET_PLAYERS = gql`
     }
   }
 `;
+
+export const TOP_SCORER = gql`
+  query topScorer {
+    topScorer {
+      name
+      number
+      position
+      appearances
+      goals
+    }
+  }
+`;

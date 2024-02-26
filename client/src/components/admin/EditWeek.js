@@ -1,8 +1,8 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { Loading } from "../Loading";
+import { Loading } from "../ui/Loading";
 import { Dropdown } from "../Dropdown";
 import { useQuery, useMutation } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GET_WEEK } from "../../queries/weekQueries";
 import { status } from "../../helpers/constants";
 import { BsSendFill } from "react-icons/bs";

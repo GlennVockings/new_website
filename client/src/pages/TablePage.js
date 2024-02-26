@@ -1,5 +1,5 @@
 import { GET_WEEK_FIXTURES } from "../queries/fixtureQueries";
-import { Loading } from "../components/Loading";
+import { Loading } from "../components/ui/Loading";
 import { Table } from "../components/Table";
 import { GET_WEEKS } from "../queries/weekQueries";
 import { useQuery } from "@apollo/client";

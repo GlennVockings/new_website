@@ -2,7 +2,7 @@ import { mainTeam, teams } from "../../helpers/constants";
 import { useRef } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WEEKS } from "../../queries/weekQueries";
-import { Loading } from "../Loading";
+import { Loading } from "../ui/Loading";
 import { BsSendFill } from "react-icons/bs";
 import { ADD_FIXTURE } from "../../mutations/fixtureMutations";
 import { GET_FIXTURES } from "../../queries/fixtureQueries";

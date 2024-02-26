@@ -1,5 +1,5 @@
 import { GET_FIXTURES } from "../queries/fixtureQueries";
-import { Loading } from "../components/Loading";
+import { Loading } from "./ui/Loading";
 import { useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
 import { calculatesTableData } from "../helpers/helper-funcs";

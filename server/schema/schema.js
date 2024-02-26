@@ -259,12 +259,25 @@ const RootQuery = new GraphQLObjectType({
         week: { type: GraphQLID },
       },
       async resolve(parent, args) {
-        // You can use MongoDB's $lte (less than or equal) operator to filter fixtures
         const fixturesForWeekAndPrevious = await Fixture.find({
           weekId: { $lte: args.week },
         });
 
         return fixturesForWeekAndPrevious;
+      },
+    },
+    topScorer: {
+      type: PlayerType,
+      async resolve(parent, args) {
+        const players = await Player.find();
+
+        const topScorer = players.reduce((prevTopScorer, currentPlayer) => {
+          return currentPlayer.goals > prevTopScorer.goals
+            ? currentPlayer
+            : prevTopScorer;
+        });
+
+        return topScorer;
       },
     },
   },

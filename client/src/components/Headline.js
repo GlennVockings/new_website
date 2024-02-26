@@ -1,8 +1,8 @@
-import { news } from "../helpers/constants";
+import { mockNews } from "../mockData/mockData";
 import { useState } from "react";
 
 export const Headline = () => {
-  const [newsList, setNewsList] = useState(news);
+  const [newsList, setNewsList] = useState(mockNews);
   const [mainNews, setMainNews] = useState(0);
 
   return (
@@ -16,7 +16,7 @@ export const Headline = () => {
         {/* Main Headline */}
         <div className="headline">
           <div className="image">
-            <img src={newsList[mainNews].image} alt="News" />
+            <img src={newsList[mainNews].src} alt="News" />
           </div>
           <div className="content">
             <p>{newsList[mainNews].title}</p>
@@ -31,7 +31,7 @@ export const Headline = () => {
             return (
               <div className="headline-flat" onClick={() => setMainNews(index)}>
                 <div className="image">
-                  <img src={news.image} alt="News" />
+                  <img src={news.src} alt="News" />
                 </div>
                 <div className="content">
                   <p className="text-xl">{news.title}</p>
