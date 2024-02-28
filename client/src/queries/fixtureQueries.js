@@ -98,6 +98,7 @@ export const GET_TEAM_FIXTURES = gql`
 export const GET_WEEK_FIXTURES = gql`
   query getWeekFixtures($week: ID!) {
     table(week: $week) {
+      id
       homeTeam
       homeScore
       awayTeam

@@ -1,4 +1,4 @@
-import { mainTeam, table } from "./constants";
+import { mainTeam } from "./constants";
 
 const DATEOPTIONS = {
   dateStyle: "medium",

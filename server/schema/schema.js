@@ -128,6 +128,7 @@ const RootQuery = new GraphQLObjectType({
 
           return {
             ...fixture._doc,
+            id: fixture._id, // Include id field
             status: dateObject < timeNow ? "Completed" : "Upcoming",
           };
         });
