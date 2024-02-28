@@ -295,7 +295,16 @@ const RootQuery = new GraphQLObjectType({
           }
         );
 
-        return [topScorer, topCleanSheet, mostAppearances];
+        // Find the player with the most appearances
+        const mostAssists = players.reduce(
+          (prevMostAppearances, currentPlayer) => {
+            return currentPlayer.assists > prevMostAppearances.assists
+              ? currentPlayer
+              : prevMostAppearances;
+          }
+        );
+
+        return [topScorer, topCleanSheet, mostAppearances, mostAssists];
       },
     },
   },

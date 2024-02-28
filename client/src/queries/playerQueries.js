@@ -29,6 +29,12 @@ export const STATS = gql`
       position
       appearances
       goals
+      penalties
+      assists
+      yellowCards
+      redCards
+      started
+      mom
       cleanSheets
     }
   }

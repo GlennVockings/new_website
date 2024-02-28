@@ -74,3 +74,22 @@ export const status = [
     value: "completed",
   },
 ];
+
+export const stats = [
+  {
+    statName: "Top scorer",
+    stat: "goals",
+  },
+  {
+    statName: "Most appearances",
+    stat: "appearances",
+  },
+  {
+    statName: "Most clean sheets",
+    stat: "cleanSheets",
+  },
+  {
+    statName: "Most assists",
+    stat: "assists",
+  },
+];

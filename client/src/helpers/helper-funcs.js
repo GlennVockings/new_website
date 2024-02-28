@@ -273,3 +273,7 @@ export const isMobile = function isMobileDevice() {
     /Mobile|Android|iPhone|iPad|iPod|Windows Phone|BlackBerry|Opera Mini|IEMobile/i;
   return mobileRegex.test(userAgent);
 };
+
+export function splitTextWithCapital(text) {
+  return text.split(/(?=[A-Z])/).join(" ");
+}
