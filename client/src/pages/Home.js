@@ -13,7 +13,7 @@ export const Home = () => {
       <div className="">
         {/* Team Update */}
         <Wrapper>
-          <div className="flex flex-col items-center justify-around py-5 shadow-lg rounded-lg lg:flex-row">
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center shadow-lg rounded-lg">
             <SlimFixture />
             <SlimResults />
             <SlimTable />

@@ -37,7 +37,7 @@ export const Table = ({ data, columns }) => {
                       <div
                         {...{
                           className: header.column.getCanSort()
-                            ? "cursor-pointer select-none flex items-center gap-x-1"
+                            ? "cursor-pointer select-none flex justify-center items-center gap-x-1"
                             : "",
                           onClick: header.column.getToggleSortingHandler(),
                         }}

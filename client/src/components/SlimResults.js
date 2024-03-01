@@ -12,7 +12,7 @@ export const SlimResults = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="lg:container p-2 min-h-28 font-cursive">
+    <div className="p-2 font-cursive">
       <div className="flex">
         <p className="text-xs">Latest result -</p>
         <div className="flex pl-2 gap-1 text-xs">

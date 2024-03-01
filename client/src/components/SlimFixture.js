@@ -16,7 +16,7 @@ export const SlimFixture = () => {
   if (loading) return <Loading />;
 
   return data.latestFixture.message ? (
-    <div className="lg:container p-2 min-h-28 font-cursive">
+    <div className="p-2 font-cursive">
       <p className="text-xs">Next match</p>
       <div className="flex items-center justify-start">
         <div className="flex items-center justify-center border-r p-1 md:p-3 w-20 md:w-32">
@@ -36,7 +36,7 @@ export const SlimFixture = () => {
       </div>
     </div>
   ) : (
-    <div className="lg:container p-2 min-h-28 font-cursive">
+    <div className="p-2 font-cursive">
       <p className="text-xs">Next match</p>
       <div className="flex items-center justify-start md:justify-between">
         <div className="flex items-center border-r p-1 md:p-3 w-20 md:w-32">

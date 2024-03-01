@@ -259,7 +259,6 @@ export const calculatesTableData = (fixtures) => {
         updatedTable[i - 1].show = true;
         updatedTable[i].show = true;
         updatedTable[i + 1].show = true;
-        updatedTable[i + 2].show = true;
       }
     }
   }
