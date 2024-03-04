@@ -4,6 +4,7 @@ import { SlimResults } from "../components/SlimResults";
 import { Wrapper } from "../components/wrapper/Wrapper";
 import { Headline } from "../components/Headline";
 import { NewsCard } from "../components/ui/NewsCard";
+import { VideoCard } from "../components/ui/VideoCard";
 import { mockNews } from "../mockData/mockData";
 import { PlayrStats } from "../components/PlayerStats";
 
@@ -22,7 +23,7 @@ export const Home = () => {
 
         {/* News */}
         <Wrapper background="">
-          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-32 before:h-6 before:bg-primary/20 before:rounded-md">
+          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-6 before:content-[''] before:w-32 before:h-3 before:bg-primary/20 before:rounded-md">
             News
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
@@ -40,13 +41,13 @@ export const Home = () => {
 
         {/* News */}
         <Wrapper background="">
-          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-5 before:content-[''] before:w-32 before:h-6 before:bg-primary/20 before:rounded-md">
-            News
+          <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-6 before:content-[''] before:w-36 before:h-3 before:bg-primary/20 before:rounded-md">
+            Videos
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-3">
             {mockNews.map((news, index) => {
               if (index < 4) return "";
-              return <NewsCard key={news.title} {...news} />;
+              return <VideoCard key={news.title} {...news} />;
             })}
           </div>
         </Wrapper>

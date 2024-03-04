@@ -36,8 +36,8 @@ export const PlayerCard = ({
           {statName}
         </p>
         <div className="flex flex-col items-center justify-center">
-          <p className="text-xl capitalize">{splitTextWithCapital(stat)}</p>
-          <p className="text-2xl">{statSelector(stat)}</p>
+          <p className="text-lg capitalize">{splitTextWithCapital(stat)}</p>
+          <p className="text-4xl font-bold">{statSelector(stat)}</p>
         </div>
         <div className="flex flex-col items-start">
           <p className="text-lg uppercase">{firstName}</p>
