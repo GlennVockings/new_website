@@ -21,7 +21,7 @@ export const SlimTable = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="mx-auto">
+    <div className="w-full mx-auto">
       <table className="league-table-slim">
         <thead>
           <tr>

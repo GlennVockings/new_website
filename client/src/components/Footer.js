@@ -16,13 +16,25 @@ export const Footer = () => {
           </a>
         </p>
         <div className="flex gap-2 text-3xl">
-          <a href="https://www.instagram.com/oxtedfc/?hl=en">
+          <a
+            href="https://www.instagram.com/oxtedfc/?hl=en"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaInstagram />
           </a>
-          <a href="https://twitter.com/oxtedfc?lang=en">
+          <a
+            href="https://twitter.com/oxtedfc?lang=en"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaXTwitter />
           </a>
-          <a href="https://www.facebook.com/OxtedFc">
+          <a
+            href="https://www.facebook.com/OxtedFc"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaFacebookSquare />
           </a>
         </div>

@@ -2,13 +2,12 @@ import { mockNews } from "../mockData/mockData";
 import { useState } from "react";
 
 export const Headline = () => {
-  const [newsList, setNewsList] = useState(mockNews);
   const [mainNews, setMainNews] = useState(0);
 
   return (
     <div className="hidden md:block">
       <div>
-        <p className="text-4xl underline font-semibold underline-offset-4">
+        <p className="font-bold uppercase text-4xl pb-3 flex relative before:absolute before:top-6 before:content-[''] before:w-48 before:h-3 before:bg-primary/20 before:rounded-md">
           Headline
         </p>
       </div>
@@ -16,18 +15,18 @@ export const Headline = () => {
         {/* Main Headline */}
         <div className="headline">
           <div className="image">
-            <img src={newsList[mainNews].src} alt="News" />
+            <img src={mockNews[mainNews].src} alt="News" />
           </div>
           <div className="content">
-            <p>{newsList[mainNews].title}</p>
-            <p>{newsList[mainNews].description}</p>
+            <p>{mockNews[mainNews].title}</p>
+            <p>{mockNews[mainNews].description}</p>
           </div>
         </div>
 
         {/* Sidebar */}
         <div className="ml-3 rounded-md shadow-lg divide-y-2 divide-gray-100 h-200 overflow-x-scroll">
           {/* News falt layout */}
-          {newsList.map((news, index) => {
+          {mockNews.map((news, index) => {
             return (
               <div
                 key={news.title}

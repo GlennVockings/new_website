@@ -166,15 +166,15 @@
   /* Homepage league table */
 
   .league-table-slim {
-    @apply table-auto overflow-auto;
+    @apply table-auto overflow-auto w-full;
   }
 
   .league-table-slim th {
-    @apply py-1 px-1 rounded text-lg font-sans text-center underline underline-offset-2;
+    @apply py-1 px-1 rounded text-base font-sans text-center underline underline-offset-2;
   }
 
   .league-table-slim .name-header {
-    @apply text-left;
+    @apply text-left pl-4;
   }
 
   .league-table-slim td {

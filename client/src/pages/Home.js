@@ -7,6 +7,7 @@ import { NewsCard } from "../components/ui/NewsCard";
 import { VideoCard } from "../components/ui/VideoCard";
 import { mockNews } from "../mockData/mockData";
 import { PlayrStats } from "../components/PlayerStats";
+import { Sponsor } from "../components/Sponsor";
 
 export const Home = () => {
   return (
@@ -14,7 +15,7 @@ export const Home = () => {
       <div className="">
         {/* Team Update */}
         <Wrapper>
-          <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center shadow-lg rounded-lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center shadow-lg rounded-lg p-2">
             <SlimFixture />
             <SlimResults />
             <SlimTable />
@@ -54,6 +55,10 @@ export const Home = () => {
 
         <Wrapper>
           <Headline />
+        </Wrapper>
+
+        <Wrapper>
+          <Sponsor />
         </Wrapper>
       </div>
     </>
