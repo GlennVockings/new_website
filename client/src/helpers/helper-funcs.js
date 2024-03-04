@@ -1,4 +1,6 @@
 import { mainTeam } from "./constants";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
 
 const DATEOPTIONS = {
   dateStyle: "medium",
@@ -275,4 +277,13 @@ export const isMobile = function isMobileDevice() {
 
 export function splitTextWithCapital(text) {
   return text.split(/(?=[A-Z])/).join(" ");
+}
+
+export function formatDate(date) {
+  dayjs.extend(localizedFormat);
+  let a = dayjs(date);
+
+  console.log(a.format("lll"));
+
+  return a.format("lll");
 }

@@ -1,5 +1,7 @@
 import { mockNews } from "../mockData/mockData";
 import { useState } from "react";
+import { formatDate } from "../helpers/helper-funcs";
+import { FaCalendar } from "react-icons/fa6";
 
 export const Headline = () => {
   const [mainNews, setMainNews] = useState(0);
@@ -11,20 +13,24 @@ export const Headline = () => {
           Headline
         </p>
       </div>
-      <div className="flex flex-col justify-between md:flex-row">
+      <div className="grid justify-between gap-4 md:grid-cols-3">
         {/* Main Headline */}
         <div className="headline">
           <div className="image">
             <img src={mockNews[mainNews].src} alt="News" />
           </div>
           <div className="content">
-            <p>{mockNews[mainNews].title}</p>
+            <p className="date">
+              <FaCalendar />
+              {formatDate(mockNews[mainNews].date)}
+            </p>
+            <p className="title">{mockNews[mainNews].title}</p>
             <p>{mockNews[mainNews].description}</p>
           </div>
         </div>
 
         {/* Sidebar */}
-        <div className="ml-3 rounded-md shadow-lg divide-y-2 divide-gray-100 h-200 overflow-x-scroll">
+        <div className="ml-3 rounded-md shadow-lg divide-y-2 divide-gray-100 h-175 overflow-y-scroll">
           {/* News falt layout */}
           {mockNews.map((news, index) => {
             return (
@@ -37,6 +43,10 @@ export const Headline = () => {
                   <img src={news.src} alt="News" />
                 </div>
                 <div className="content">
+                  <p className="date">
+                    <FaCalendar />
+                    {formatDate(news.date)}
+                  </p>
                   <p className="text-xl">{news.title}</p>
                 </div>
               </div>

@@ -195,19 +195,27 @@
 
   /* headline */
   .headline {
-    @apply p-5 rounded-md shadow-lg flex flex-col relative;
+    @apply p-5 rounded-md shadow-lg flex flex-col relative col-span-2;
   }
 
   .headline .image {
-    @apply relative;
+    @apply relative flex justify-center w-full h-4/5 overflow-hidden;
   }
 
   .headline img {
-    @apply rounded-md object-cover;
+    @apply absolute object-cover h-full;
   }
 
   .headline .content {
-    @apply py-3 bg-white;
+    @apply p-5 bg-white text-xl flex flex-col gap-2;
+  }
+
+  .headline .content .date {
+    @apply flex gap-2 text-gray-500 text-sm;
+  }
+
+  .headline .content .title {
+    @apply text-4xl font-bold;
   }
 
   .headline-flat {
@@ -215,15 +223,19 @@
   }
 
   .headline-flat .image {
-    @apply relative w-32 h-32 drop-shadow-md;
+    @apply relative w-28 h-28 drop-shadow-md;
   }
 
   .headline-flat .image img {
-    @apply absolute w-full h-full rounded-md object-cover;
+    @apply absolute h-full rounded-md object-cover;
   }
 
   .headline-flat .content {
-    @apply pl-4 w-64;
+    @apply pl-4 grow;
+  }
+
+  .headline-flat .content .date {
+    @apply flex gap-2 text-gray-500 text-sm;
   }
 
   /* Admin table */
