@@ -151,6 +151,15 @@ const RootQuery = new GraphQLObjectType({
         return Fixture.findById(args.id);
       },
     },
+    player: {
+      type: PlayerType,
+      args: {
+        id: { type: GraphQLID },
+      },
+      resolve(parent, args) {
+        return Player.findById(args.id);
+      },
+    },
     latestResult: {
       type: FixtureType,
       args: {

@@ -219,7 +219,7 @@
   }
 
   .headline-flat {
-    @apply flex items-center px-4 py-3 hover:underline;
+    @apply flex items-center px-4 py-3 hover:underline hover:cursor-pointer;
   }
 
   .headline-flat .image {

@@ -17,6 +17,7 @@ import { EditWeek } from "./components/admin/EditWeek";
 import { Footer } from "./components/Footer";
 import possibleTypes from "./possibleTypes.json";
 import { PlayersPage } from "./pages/PlayersPage";
+import { EditPlayer } from "./components/admin/EditPlayer";
 
 const httpLink = createHttpLink({
   uri: "https://oxted-api.onrender.com/graphql",
@@ -92,6 +93,7 @@ function App() {
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/fixture/:id" element={<EditFixture />} />
               <Route path="/admin/week/:id" element={<EditWeek />} />
+              <Route path="/admin/player/:id" element={<EditPlayer />} />
             </Routes>
           </Router>
         </div>

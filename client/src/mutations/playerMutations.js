@@ -61,7 +61,7 @@ export const UPDATE_PLAYER = gql`
     $redCards: Int!
     $mom: Int!
   ) {
-    addPlayer(
+    updatePlayer(
       id: $id
       name: $name
       number: $number
@@ -95,7 +95,7 @@ export const UPDATE_PLAYER = gql`
 
 export const DELETE_PLAYER = gql`
   mutation addPlayer($id: ID!) {
-    addPlayer(id: $id) {
+    deletePlayer(id: $id) {
       id
       name
       number
