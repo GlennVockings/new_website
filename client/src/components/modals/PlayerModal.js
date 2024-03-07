@@ -23,7 +23,7 @@ export const PlayerModal = ({ handleClose, show }) => {
       const { players } = cache.readQuery({ query: GET_PLAYERS });
       cache.writeQuery({
         query: GET_PLAYERS,
-        data: { palyers: [...players, addPlayer] },
+        data: { players: [...players, addPlayer] },
       });
     },
     onCompleted() {

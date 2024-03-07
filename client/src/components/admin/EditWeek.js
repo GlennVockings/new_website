@@ -1,10 +1,8 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Loading } from "../ui/Loading";
-import { Dropdown } from "../Dropdown";
 import { useQuery, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { GET_WEEK } from "../../queries/weekQueries";
-import { status } from "../../helpers/constants";
 import { BsSendFill } from "react-icons/bs";
 import { UPDATE_WEEK } from "../../mutations/weekMutations";
 
@@ -12,7 +10,6 @@ export const EditWeek = () => {
   const { id } = useParams();
   const [week, setWeek] = useState(0);
   const [wc, setWc] = useState("");
-  const [weekStatus, setWeekStatus] = useState("");
   const navigate = useNavigate();
 
   const { loading, data } = useQuery(GET_WEEK, {
@@ -24,7 +21,7 @@ export const EditWeek = () => {
   });
 
   const [updateWeek] = useMutation(UPDATE_WEEK, {
-    variables: { id, week, wc, status: weekStatus },
+    variables: { id, week, wc },
     refetchQueries: [{ query: GET_WEEK, variables: { id } }],
     onCompleted: () => {
       navigate("/");
@@ -32,10 +29,7 @@ export const EditWeek = () => {
   });
 
   const onSubmit = () => {
-    if (weekStatus === "") {
-      alert("Opps you have missed a field");
-    }
-    updateWeek(id, week, wc, weekStatus);
+    updateWeek(id, week, wc);
   };
 
   if (loading) return <Loading />;
@@ -65,16 +59,6 @@ export const EditWeek = () => {
             type="string"
             value={wc}
             onChange={(e) => setWeek(e.target.value)}
-          />
-        </div>
-        <div className="pb-4">
-          <label className="text-xl pr-2">Status:</label>
-          <Dropdown
-            options={status}
-            name="status"
-            callback={(e) => setWeekStatus(e.target.value)}
-            cssClass="text-xl p-2 border-2 rounded-mds"
-            activeOption={weekStatus}
           />
         </div>
         <div className="flex">
