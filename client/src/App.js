@@ -20,8 +20,8 @@ import { PlayersPage } from "./pages/PlayersPage";
 import { EditPlayer } from "./components/admin/EditPlayer";
 
 const httpLink = createHttpLink({
-  // uri: "https://oxted-api.onrender.com/graphql",
-  uri: "http://localhost:5000/graphql",
+  uri: "https://oxted-api.onrender.com/graphql",
+  // uri: "http://localhost:5000/graphql",
 });
 
 const link = ApolloLink.from([httpLink]);
